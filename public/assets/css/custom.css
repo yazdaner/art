@@ -2,3 +2,6 @@
     cursor: pointer;
 }
 
+.btn-p{
+    padding: 5px 15px !important;
+}

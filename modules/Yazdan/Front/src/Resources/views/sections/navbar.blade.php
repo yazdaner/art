@@ -3,13 +3,25 @@
     <div class="container">
         <!-- Logo container-->
         <div>
-            <a class="logo" href="index.html">
+            <a class="logo" href="/">
                 <img src="/assets/images/logo-dark.png" height="24" alt="" />
             </a>
         </div>
         <div class="buy-button">
-            <a href="./login.html" class="btn btn-primary">حساب کاربری
-            </a>
+            @auth
+                <a href="{{route('login')}}" class="btn btn-primary">حساب کاربری
+                </a>
+            @else
+                <div class="option-item d-flex">
+                    <div class="ml-3 me-2">
+                        <a class="btn btn-primary btn-p" href="{{route('login')}}">ورود</a>
+                    </div>
+                    <div>
+                        <a class="btn btn-primary btn-p" href="{{route('register')}}">ثبت نام</a>
+                    </div>
+                </div>
+            @endauth
+
         </div>
         <div class="buy-button me-3 cursor-pointer" data-bs-toggle="modal" data-bs-target="#search">
             <img src="/assets/images/search.png" width="40" alt="search">
@@ -70,12 +82,6 @@
                 <li><a href="/about.html" class="sub-menu-item">درباره ما </a></li>
                 <li><a href="./contact.html" class="sub-menu-item">تماس با ما </a></li>
             </ul>
-            <!--end navigation menu-->
-            <div class="buy-menu-btn d-none">
-                <a href="./login.html" class="btn btn-primary">حساب کاربری
-                </a>
-            </div>
-            <!--end login button-->
         </div>
         <!--end navigation-->
     </div>
@@ -83,3 +89,4 @@
 </header>
 <!--end header-->
 <!-- Navbar End -->
+@include('Front::sections.search')
