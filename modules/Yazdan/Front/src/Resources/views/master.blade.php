@@ -30,14 +30,11 @@
 <body>
     @include('Front::sections.navbar')
 
-
     @yield('content')
 
-
     @include('Front::sections.footer')
-
+    @include('Front::sections.search')
     @include('Front::sections.js')
-
 </body>
 
 </html>

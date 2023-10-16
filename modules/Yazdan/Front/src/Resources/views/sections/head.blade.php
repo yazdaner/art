@@ -15,4 +15,5 @@
     <link rel="stylesheet" href="./assets/css/tiny-slider.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.min.css" id="theme-opt">
     <link rel="stylesheet" type="text/css" href="./assets/css/colors/default.css" id="color-opt">
+    <link rel="stylesheet" href="./assets/css/custom.css">
 </head>

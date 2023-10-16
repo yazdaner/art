@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
                 <a href="#" class="logo-footer">
-                    <img src="images/logo-light.png" height="24" alt="" />
+                    <img src="/assets/images/logo-light.png" height="24" alt="" />
                 </a>
                 <p class="mt-4">
                     اتابک پرتو هستم مدرس دوره های طراحی، نقاشی رنگ روغن و نقاشی دیجیتال آرت . شما می توانید از راه
@@ -135,23 +135,23 @@
             <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <ul class="list-unstyled text-sm-end mb-0">
                     <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="images/payments/american-ex.png"
+                        <a href="javascript:void(0)"><img src="/assets/images/payments/american-ex.png"
                                 class="avatar avatar-ex-sm" title="آمریکن اکسپرس" alt="" /></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="images/payments/discover.png"
+                        <a href="javascript:void(0)"><img src="/assets/images/payments/discover.png"
                                 class="avatar avatar-ex-sm" title="کشف کردن" alt="" /></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="images/payments/master-card.png"
+                        <a href="javascript:void(0)"><img src="/assets/images/payments/master-card.png"
                                 class="avatar avatar-ex-sm" title="مستر کارت" alt="" /></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="images/payments/paypal.png"
+                        <a href="javascript:void(0)"><img src="/assets/images/payments/paypal.png"
                                 class="avatar avatar-ex-sm" title="پی پال" alt="" /></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="images/payments/visa.png" class="avatar avatar-ex-sm"
+                        <a href="javascript:void(0)"><img src="/assets/images/payments/visa.png" class="avatar avatar-ex-sm"
                                 title="ویزا" alt="" /></a>
                     </li>
                 </ul>
