@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa322c53454393ed775cfe4807d54a50",
+    "content-hash": "4cd4ca04c734308f84f786db8d2dbea1",
     "packages": [
         {
             "name": "brick/math",
@@ -5624,6 +5624,31 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yazdan/front",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Front",
+                "reference": "61682e206088e68a716b711ea1885f077472a02a"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Front\\App\\Providers\\FrontServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Front\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
         }
     ],
     "packages-dev": [
@@ -8068,7 +8093,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "yazdan/front": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

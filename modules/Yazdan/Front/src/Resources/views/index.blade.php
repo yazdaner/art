@@ -1,0 +1,10 @@
+@extends('Front::master')
+@section('content')
+    @include('Front::sections.slider')
+    @include('Front::sections.courses')
+    @include('Front::sections.galleryCategories')
+    @include('Front::sections.galleryPaintings')
+    @include('Front::sections.about')
+    @include('Front::sections.latestPaintings')
+    @include('Front::sections.registrationCourses')
+@endsection
