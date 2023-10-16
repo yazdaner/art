@@ -13,7 +13,10 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "yazdan/front": "dev-master"
+        "yazdan/common": "dev-master",
+        "yazdan/front": "dev-master",
+        "yazdan/role": "dev-master",
+        "yazdan/user": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -40,6 +43,18 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Front"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Common"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/User"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/RolePermissions"
         }
     ],
     "scripts": {
