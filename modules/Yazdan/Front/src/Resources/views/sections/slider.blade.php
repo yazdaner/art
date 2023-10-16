@@ -31,8 +31,7 @@
                                     <p class="para-desc">2-تمرین‌ها و چالش‌های دوره‌ها، خلاقیت هنرجو را طوری به کار
                                         می‌گیرد که بدون اتلاف وقت، تصویرسازی را در کمترین زمان یاد می‌گیرد.</p>
                                     <div class="mt-4 pt-2">
-                                        <a href=""><span class="fw-bold text-uppercase small align-middle ms-2">ادامه
-                                                مطلب</span></a>
+                                        <a href="" class="btn btn-primary">ادامه مطلب</a>
                                     </div>
                                 </div>
                             </div>
