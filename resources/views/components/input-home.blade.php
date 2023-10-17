@@ -7,7 +7,8 @@
     </label>
     <div class="form-icon position-relative">
         {{ $slot }}
-        <input type="{{$type}}" class="form-control ps-5" placeholder="{{$label}} " name="{{$name}}" @if ($required) required @endif>
+        <input type="{{$type}}" value="{{$value ?? old($name)}}" placeholder="{{$label}} " name="{{$name}}" @if ($required) required @endif {{ $attributes->merge(['class' =>
+        'form-control ps-5'])}}>
     </div>
     <x-validation-error field="{{$name}}" />
 </div>

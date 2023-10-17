@@ -8,13 +8,14 @@ use Illuminate\View\Component;
 
 class inputHome extends Component
 {
-    public $name, $label, $required, $type;
+    public $name, $label, $required, $type,$value;
     /**
      * Create a new component instance.
      */
-    public function __construct($name, $label, $required = false, $type = 'text')
+    public function __construct($name ,$value = null, $label ="", $required = false, $type = 'text')
     {
         $this->name = $name;
+        $this->value = $value;
         $this->label = $label;
         $this->required = $required;
         $this->type = $type;

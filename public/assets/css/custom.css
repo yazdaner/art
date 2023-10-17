@@ -5,3 +5,10 @@
 .btn-p{
     padding: 5px 15px !important;
 }
+
+.invalidFeedback{
+    width:100%;
+    margin-top:.25rem;
+    font-size:80%;
+    color:#dc3545;
+}

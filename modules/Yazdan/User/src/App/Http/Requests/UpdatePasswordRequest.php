@@ -3,7 +3,6 @@
 namespace Yazdan\User\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Yazdan\User\App\Rules\ValidPassword;
 
 class UpdatePasswordRequest extends FormRequest
 {
@@ -25,7 +24,7 @@ class UpdatePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => ['required',new ValidPassword,'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
 }

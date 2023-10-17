@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Yazdan\User\App\Models\User;
 use Yazdan\User\App\Rules\ValidMobile;
-use Yazdan\User\App\Rules\ValidPassword;
 
 class RegisterController extends Controller
 {
@@ -56,7 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed',new ValidPassword],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'mobile' => ['nullable', 'string', 'min:9' , 'max:14', 'unique:users',new ValidMobile],
         ]);
     }

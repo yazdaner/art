@@ -9,8 +9,8 @@
         </div>
         <div class="buy-button">
             @auth
-                <a href="{{route('login')}}" class="btn btn-primary">حساب کاربری
-                </a>
+                <a href="{{route('users.profile')}}" class="btn btn-primary btn-p">حساب کاربری</a>
+                <a href="{{route('logout')}}" class="btn btn-primary btn-p">خروج</a>
             @else
                 <div class="option-item d-flex">
                     <div class="ml-3 me-2">
@@ -45,7 +45,7 @@
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu">
-                <li><a href="https://atabakart.com/" class="sub-menu-item">صفحه اصلی </a></li>
+                <li><a href="/" class="sub-menu-item">صفحه اصلی </a></li>
                 <li class="has-submenu parent-menu-item">
                     <a class="d-none d-sm-none d-md-block d-lg-block" href="https://atabakart.com/gallery">گالری </a>
                     <a class="d-block d-sm-block d-md-none d-lg-none" href="javascript:void(0)">گالری </a>

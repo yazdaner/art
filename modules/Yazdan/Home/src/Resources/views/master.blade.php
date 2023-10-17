@@ -1,6 +1,6 @@
 @extends('Front::master')
 @section('content')
-<section class="bg-profile d-table w-100 bg-primary" style="background: url('{{asset('assets/images/account/bg.png')}}') center center;">
+<section class="bg-profile d-table w-100 bg-primary" style="background: url('{{asset('assets/images/account/bg.png')}}') center center;background-color: #5d72b957 !important;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -42,7 +42,7 @@
     <div class="container mt-lg-3">
         <div class="row">
             @include('Home::sections.sidebar')
-            @yield('xxx')
+            @yield('homeContent')
         </div><!--end row-->
     </div><!--end container-->
 </section><!--end section-->
