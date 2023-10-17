@@ -1,40 +1,6 @@
 @extends('User::front.master')
 @section('content')
-{{-- <div class="col-lg-5 col-md-7 col-12 mx-auto mt-5">
-    <div class="login-form">
-        <h2 class="text-center">ورود کاربران</h2>
-        <form action="{{ route('login') }}" method="post">
-            @csrf
-            <x-inputHome type="text" name="email" label="نام کاربری یا ایمیل" />
-            <x-inputHome type="password" name="password" label="گذرواژه" />
-
-
-
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6 col-sm-6 remember-me-wrap">
-                    <p>
-                        <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label for="remember">مرا بخاطر بسپار</label>
-                    </p>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-6 lost-your-password-wrap">
-                    <a href="{{ route('password.request') }}" class="lost-your-password">فراموشی گذرواژه؟</a>
-                </div>
-
-            </div>
-
-            <button type="submit">وارد شوید</button>
-
-            <div class="mt-4">
-                <a href="{{ route('register') }}" class="lost-your-password">صفحه ثبت نام</a>
-            </div>
-        </form>
-
-    </div>
-</div> --}}
 @include('Front::sections.navbar')
-
 <section class="bg-home bg-circle-gradiant d-flex align-items-center">
     <div class="bg-overlay bg-overlay-white"></div>
     <div class="container">
@@ -79,8 +45,8 @@
                                     <div class="d-flex justify-content-between">
                                         <div class="mb-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" name="remember"
+                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="flexCheckDefault">مرا به خاطر بسپار
                                                 </label>
                                             </div>
@@ -97,8 +63,6 @@
                                     </div>
                                 </div>
                                 <!--end col-->
-
-
 
                                 <div class="col-12 text-center">
                                     <p class="mb-0 mt-3"><small class="text-dark me-2">حسابی ندارید؟ </small> <a
@@ -119,5 +83,4 @@
     <!--end container-->
 </section>
 @include('Front::sections.footer')
-
 @endsection

@@ -32,7 +32,13 @@ class ForgotPasswordController extends Controller
     public function sendVerifyCodeResetPassword(Request $request)
     {
         // send Reset Password Code Email
-        $this->validateEmail($request);
+        $request->validate([
+            'email' => 'required|email',
+            'captcha' => 'required|captcha',
+        ],[
+            'captcha.captcha' => 'کد کپچا معتبر نمی باشد',
+            'captcha.required' => 'کد کپچا الزامی میباشد',
+        ]);
 
         $user = UserRepository::getUserByEmail($request->email);
 

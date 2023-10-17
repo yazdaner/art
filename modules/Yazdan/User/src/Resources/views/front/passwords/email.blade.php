@@ -41,33 +41,38 @@
                         <h4 class="card-title text-center"> بازیابی رمز عبور </h4>
 
 
-                        <form class="login-form mt-4" method="post" action="./forgot.html">
+                        <form class="login-form mt-4" method="get" action="{{route('password.sendVerifyCode')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <p class="text-muted">لطفا آدرس ایمیل خود را وارد کنید. لینکی برای ایجاد گذرواژه
                                         جدید از طریق ایمیل دریافت خواهید کرد.</p>
-                                    <div class="mb-3">
-                                        <label class="form-label">آدرس ایمیل <span class="text-danger">*</span></label>
-                                        <div class="form-icon position-relative">
-                                            <input type="email" class="form-control ps-5"
-                                                placeholder="آدرس ایمیل خود را وارد کنید" name="email" required="">
-                                        </div>
-                                    </div>
+                                    <x-input-home name="email" label="ایمیل" required="true">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-mail fea icon-sm icons">
+                                            <path
+                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                            </path>
+                                            <polyline points="22,6 12,13 2,6"></polyline>
+                                        </svg>
+                                    </x-input-home>
                                     <div class="form-group required">
                                         <div class="col-sm-offset-4 col-sm-6">
-                                            <img src="/inc/classes/simple-captcha/simple-php-captcha.php?_CAPTCHA&amp;t=0.05734200+1697282392&amp;mod=forgot"
-                                                alt="کد امنیتی" title="کد امنیتی">
+                                            <img src="{{captcha_src()}}" alt="کد امنیتی" title="کد امنیتی">
                                         </div>
                                     </div>
-
-                                    <div class="form-group required mt-4">
-                                        <label class="col-sm-4" for="captcha">کد امنیتی : </label>
-                                        <div class="col-sm-6 mb-4">
-                                            <input type="text" class="form-control" id="captcha" name="captcha"
-                                                dir="ltr" required="">
-                                        </div>
-                                    </div>
+                                    <x-input-home name="captcha" label="کد امنیتی" required="true" id="captcha">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-key fea icon-sm icons">
+                                            <path
+                                                d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4">
+                                            </path>
+                                        </svg>
+                                    </x-input-home>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-12">
