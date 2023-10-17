@@ -36,11 +36,11 @@ class UserServiceProvider extends ServiceProvider
             'icon' => 'i-users',
             'url' => route('admin.users.index'),
             'title' => 'کاربران',
-            // 'permission' => PermissionRepository::PERMISSION_MANAGE_USERS,
+            'permission' => PermissionRepository::PERMISSION_MANAGE_USERS,
         ]);
 
         config()->set('sidebarHome.items.profile', [
-            'icon' => 'i-users',
+            'icon' => 'uil-dashboard',
             'url' => route('users.profile'),
             'title' => 'پروفایل'
         ]);

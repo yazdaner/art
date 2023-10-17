@@ -30,7 +30,7 @@
 <section class="bg-home d-flex align-items-center">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-7 col-md-6">
+            <div class="col-lg-7 col-md-6 d-none d-md-block">
                 <div class="me-lg-5">
                     <img src="/assets/images/user/recovery.svg" class="img-fluid d-block mx-auto" alt="">
                 </div>
@@ -42,9 +42,7 @@
 
 
                         <form class="login-form mt-4" method="post" action="./forgot.html">
-                            <input type="hidden" name="csrf"
-                                value="bc8b0df96da468290c27538adfebef653ab2706f3528d78d3acf286cf25ccf11c5b15a2458913b8e">
-
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <p class="text-muted">لطفا آدرس ایمیل خود را وارد کنید. لینکی برای ایجاد گذرواژه
@@ -80,7 +78,8 @@
                                 <!--end col-->
                                 <div class="mx-auto">
                                     <p class="mb-0 mt-3"><small class="text-dark me-2">رمز عبور خود را به خاطر می
-                                            آورید؟</small> <a href="{{route('login')}}" class="text-dark fw-bold">وارد شوید
+                                            آورید؟</small> <a href="{{route('login')}}" class="text-dark fw-bold">وارد
+                                            شوید
                                         </a></p>
                                 </div>
                             </div>

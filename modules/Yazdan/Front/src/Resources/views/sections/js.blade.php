@@ -3,16 +3,16 @@
         data-feather="arrow-up" class="icons"></i></a>
 <!-- Back to top -->
 
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
-<script src="./assets/js/tobii.min.js"></script>
-<script src="./assets/js/tiny-slider.js"></script>
-<script src="./assets/js/datepicker.min.js"></script>
-<script src="./assets/js/contact.js"></script>
-<script src="./assets/js/parallax.js"></script>
-<script src="./assets/js/feather.min.js"></script>
-<script src="./assets/js/switcher.js"></script>
-<script src="./assets/js/plugins.init.js"></script>
-<script src="./assets/js/app.js"></script>
+<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/js/tobii.min.js')}}"></script>
+<script src="{{asset('assets/js/tiny-slider.js')}}"></script>
+<script src="{{asset('assets/js/datepicker.min.js')}}"></script>
+<script src="{{asset('assets/js/contact.js')}}"></script>
+<script src="{{asset('assets/js/parallax.js')}}"></script>
+<script src="{{asset('assets/js/feather.min.js')}}"></script>
+<script src="{{asset('assets/js/switcher.js')}}"></script>
+<script src="{{asset('assets/js/plugins.init.js')}}"></script>
+<script src="{{asset('assets/js/app.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
     var owl_slider = $('.owl-carousel-slider').owlCarousel({

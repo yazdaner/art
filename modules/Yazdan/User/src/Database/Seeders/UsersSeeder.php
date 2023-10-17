@@ -16,7 +16,6 @@ class UsersSeeder extends Seeder
             User::firstOrCreate(['email' => $user['email']],
             [
                 'email' => $user['email'],
-                'username' => $user['username'],
                 'password' => bcrypt($user['password']),
                 'key' => 1000,
             ])->assignRole($user['role'])->markEmailAsVerified();

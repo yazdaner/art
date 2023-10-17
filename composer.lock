@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1087f7c812b001926699120778bc2fd1",
+    "content-hash": "fbf923ae578a09b34be143fccf60172d",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -5958,6 +5958,56 @@
             }
         },
         {
+            "name": "yazdan/home",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Home",
+                "reference": "a1c889c5a7adfdea0fd13eaabc8ba61aefcc4f23"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Home\\App\\Providers\\HomeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Home\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "yazdan/media",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Media",
+                "reference": "dfdbbbfea6e585421d510fd1c3e1cd20b8dce37f"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Media\\App\\Providers\\MediaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Media\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/role",
             "version": "dev-master",
             "dist": {
@@ -8459,6 +8509,8 @@
     "stability-flags": {
         "yazdan/common": 20,
         "yazdan/front": 20,
+        "yazdan/home": 20,
+        "yazdan/media": 20,
         "yazdan/role": 20,
         "yazdan/user": 20
     },
