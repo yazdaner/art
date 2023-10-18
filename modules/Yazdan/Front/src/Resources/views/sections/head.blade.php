@@ -7,7 +7,7 @@
     <meta name="keywords" content="گالری-نقاشی-اتابک-آرت">
     <meta name="description" content="گالری نقاشی معتبرترین و با کیفیت ترین محصولات  را ارائه میکند.">
     <meta name="developer" content="faeze lashkari.COM">
-    <script src="./assets/js/jquery.min.js"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/tobii.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/materialdesignicons.min.css')}}">
@@ -16,4 +16,5 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.min.css')}}" id="theme-opt">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/colors/default.css')}}" id="color-opt">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+    @yield('style')
 </head>

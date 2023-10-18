@@ -28,7 +28,7 @@
                                 <!--end col-->
 
                                 <div class="col-lg-12">
-                                    <x-input-home name="password" label="رمز عبور" required="true">
+                                    <x-input-home type="password" name="password" label="رمز عبور" required="true">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"

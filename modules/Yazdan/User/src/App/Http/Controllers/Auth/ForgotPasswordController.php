@@ -2,12 +2,13 @@
 
 namespace Yazdan\User\App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
-use Yazdan\User\App\Http\Requests\ResetPasswordVerifyCodeRequest;
-use Yazdan\User\Repositories\UserRepository;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
 use Yazdan\User\Services\VerifyMailService;
+use Yazdan\User\Repositories\UserRepository;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Yazdan\User\App\Http\Requests\ResetPasswordVerifyCodeRequest;
 
 class ForgotPasswordController extends Controller
 {
@@ -66,6 +67,22 @@ class ForgotPasswordController extends Controller
         }
         auth()->loginUsingId($user->id);
         return redirect(route('password.showResetForm'));
+    }
+
+    public function resend(Request $request)
+    {
+        $user = UserRepository::getUserByEmail($request->email);
+        if(isset($user) && ! $user->hasVerifiedEmail() || ! isset($user) ){
+            return response()->withErrors(['email' => 'ایمیل ثبت نشده است']);
+        }
+        VerifyMailService::cacheDelete($user->id);
+        if(! VerifyMailService::cacheHas($user->id)){
+            $user->sendResetPasswordEmailCodeNotification();
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 202)
+                    : back()->with('resent', true);
     }
 
 }
