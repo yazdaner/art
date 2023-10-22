@@ -38,4 +38,5 @@
         });
     });
 </script>
+@include('Common::layouts.feedbacks')
 @yield('script')

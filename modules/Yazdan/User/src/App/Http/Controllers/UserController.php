@@ -108,7 +108,6 @@ class UserController extends Controller
 
     public function updateProfile(UpdateProfileRequest $request)
     {
-        $this->authorize('profile',User::class);
         UserRepository::updateProfile($request);
         newFeedbacks();
         return back();

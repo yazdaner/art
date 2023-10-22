@@ -76,10 +76,9 @@ class User extends Authenticatable implements MustVerifyEmail
         if (isset($this->avatar_id)) {
             return $this->avatar->thumb($size);
         } else {
-            return asset('img/profile.jpg');
+            return asset('assets/images/user.png');
         }
     }
-
 
     public function records()
     {

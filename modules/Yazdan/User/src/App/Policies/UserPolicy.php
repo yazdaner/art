@@ -45,10 +45,6 @@ class UserPolicy
         return auth()->check() && $user->id == auth()->id();
     }
 
-    public function profile()
-    {
-        return auth()->check();
-    }
 }
 
 

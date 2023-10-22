@@ -40,9 +40,6 @@ Route::group([
     providerGetRoute('/users/profile',UserController::class,'profile','users.profile');
     Route::patch('/users/profile', [UserController::class, 'updateProfile'])->name('users.profile');
 
-    //Get member card
-    Route::get('/users/memberCard', [UserController::class, 'memberCard'])->name('users.memberCard');
-
 });
 
 
