@@ -22,10 +22,10 @@ class FrontServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views/', 'Front');
 
 
-        // view()->composer('Front::sections.CTA', function ($view) {
-        //     $cta = Slider::where('type',SliderRepository::TYPE_CTA)->where('status',true)->orderBy('priority')->first();
-        //     $view->with(compact('cta'));
-        // });
+        view()->composer('Front::sections.slider', function ($view) {
+            $sliders = Slider::where('type',SliderRepository::TYPE_MAIN)->where('status',true)->orderBy('priority')->get();
+            $view->with(compact('sliders'));
+        });
 
     }
 }

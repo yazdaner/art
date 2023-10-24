@@ -3,14 +3,6 @@
     <li><a href="#" title="کاربران">کاربران</a></li>
 @endsection
 @section('content')
-{{-- <div class="tab__box">
-    <div class="tab__items">
-        <a class="tab__item {{ request("status") == "" ? "is-active" : "" }}" href="{{ route("admin.comments.index") }}?status="> همه نظرات</a>
-        <a class="tab__item {{ request("status") == "new" ? "is-active" : "" }}" href="{{ route("admin.comments.index") }}?status=new">نظرات تاییده نشده</a>
-        <a class="tab__item {{ request("status") == "rejected" ? "is-active" : "" }}" href="{{ route("admin.comments.index") }}?status=rejected">نظرات رد شده</a>
-        <a class="tab__item {{ request("status") == "approved" ? "is-active" : "" }}" href="{{ route("admin.comments.index") }}?status=approved">نظرات تاییده شده</a>
-    </div>
-</div> --}}
 
 <div class="main-content padding-0 users">
     <div class="row no-gutters">

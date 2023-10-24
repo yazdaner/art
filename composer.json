@@ -20,6 +20,7 @@
         "yazdan/home": "dev-master",
         "yazdan/media": "dev-master",
         "yazdan/role": "dev-master",
+        "yazdan/slider": "dev-master",
         "yazdan/user": "dev-master"
     },
     "require-dev": {
@@ -71,6 +72,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Dashboard"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Slider"
         }
     ],
     "scripts": {
