@@ -28,7 +28,6 @@
                                             تغییر تصویر
                                         </label>
                                         <input name="image" type="file" accept="image/*" class="d-none" id="file" onchange="this.form.submit()">
-                                        <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">حذف </a>
                                     </div>
                                 </div>
                             </form>

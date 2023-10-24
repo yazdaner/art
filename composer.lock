@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7f1fc64d8077eba098532610c370a44",
+    "content-hash": "0970f3ac7dfa73bb0d01425d87e36d5a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -6090,6 +6090,31 @@
             }
         },
         {
+            "name": "yazdan/dashboard",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Dashboard",
+                "reference": "e0d23367c5362d963cf6650e2d09d38c0540cfeb"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Dashboard\\App\\Providers\\DashboardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Dashboard\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/front",
             "version": "dev-master",
             "dist": {
@@ -8665,6 +8690,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "yazdan/common": 20,
+        "yazdan/dashboard": 20,
         "yazdan/front": 20,
         "yazdan/home": 20,
         "yazdan/media": 20,

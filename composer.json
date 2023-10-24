@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.8",
         "mews/captcha": "^3.3",
         "yazdan/common": "dev-master",
+        "yazdan/dashboard": "dev-master",
         "yazdan/front": "dev-master",
         "yazdan/home": "dev-master",
         "yazdan/media": "dev-master",
@@ -66,6 +67,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Home"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Dashboard"
         }
     ],
     "scripts": {
