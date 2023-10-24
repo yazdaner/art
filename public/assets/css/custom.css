@@ -20,3 +20,8 @@
     text-align: right !important;
     padding-right: 25px !important;
  }
+
+ .text-break {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}

@@ -7,12 +7,12 @@
                     style="background-image:url('{{$slider->getAvatar()}}')">
                     <div class="container">
                         <div class="row align-items-center">
-                            <div class="col-lg-7 col-md-7">
+                            <div class="col-lg-5 col-md-5">
                                 <div class="title-heading position-relative mt-4" style="z-index: 1;">
-                                    <h1 class="heading mb-3">{{$slider->title}}</h1>
-                                    <p class="para-desc">{{$slider->description}}</p>
+                                    <h1 class="heading mb-3 text-break">{{$slider->title}}</h1>
+                                    <p class="para-desc text-break">{{$slider->description}}</p>
                                     <div class="mt-4 pt-2">
-                                        <a href="" class="btn btn-primary">ادامه مطلب</a>
+                                        <a href="{{$slider->link}}" class="btn btn-primary">ادامه مطلب</a>
                                     </div>
                                 </div>
                             </div>

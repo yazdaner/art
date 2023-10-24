@@ -31,13 +31,13 @@
         <div class="widget mt-4 pt-2">
             <h5 class="widget-title">دنبال کردن ما :</h5>
             <ul class="list-unstyled social-icon mb-0 mt-4">
-                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="github" class="fea icon-sm fea-social"></i></a></li>
-                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
-                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="gitlab" class="fea icon-sm fea-social"></i></a></li>
+                <li class="list-inline-item"><a href="{{$setting->facebook}}" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+                <li class="list-inline-item"><a href="{{$setting->instagram}}" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+                <li class="list-inline-item"><a href="{{$setting->twitter}}" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+                <li class="list-inline-item"><a href="{{$setting->linkedin}}" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+                <li class="list-inline-item"><a href="{{$setting->youtube}}" class="rounded"><i data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
+                <li class="list-inline-item"><a href="{{$setting->telegram}}" class="rounded"><i data-feather="telegram" class="fea icon-sm fea-social"></i></a></li>
+                <li class="list-inline-item"><a href="{{$setting->whatsapp}}" class="rounded"><i data-feather="whatsapp" class="fea icon-sm fea-social"></i></a></li>
             </ul><!--end icon-->
         </div>
     </div>

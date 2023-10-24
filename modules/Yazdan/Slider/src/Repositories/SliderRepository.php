@@ -7,9 +7,8 @@ use Yazdan\Slider\App\Models\Slider;
 class SliderRepository
 {
     const TYPE_MAIN = 'main';
-    const TYPE_CTA = 'cta';
 
-    static $types = [self::TYPE_CTA, self::TYPE_MAIN];
+    static $types = [self::TYPE_MAIN];
 
 
     public static function all()
