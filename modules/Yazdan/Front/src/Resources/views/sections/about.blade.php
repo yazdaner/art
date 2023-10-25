@@ -67,9 +67,8 @@
                     </p>
                 </div>
 
-
                 <div class="mt-4 pt-2">
-                    <a href="/about.html" class="btn btn-primary m-1">ادامه مطلب <i
+                    <a href="{{route('about')}}" class="btn btn-primary m-1">ادامه مطلب <i
                             class="uil uil-angle-left-b align-middle"></i></a>
                     </span>
                 </div>

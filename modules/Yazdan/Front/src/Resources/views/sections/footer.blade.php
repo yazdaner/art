@@ -9,7 +9,7 @@
                 <p class="mt-4">
                     {{$setting->description}}
                 </p>
-                <a href="/about.html" class="btn btn-soft-primary">بیشتر بدانید</a>
+                <a href="{{route('about')}}" class="btn btn-soft-primary">بیشتر بدانید</a>
                 <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
 
 
