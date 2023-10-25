@@ -2462,7 +2462,7 @@ padding: 60px 0
  position:relative
 }
 .bg-overlay {
- background-color:rgba(60,72,88,0.7);
+ background-color:rgb(155 155 155 / 70%);
  position:absolute;
  top:0;
  left:0;
@@ -3784,7 +3784,7 @@ padding: 60px 0
  height:40px;
  top:80px;
  right:80%;
- background:url(".../assets/images/process.png") center center no-repeat;
+ background:url("../images/process.png") center center no-repeat;
  z-index:1
 }
 @media (max-width: 767px) {
