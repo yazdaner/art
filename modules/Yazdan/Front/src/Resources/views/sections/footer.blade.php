@@ -1,5 +1,5 @@
- <!-- Footer Start -->
- <footer class="footer">
+<!-- Footer Start -->
+<footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
@@ -7,27 +7,41 @@
                     <img src="/assets/images/logo-light.png" height="24" alt="" />
                 </a>
                 <p class="mt-4">
-                    اتابک پرتو هستم مدرس دوره های طراحی، نقاشی رنگ روغن و نقاشی دیجیتال آرت . شما می توانید از راه
-                    های زیر با من در ارتباط باشید
+                    {{$setting->description}}
                 </p>
                 <a href="/about.html" class="btn btn-soft-primary">بیشتر بدانید</a>
                 <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="rounded"><i data-feather="youtube"
-                                class="fea icon-sm fea-social"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="rounded"><i data-feather="instagram"
-                                class="fea icon-sm fea-social"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="rounded"><i data-feather="twitter"
-                                class="fea icon-sm fea-social"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="rounded"><i data-feather="linkedin"
-                                class="fea icon-sm fea-social"></i></a>
-                    </li>
+
+
+
+                    @if ($setting->facebook)
+                    <li class="list-inline-item"><a href="{{$setting->facebook}}" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+                @endif
+
+                @if ($setting->instagram)
+                    <li class="list-inline-item"><a href="{{$setting->instagram}}" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+                @endif
+
+                @if ($setting->twitter)
+                    <li class="list-inline-item"><a href="{{$setting->twitter}}" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+                @endif
+
+                @if ($setting->linkedin)
+                    <li class="list-inline-item"><a href="{{$setting->linkedin}}" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+                @endif
+
+                @if ($setting->youtube)
+                    <li class="list-inline-item"><a href="{{$setting->youtube}}" class="rounded"><i data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
+                @endif
+
+                @if ($setting->whatsapp)
+                    <li class="list-inline-item"><a href="{{$setting->whatsapp}}" class="rounded p-top-2"><i class="bi bi-whatsapp"></i></a></li>
+                @endif
+
+                @if ($setting->telegram)
+                    <li class="list-inline-item"><a href="{{$setting->telegram}}" class="rounded p-top-2"><i class="bi bi-telegram"></i></a></li>
+                @endif
+
                 </ul>
                 <!--end icon-->
             </div>
@@ -126,7 +140,7 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script>
-                        تمامی مطالب، عکس ها و... متعلق به سایت اتابک آرت می باشد.
+                        {{$setting->copyright}}
                     </p>
                 </div>
             </div>
@@ -151,8 +165,8 @@
                                 class="avatar avatar-ex-sm" title="پی پال" alt="" /></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="/assets/images/payments/visa.png" class="avatar avatar-ex-sm"
-                                title="ویزا" alt="" /></a>
+                        <a href="javascript:void(0)"><img src="/assets/images/payments/visa.png"
+                                class="avatar avatar-ex-sm" title="ویزا" alt="" /></a>
                     </li>
                 </ul>
             </div>

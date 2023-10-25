@@ -16,5 +16,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.min.css')}}" id="theme-opt">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/colors/default.css')}}" id="color-opt">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     @yield('style')
 </head>
