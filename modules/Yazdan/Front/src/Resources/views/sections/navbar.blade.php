@@ -80,7 +80,7 @@
                 </li>
 
                 <li><a href="{{route('about')}}" class="sub-menu-item">درباره ما </a></li>
-                <li><a href="./contact.html" class="sub-menu-item">تماس با ما </a></li>
+                <li><a href="{{route('contact')}}" class="sub-menu-item">تماس با ما </a></li>
             </ul>
         </div>
         <!--end navigation-->

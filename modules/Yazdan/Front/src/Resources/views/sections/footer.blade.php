@@ -63,7 +63,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./contact.html" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> تماس با
+                        <a href="{{route('contact')}}" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> تماس با
                             ما
                         </a>
                     </li>
@@ -143,32 +143,6 @@
                         {{$setting->copyright}}
                     </p>
                 </div>
-            </div>
-            <!--end col-->
-
-            <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                <ul class="list-unstyled text-sm-end mb-0">
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="/assets/images/payments/american-ex.png"
-                                class="avatar avatar-ex-sm" title="آمریکن اکسپرس" alt="" /></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="/assets/images/payments/discover.png"
-                                class="avatar avatar-ex-sm" title="کشف کردن" alt="" /></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="/assets/images/payments/master-card.png"
-                                class="avatar avatar-ex-sm" title="مستر کارت" alt="" /></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="/assets/images/payments/paypal.png"
-                                class="avatar avatar-ex-sm" title="پی پال" alt="" /></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)"><img src="/assets/images/payments/visa.png"
-                                class="avatar avatar-ex-sm" title="ویزا" alt="" /></a>
-                    </li>
-                </ul>
             </div>
             <!--end col-->
         </div>

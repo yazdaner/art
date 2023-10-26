@@ -16,6 +16,7 @@
         "mews/captcha": "^3.3",
         "yazdan/about": "dev-master",
         "yazdan/common": "dev-master",
+        "yazdan/contact": "dev-master",
         "yazdan/dashboard": "dev-master",
         "yazdan/front": "dev-master",
         "yazdan/home": "dev-master",
@@ -86,6 +87,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/About"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Contact"
         }
     ],
     "scripts": {

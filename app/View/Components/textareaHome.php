@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class inputHome extends Component
+class textareaHome extends Component
 {
     public $name, $label, $required, $type,$value;
 
@@ -21,6 +21,6 @@ class inputHome extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.input-home');
+        return view('components.textarea-home');
     }
 }

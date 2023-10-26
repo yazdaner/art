@@ -90,7 +90,7 @@
                             <div class="col-md-3 mt-3 pt-2">
                     <div class="card features feature-clean work-process bg-transparent process-arrow border-0 text-center">
                         <div class="icons text-primary text-center mx-auto">
-                            <img src="https://atabakart.com/app/files/course/orginal/62b971c944363.jpg" alt="دوره رنگ روغن " class="course_img2">
+                            <img src="{{asset('assets/images/t4.jpg')}}" alt="دوره رنگ روغن " class="course_img2">
                         </div>
 
                         <div class="card-body">
@@ -104,7 +104,7 @@
                             <div class="col-md-3 mt-3 pt-2">
                     <div class="card features feature-clean work-process bg-transparent process-arrow border-0 text-center">
                         <div class="icons text-primary text-center mx-auto">
-                            <img src="https://atabakart.com/app/files/course/orginal/62b971c13a689.jpg" alt="دوره طراحی مقدماتی" class="course_img2">
+                            <img src="{{asset('assets/images/t3.jpg')}}" alt="دوره طراحی مقدماتی" class="course_img2">
                         </div>
 
                         <div class="card-body">
@@ -118,7 +118,7 @@
                             <div class="col-md-3 mt-3 pt-2">
                     <div class="card features feature-clean work-process bg-transparent process-arrow border-0 text-center">
                         <div class="icons text-primary text-center mx-auto">
-                            <img src="https://atabakart.com/app/files/course/orginal/62b971b59091e.jpg" alt="دوره طراحی پیشرفته" class="course_img2">
+                            <img src="{{asset('assets/images/t2.jpg')}}" alt="دوره طراحی پیشرفته" class="course_img2">
                         </div>
 
                         <div class="card-body">
@@ -132,7 +132,7 @@
                             <div class="col-md-3 mt-3 pt-2">
                     <div class="card features feature-clean work-process bg-transparent process-arrow border-0 text-center">
                         <div class="icons text-primary text-center mx-auto">
-                            <img src="https://atabakart.com/app/files/course/orginal/62b971ad05a4b.jpg" alt="دوره دیجیتال آرت" class="course_img2">
+                            <img src="{{asset('assets/images/t1.jpg')}}" alt="دوره دیجیتال آرت" class="course_img2">
                         </div>
 
                         <div class="card-body">

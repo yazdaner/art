@@ -22,7 +22,7 @@ class About extends Model
 
     public function getBanner($bannerId,$size = 'original')
     {
-        if (isset($bannerId)) {
+        if ($this->getModelBanner($bannerId)) {
             return $this->getModelBanner($bannerId)->thumb($size);
         } else {
             return asset('assets/images/user.png');
