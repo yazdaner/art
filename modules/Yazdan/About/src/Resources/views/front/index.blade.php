@@ -11,15 +11,14 @@
 </section>
 @endsection --}}
 
-<section class="bg-half d-table w-100" style="background: url('https://atabakart.com/app/assets/images/about-us.jpg');">
+<section class="bg-half d-table w-100" style="background: url('{{$about->getBanner(1)}}');">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <div class="page-next-level title-heading">
                     <h1 class="text-white title-dark"> درباره ما </h1>
-                    <p class="text-white-50 para-desc mb-0 mx-auto">کار با گالری نقاشی ما را شروع کنید که می تواند خیلی
-                        سریع اطلاعات و علمی که برای خلق (آفرینش) تصویر نیاز دارید در اختیار شما قرار دهد.</p>
+                    <p class="text-white-50 para-desc mb-0 mx-auto">{{$about->description1}}</p>
                     <div class="page-next">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb bg-white rounded shadow mb-0">
@@ -41,7 +40,7 @@
     <div class="container">
         <div class="row align-items-center" id="counter">
             <div class="col-md-6">
-                <img src="https://atabakart.com/app/assets/images/company/about2.png" class="img-fluid" alt="">
+                <img src="{{$about->getBanner(2)}}" class="img-fluid" alt="">
             </div>
             <!--end col-->
 
@@ -159,7 +158,7 @@
             <div class="col-12 text-center">
                 <div class="video-solution-cta position-relative" style="z-index: 1;">
                     <div class="position-relative">
-                        <img src="https://atabakart.com/app/assets/images/cta-bg.jpg" class="img-fluid rounded-md shadow-lg" alt="">
+                        <img src="{{$about->getBanner(3)}}" class="img-fluid rounded-md shadow-lg" alt="">
                         <div class="play-icon">
                            <!--  <a href="#!" data-type="youtube" data-id="yba7hPeTSjk" class="play-btn lightbox">
                                 <i class="mdi mdi-play text-primary rounded-circle bg-white shadow-lg"></i>
@@ -172,14 +171,13 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-6 mt-4 pt-2">
                                         <div class="section-title text-md-start">
-                                            <h6 class="text-white-50">تیم </h6>
-                                            <h4 class="title text-white title-dark mb-0">دیدار با اعضا <br> با تجربه تیم </h4>
+                                            <h4 class="title text-white title-dark mb-0">{{$about->description2}}</h4>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 col-12 mt-4 pt-md-2">
                                         <div class="section-title text-md-start">
-                                            <p class="text-white-50 para-desc">کار با گالری نقاشی ما را شروع کنید که می تواند خیلی سریع اطلاعات و علمی که برای خلق (آفرینش) تصویر نیاز دارید در اختیار شما قرار دهد.</p>
+                                            <p class="text-white-50 para-desc">{{$about->description3}}</p>
                                             <a href="javascript:void(0)" class="text-white title-dark" dideo-checked="true">ادامه مطلب <i class="uil uil-angle-left-b align-middle"></i></a>
                                         </div>
                                     </div>
