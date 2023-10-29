@@ -7,6 +7,7 @@
     <div class="row no-gutters">
         <div class="col-12 margin-left-10 margin-bottom-15 border-radius-3">
             <p class="box__title">پیام ها</p>
+            @include("Contact::admin.show")
             <div class="table__box">
                 <table class="table">
                     <thead role="rowgroup">
@@ -26,7 +27,9 @@
                             <td>{{ $contact->name }}</td>
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->mobile }}</td>
-                            <td>{{ $contact->message }}</td>
+                            {{-- <td>{{ $contact->message }}</td> --}}
+                            <td><a class="btn-show btn btn-yazdan" href="#rolesModal" rel="modal:open" onclick="showComment(event,'{{$contact->message}}')">نمایش</a></td>
+
                             <td>
                                 <a href=""
                                     onclick="deleteItem(event, '{{ route('admin.contacts.destroy', $contact->id) }}')"
@@ -40,4 +43,17 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{asset('assets/css/modal.css')}}">
+@endsection
+@section('script')
+<script src="{{asset('assets/js/modal.js')}}"></script>
+<script>
+    function showComment(e,comment){
+        e.preventDefault();
+        $("#ShowComment").text(comment)
+    }
+</script>
 @endsection
