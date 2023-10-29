@@ -4,7 +4,7 @@
     <li><a href="#" title="ویرایش">ویرایش</a></li>
 @endsection
 @section('content')
-    <div class="col-4 bg-white margin-top-30 margin-auto">
+    <div class="col-4 bg-white p-0 margin-top-30 margin-auto">
         <p class="box__title">ویرایش دسته بندی</p>
         <form action="{{route('admin.roles.update',$role->id)}}" method="post" class="padding-30">
             @csrf

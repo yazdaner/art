@@ -43,7 +43,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-4 bg-white">
+        <div class="col-4 bg-white p-0">
             @include('Slider::create')
         </div>
     </div>

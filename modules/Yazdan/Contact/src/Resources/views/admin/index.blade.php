@@ -27,9 +27,7 @@
                             <td>{{ $contact->name }}</td>
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->mobile }}</td>
-                            {{-- <td>{{ $contact->message }}</td> --}}
                             <td><a class="btn-show btn btn-yazdan" href="#rolesModal" rel="modal:open" onclick="showComment(event,'{{$contact->message}}')">نمایش</a></td>
-
                             <td>
                                 <a href=""
                                     onclick="deleteItem(event, '{{ route('admin.contacts.destroy', $contact->id) }}')"

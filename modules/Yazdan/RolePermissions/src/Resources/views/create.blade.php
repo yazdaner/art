@@ -1,4 +1,4 @@
-<div class="col-4 bg-white">
+<div class="col-4 bg-white p-0">
     <p class="box__title">ایجاد نقش کاربری جدید</p>
     <form action="{{route('admin.roles.store')}}" method="post" class="padding-30">
         @csrf

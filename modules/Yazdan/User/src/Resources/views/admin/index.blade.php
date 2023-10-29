@@ -16,9 +16,9 @@
                         <div class="t-header-searchbox font-size-13">
                             <input type="text" class="text search-input__box font-size-13" placeholder="جستجوی در کاربران">
                             <div class="t-header-search-content ">
-                                <input type="text"  class="text" name="key"  placeholder="شناسه">
-                                <input type="text"  class="text" name="name"  placeholder="نام">
-                                <input type="text"  class="text" name="email"  placeholder="ایمیل">
+                                <input type="text" class="text" name="key" placeholder="شناسه">
+                                <input type="text" class="text" name="name"  placeholder="نام">
+                                <input type="text" class="text" name="email"  placeholder="ایمیل">
                                 <button type="submit" class="btn btn-yazdan">جستجو</button>
                             </div>
                         </div>
