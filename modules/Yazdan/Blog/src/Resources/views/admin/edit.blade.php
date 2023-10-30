@@ -6,7 +6,7 @@
 @section('content')
 <div class="main-content users">
     <div class="row no-gutters bg-white">
-        <div class="col-12">
+        <div class="col-12 p-0">
             <p class="box__title">ویرایش بلاگ</p>
             <form action="{{route('admin.blogs.update',$blog->id)}}" method="post" class="padding-30"
                 enctype="multipart/form-data">
@@ -39,9 +39,7 @@
                         @enderror
                     </div>
                 </div>
-
-                <x-button title="ویرایش" />
-
+                <button type="submit" class="btn btn-yazdan">ویرایش</button>
             </form>
         </div>
     </div>

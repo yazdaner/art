@@ -1,4 +1,4 @@
-@extends('Front::layouts.master')
+@extends('Front::master')
 @section('content')
 <section class="blog-details-area ptb-100">
     <div class="container">

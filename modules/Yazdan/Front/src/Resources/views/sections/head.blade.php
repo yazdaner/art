@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/tobii.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/materialdesignicons.min.css')}}">
-    <link rel="stylesheet" href="{{asset('unicons.iconscout.com/release/v3.0.assets/css/line.css')}}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     <link rel="stylesheet" href="{{asset('assets/css/tiny-slider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.min.css')}}" id="theme-opt">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/colors/default.css')}}" id="color-opt">

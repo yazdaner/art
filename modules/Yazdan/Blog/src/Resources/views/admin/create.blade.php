@@ -6,7 +6,7 @@
 @section('content')
 <div class="main-content users">
     <div class="row no-gutters bg-white">
-        <div class="col-12">
+        <div class="col-12 p-0">
             <p class="box__title">ایجاد بلاگ</p>
             <form action="{{route('admin.blogs.store')}}" method="post" class="padding-30"
                 enctype="multipart/form-data">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <x-button title="ایجاد" />
+                <button type="submit" class="btn btn-yazdan">ایجاد</button>
 
             </form>
         </div>

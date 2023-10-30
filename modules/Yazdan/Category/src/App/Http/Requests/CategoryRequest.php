@@ -30,8 +30,8 @@ class CategoryRequest extends FormRequest
         ];
 
 
-        if (request()->method === 'PATCH') {
-            $rules['slug'] = "nullable|max:200|unique:categories,slug,".$this->id;
+        if (request()->method === 'PUT') {
+            $rules['slug'] = "nullable|max:200|unique:categories,slug,".request()->route('category');
         }
 
         return $rules;

@@ -86,24 +86,9 @@ class BlogController extends Controller
         return AjaxResponses::SuccessResponses();
     }
 
-    public function postImagesUpload(Request $request)
-    {
-        $this->authorize('manage', Blog::class);
-        $file = $request->file('upload');
-        $base_name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        $ext = $file->getClientOriginalExtension();
-        $file_name = $base_name . '_' . time() . '.' . $ext;
-        $file->storeAs('images/posts', $file_name, 'public_files');
-        $funcNum = $request->CKEditorFuncNum;
-        $fileUrl = asset('images/posts/' . $file_name);
-        return response("<script>window.parent.CKEDITOR.tools.callFunction( {$funcNum}, '{$fileUrl}' ,'فایل به درستی آپلود شد' );</script>");
-    }
-
-
-
     public function blogs()
     {
-        $blogs = Blog::latest()->paginate(20);
+        $blogs = Blog::latest()->paginate(1);
         return view('Blog::front.index',compact('blogs'));
     }
 
