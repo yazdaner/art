@@ -30,7 +30,7 @@ class CommentController extends Controller
 
         $comments = $comments->paginateParents();
 
-        return view("Comment::index", compact("comments"));
+        return view("Comment::admin.index", compact("comments"));
     }
 
     public function store(CommentRequest $request, CommentRepository $repo)

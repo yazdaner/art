@@ -27,7 +27,7 @@ class FrontServiceProvider extends ServiceProvider
             $view->with(compact('sliders'));
         });
 
-        view()->composer(['Front::sections.footer','Home::sections.sidebar','Contact::front.index'], function ($view) {
+        view()->composer(['Front::sections.footer','Home::sections.sidebar','Contact::front.index','Blog::front.show'], function ($view) {
             $setting = Setting::first();
             $view->with(compact('setting'));
         });

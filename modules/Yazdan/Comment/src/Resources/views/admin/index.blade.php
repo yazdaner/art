@@ -12,7 +12,7 @@
             <a class="tab__item {{ request("status") == "approved" ? "is-active" : "" }}" href="{{ route("admin.comments.index") }}?status=approved">نظرات تاییده شده</a>
         </div>
     </div>
-    @include("Comment::show")
+    @include("Comment::admin.show")
     <div class="bg-white padding-20 d-flex justify-content-between">
         <div class="t-header-search">
             <form action="">
