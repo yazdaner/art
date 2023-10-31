@@ -5,12 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <div class="page-next-level">
-                    <h4 class="title">وبلاگ</h4>
+                    <h4 class="title">دسته بندی {{$category->title}}</h4>
                     <div class="page-next">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb bg-white rounded shadow mb-0">
                                 <li class="breadcrumb-item"><a href="/" dideo-checked="true">صفحه اصلی </a></li>
-                                <li class="breadcrumb-item active" aria-current="page">وبلاگ</li>
+                                <li class="breadcrumb-item"><a href="{{route('blogs')}}" dideo-checked="true">وبلاگ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{$category->title}}</li>
                             </ul>
                         </nav>
                     </div>
@@ -39,17 +40,9 @@
         </div>
     </div>
 
-    <div class="container mt-100 mt-60">
-        <div class="row align-items-center mb-4 pb-2">
-            <div class="col-md-8">
-                <div class="section-title text-center text-md-start">
-                    <h4 class="mb-4">همه اخبار یا پست وبلاگ</h4>
-                </div>
-            </div>
-        </div>
+    <div class="container mt-100">
 
         <div class="row">
-
             @foreach ($blogs as $blog)
                 <div class="col-lg-4 col-md-6 mt-4 pt-2">
                     <div class="card blog rounded border-0 shadow overflow-hidden">
@@ -85,4 +78,3 @@
 
 </section>
 @endsection
-

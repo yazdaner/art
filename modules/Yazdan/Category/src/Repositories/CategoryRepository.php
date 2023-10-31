@@ -42,7 +42,7 @@ class CategoryRepository
     {
         return Category::whereId($categoryId)->update([
             'title' => $value->title,
-            'slug' => $value->slug,
+            'slug' => $value->slug ?? Str::slug($value->title),
             'parent_id' => $value->parent_id,
         ]);
     }

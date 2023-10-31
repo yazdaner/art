@@ -1,8 +1,6 @@
-<!-- My Account Tab Menu End -->
 <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
     <div class="sidebar sticky-bar p-4 rounded shadow">
         <div class="widget">
-
             <ul class="list-unstyled sidebar-nav mb-0" id="navmenu-nav">
                 @foreach (config('sidebarHome.items') as $item)
                 @if ($item)
@@ -25,14 +23,12 @@
                     </a>
                 </li>
             </ul>
-
         </div>
-
         <div class="widget mt-4 pt-2">
             <h5 class="widget-title">دنبال کردن ما :</h5>
             <ul class="list-unstyled social-icon mb-0 mt-4">
                 @include('Setting::front.social')
-            </ul><!--end icon-->
+            </ul>
         </div>
     </div>
-</div><!--end col-->
+</div>

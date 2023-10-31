@@ -3,6 +3,7 @@
 namespace Yazdan\Category\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Yazdan\Blog\App\Models\Blog;
 use Yazdan\Category\App\Http\Requests\CategoryRequest;
 use Yazdan\Category\App\Models\Category;
 use Yazdan\Category\Repositories\CategoryRepository;
@@ -48,5 +49,13 @@ class CategoryController extends Controller
         $this->authorize('manage', Category::class);
         CategoryRepository::delete($categoryId);
         return AjaxResponses::SuccessResponses();
+    }
+
+    // front
+
+    public function categoryShow(Category $category)
+    {
+        $blogs = Blog::where('category_id',$category->id)->paginate(12);
+        return view('Category::front.show', compact('category','blogs'));
     }
 }

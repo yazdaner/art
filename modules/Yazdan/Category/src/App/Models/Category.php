@@ -4,6 +4,7 @@ namespace Yazdan\Category\App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Yazdan\Blog\App\Models\Blog;
 
 class Category extends Model
 {
@@ -31,5 +32,14 @@ class Category extends Model
         return $this->hasMany(Category::class,'parent_id');
     }
 
+    public function path()
+    {
+        return route('categories.show',$this->slug);
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }
 
