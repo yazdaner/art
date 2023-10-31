@@ -1,6 +1,6 @@
 <div class="card shadow rounded border-0 mt-4">
     <div class="card-body">
-        <h5 class="card-title mb-0">ارسال نظر :</h5>
+        <h5 class="card-title mb-0" id="comment">ارسال نظر :</h5>
         <form action="{{ route("admin.comments.store") }}" method="post">
             @csrf
             <input type="hidden" name="commentable_type" value="{{ get_class($commentable) }}">

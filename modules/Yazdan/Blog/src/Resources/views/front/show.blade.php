@@ -42,8 +42,8 @@
                                 <li class="list-inline-item me-2 mb-0"><a href="{{$blog->category->path()}}"
                                         class="text-muted like"><i class="bi bi-grid"></i>
                                         {{$blog->category->title}}</a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i
-                                            class="uil uil-comment me-1"></i>{{$blog->comments->count()}}</a></li>
+                                <li class="list-inline-item"><a href="#comment" class="text-muted comments"><i
+                                            class="uil uil-comment me-1"></i>{{$blog->ApprovedCommentsCount()}}</a></li>
                             </ul>
                         </div>
                         <div class="content">
