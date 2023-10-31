@@ -13,6 +13,7 @@
         "hekmatinasser/verta": "^8.3",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "^4.16",
         "laravel/tinker": "^2.8",
         "mews/captcha": "^3.3",
         "yazdan/about": "dev-master",

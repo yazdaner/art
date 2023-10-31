@@ -5,6 +5,7 @@
     @include('Front::sections.galleryCategories')
     @include('Front::sections.galleryPaintings')
     @include('Front::sections.about')
+    @include('Front::sections.blogs')
     @include('Front::sections.latestPaintings')
     @include('Front::sections.registrationCourses')
 @endsection

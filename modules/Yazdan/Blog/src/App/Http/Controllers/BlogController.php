@@ -2,16 +2,17 @@
 
 namespace Yazdan\Blog\App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
-use Yazdan\Blog\App\Http\Requests\BlogRequest;
+use Illuminate\Http\Request;
 use Yazdan\Blog\App\Models\Blog;
-use Yazdan\Blog\Repositories\BlogRepository;
-use Yazdan\Category\Repositories\CategoryRepository;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cookie;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Media\Services\MediaFileService;
+use Yazdan\Blog\Repositories\BlogRepository;
+use Yazdan\Blog\App\Http\Requests\BlogRequest;
+use Yazdan\Comment\Repositories\CommentRepository;
+use Yazdan\Category\Repositories\CategoryRepository;
 
 class BlogController extends Controller
 {
@@ -94,7 +95,10 @@ class BlogController extends Controller
 
     public function blogShow(Blog $blog, Request $request)
     {
-        // $comments = $blog->comments()->where('comment_id', null)->where('is_approved', true)->latest()->paginate(20);
+        $latestPosts = Blog::orderBy('updated_at', 'DESC')->take(2)->get();
+        $relatedPosts = Blog::where('category_id',$blog->category->id)->orderBy('updated_at', 'DESC')->take(4)->get();
+        $comments = $blog->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
+
         if (!auth()->check()) { //guest user identified by ip
             $cookie_name = (Str::replace('.', '', ($request->ip())) . '-' . $blog->id . '-' . 'blog');
         } else {
@@ -104,12 +108,10 @@ class BlogController extends Controller
             $cookie = cookie($cookie_name, '1', 60); //set the cookie
             $blog->incrementReadCount(); //count the view
             return response()
-                // ->view('home.blogs.show', compact('blog', 'comments'))
-                ->view('Blog::front.show', compact('blog'))
+                ->view('Blog::front.show', compact('blog','latestPosts','relatedPosts','comments'))
                 ->withCookie($cookie); //store the cookie
         } else {
-            // return view('home.blogs.show', compact('blog', 'comments')); //this view is not counted
-            return view('Blog::front.show', compact('blog')); //this view is not counted
+            return view('Blog::front.show', compact('blog','latestPosts','relatedPosts','comments')); //this view is not counted
         }
     }
 }

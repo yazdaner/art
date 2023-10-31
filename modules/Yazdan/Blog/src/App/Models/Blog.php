@@ -44,5 +44,10 @@ class Blog extends Model
             return asset('img/profile.jpg');
         }
     }
+
+    public function path()
+    {
+        return route('blogs.show',$this->slug);
+    }
 }
 

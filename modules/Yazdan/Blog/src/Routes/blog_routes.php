@@ -14,4 +14,4 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
 });
 
 Route::get('/blogs', [BlogController::class, 'blogs'])->name('blogs');
-Route::get('/blogs/{blog:slug}', [BlogController::class, 'blogShow'])->name('blog.show');
+Route::get('/blogs/{blog:slug}', [BlogController::class, 'blogShow'])->name('blogs.show');

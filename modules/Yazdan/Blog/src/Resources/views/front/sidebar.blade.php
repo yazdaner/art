@@ -13,35 +13,21 @@
                 </form>
             </div>
             <!-- SEARCH -->
-
-
             <!-- پست های اخیر -->
             <div class="widget mb-4 pb-2">
-                <h5 class="widget-title">پست های اخیر</h5>
+                <h5 class="widget-title">پست های مرتبط</h5>
                 <div class="mt-4">
+                    @foreach ($relatedPosts as $post)
                     <div class="clearfix post-recent">
-                        <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img alt="img"
-                                    src="images/blog/07.jpg" class="img-fluid rounded"></a></div>
-                        <div class="post-recent-content float-start"><a href="jvascript:void(0)">مشاوره شرکتی </a><span
-                                class="text-muted mt-2">اردیبهشت 1400</span></div>
+                        <div class="post-recent-thumb float-start"> <a href="{{$post->path()}}"> <img alt="img"
+                                    src="{{$post->getAvatar(60)}}" class="img-fluid rounded"></a></div>
+                        <div class="post-recent-content float-start"><a href="{{$post->path()}}">{{$post->title}} </a><span
+                                class="text-muted mt-2">{{verta($post->created_at)->format('%B %Y')}}</span></div>
                     </div>
-                    <div class="clearfix post-recent">
-                        <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img alt="img"
-                                    src="images/blog/08.jpg" class="img-fluid rounded"></a></div>
-                        <div class="post-recent-content float-start"><a href="jvascript:void(0)">به تعادل باشکوه نگاه
-                                کنید</a> <span class="text-muted mt-2">اردیبهشت 1400</span></div>
-                    </div>
-                    <div class="clearfix post-recent">
-                        <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img alt="img"
-                                    src="images/blog/01.jpg" class="img-fluid rounded"></a></div>
-                        <div class="post-recent-content float-start"><a href="jvascript:void(0)">تحقیقات مالی.</a> <span
-                                class="text-muted mt-2">اردیبهشت 1400</span></div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <!-- پست های اخیر -->
-
-
             <!-- SOCIAL -->
             <div class="widget">
                 <h5 class="widget-title">دنبال کردن ما</h5>
@@ -53,5 +39,3 @@
         </div>
     </div>
 </div>
-<!--end col-->
-<!-- END SIDEBAR -->

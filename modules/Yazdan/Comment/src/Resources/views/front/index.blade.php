@@ -5,7 +5,7 @@
         <div class="card-body">
             <h5 class="card-title mb-0">نظرات :</h5>
             <ul class="media-list list-unstyled mb-0">
-                @foreach($blog->approvedComments()->latest()->get() as $comment)
+                @foreach($comments as $comment)
                 <li class="mt-4">
                     <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
@@ -50,6 +50,9 @@
                 </li>
                 @endforeach
             </ul>
+            <div class="mt-5">
+                {{$comments->links()}}
+            </div>
         </div>
     </div>
 </div>

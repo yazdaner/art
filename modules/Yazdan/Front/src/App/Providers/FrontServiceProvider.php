@@ -3,13 +3,10 @@
 namespace Yazdan\Front\App\Providers;
 
 use Yazdan\Blog\App\Models\Blog;
-use Yazdan\Coin\App\Models\Coin;
-use Yazdan\Coupon\App\Models\Coupon;
 use Yazdan\Slider\App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 use Yazdan\Setting\App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
-use Yazdan\Game\Repositories\GameRepository;
 use Yazdan\Slider\Repositories\SliderRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
 
@@ -39,5 +36,9 @@ class FrontServiceProvider extends ServiceProvider
             $view->with(compact('categories'));
         });
 
+        view()->composer('Front::sections.blogs', function ($view) {
+            $blogs = Blog::orderBy('updated_at', 'DESC')->take(3)->get();
+            $view->with(compact('blogs'));
+        });
     }
 }
