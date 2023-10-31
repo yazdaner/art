@@ -15,9 +15,9 @@
             <!-- SEARCH -->
             <!-- پست های اخیر -->
             <div class="widget mb-4 pb-2">
-                <h5 class="widget-title">پست های مرتبط</h5>
+                <h5 class="widget-title">پست های اخیر</h5>
                 <div class="mt-4">
-                    @foreach ($relatedPosts as $post)
+                    @foreach ($latestPosts as $post)
                     <div class="clearfix post-recent">
                         <div class="post-recent-thumb float-start"> <a href="{{$post->path()}}"> <img alt="img"
                                     src="{{$post->getAvatar(60)}}" class="img-fluid rounded"></a></div>

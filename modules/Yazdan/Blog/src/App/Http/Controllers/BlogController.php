@@ -95,8 +95,8 @@ class BlogController extends Controller
 
     public function blogShow(Blog $blog, Request $request)
     {
-        $latestPosts = Blog::orderBy('updated_at', 'DESC')->take(2)->get();
-        $relatedPosts = Blog::where('category_id',$blog->category->id)->orderBy('updated_at', 'DESC')->take(4)->get();
+        $latestPosts = Blog::orderBy('updated_at', 'DESC')->take(5)->get();
+        $relatedPosts = Blog::where('category_id',$blog->category->id)->orderBy('updated_at', 'DESC')->take(2)->get();
         $comments = $blog->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
 
         if (!auth()->check()) { //guest user identified by ip
