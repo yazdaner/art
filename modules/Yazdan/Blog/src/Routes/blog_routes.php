@@ -7,10 +7,7 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     'auth',
     'verified'
 ])->group(function () {
-
     Route::resource('blogs', BlogController::class);
-    Route::post('/editor/upload', [BlogController::class, 'postImagesUpload'])->name('editor-upload');
-
 });
 
 Route::get('/blogs', [BlogController::class, 'blogs'])->name('blogs');

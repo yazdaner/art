@@ -29,11 +29,10 @@ class PermissionRepository
     const PERMISSION_MANAGE_CONTACT = 'manage contact';
     const PERMISSION_MANAGE_ABOUT = 'manage about';
     const PERMISSION_MANAGE_REGULATION = 'manage regulation';
-    const PERMISSION_MANAGE_LIDER_BOARD = 'manage lider board';
+    const PERMISSION_MANAGE_PRODUCT = 'manage product';
 
     static $permissions = [
         self::PERMISSION_SUPER_ADMIN,
-        self::PERMISSION_MANAGE_LIDER_BOARD,
         self::PERMISSION_MANAGE_RECORD,
         self::PERMISSION_MANAGE_BLOG,
         self::PERMISSION_MANAGE_CATEGORIES,
@@ -57,6 +56,7 @@ class PermissionRepository
         self::PERMISSION_MANAGE_ABOUT,
         self::PERMISSION_MANAGE_REGULATION,
         self::PERMISSION_MANAGE_FAQ,
+        self::PERMISSION_MANAGE_PRODUCT,
     ];
 
     const PERMISSION_SUPER_ADMIN = 'super admin';
