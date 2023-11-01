@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Yazdan\Dashboard\App\Policies\DashboardPolicy;
+use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class DashboardServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,11 @@ class DashboardServiceProvider extends ServiceProvider
 
     public function boot()
     {
-
+        config()->set('sidebar.items.dashboard', [
+            'icon' => 'i-dashboard',
+            'url' => route('admin.dashboard'),
+            'title' => 'دشبورد',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_DASHBOARD,
+        ]);
     }
 }

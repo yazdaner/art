@@ -13,6 +13,7 @@ class CreateAboutsTable extends Migration
             $table->id();
 
             $table->longText('body')->nullable();
+            $table->longText('frontBody')->nullable();
 
             $table->text('description1')->nullable();
             $table->text('description2')->nullable();
@@ -22,9 +23,19 @@ class CreateAboutsTable extends Migration
             $table->foreignId('banner2')->nullable();
             $table->foreignId('banner3')->nullable();
 
+
             $table->foreign('banner1')->references('id')->on('media')->onDelete('set null');
             $table->foreign('banner2')->references('id')->on('media')->onDelete('set null');
             $table->foreign('banner3')->references('id')->on('media')->onDelete('set null');
+
+
+            $table->foreignId('banner4')->nullable();
+            $table->foreignId('banner5')->nullable();
+            $table->foreignId('banner6')->nullable();
+
+            $table->foreign('banner4')->references('id')->on('media')->onDelete('set null');
+            $table->foreign('banner5')->references('id')->on('media')->onDelete('set null');
+            $table->foreign('banner6')->references('id')->on('media')->onDelete('set null');
 
             $table->timestamps();
         });

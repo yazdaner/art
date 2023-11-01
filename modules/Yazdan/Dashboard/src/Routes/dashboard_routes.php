@@ -3,13 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Yazdan\Dashboard\App\Http\Controllers\DashboardController;
 
-Route::group([
-    'middleware' => [
+Route::prefix('admin-panel')->name('admin.')->middleware([
+    'auth',
     'verified'
-],
-    'prefix' => 'admin-panel'
-],function(){
-
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
-
+])->group(function () {
+    providerGetRoute('/dashboard',DashboardController::class,'index','dashboard');
 });

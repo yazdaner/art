@@ -31,7 +31,7 @@ class AboutController extends Controller
     // front
     public function about()
     {
-        $about = About::first();
+        $about = About::select('banner1','banner2','banner3','body')->first();
         return view("About::front.index",compact('about'));
     }
 }

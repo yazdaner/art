@@ -3,6 +3,7 @@
 namespace Yazdan\Front\App\Providers;
 
 use Yazdan\Blog\App\Models\Blog;
+use Yazdan\About\App\Models\About;
 use Yazdan\Slider\App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 use Yazdan\Setting\App\Models\Setting;
@@ -39,6 +40,11 @@ class FrontServiceProvider extends ServiceProvider
         view()->composer('Front::sections.blogs', function ($view) {
             $blogs = Blog::orderBy('updated_at', 'DESC')->take(3)->get();
             $view->with(compact('blogs'));
+        });
+
+        view()->composer('Front::sections.about', function ($view) {
+            $about = About::select('banner4','banner5','banner6','frontBody')->first();
+            $view->with(compact('about'));
         });
     }
 }
