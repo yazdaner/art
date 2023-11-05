@@ -18,7 +18,6 @@
                             <th>بنر</th>
                             <th>عنوان</th>
                             <th>اسلاگ</th>
-                            <th>دسته بندی</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -31,7 +30,6 @@
                                 </td>
                                 <td><a href="">{{$course->title}}</a></td>
                                 <td>{{$course->slug}}</td>
-                                <td>{{$course->category->title}}</td>
                                 <td>
                                     <a href="" onclick="deleteItem(event,'{{route('admin.courses.destroy',$course->id)}}')" class="item-delete mlg-15" title="حذف"></a>
                                     <a href="{{route('admin.courses.edit',$course->id)}}" class="item-edit" title="ویرایش"></a>

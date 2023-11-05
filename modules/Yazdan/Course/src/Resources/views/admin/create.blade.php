@@ -19,13 +19,7 @@
                 <x-input name="price" type="number" placeholder="قیمت" />
                 <x-input name="price2" type="number" placeholder="قیمت ویژه" />
                 <x-input name="time" type="number" placeholder="مدت کل دوره (دقیقه)" />
-                <x-input name="priority" type="number" placeholder="الویت نمایش دوره" />
-
-                <x-select name="type" placeholder="نوع دوره">
-                    @foreach ($types as $type)
-                        <option value="{{$type}}" @if (old('type') == $type) selected @endif>@lang($type)</option>
-                    @endforeach
-                </x-select>
+                <x-input name="priority" type="text" placeholder="الویت نمایش دوره" />
 
                 <x-select name="status" placeholder="وضعیت دوره">
                     @foreach ($statuses as $status)

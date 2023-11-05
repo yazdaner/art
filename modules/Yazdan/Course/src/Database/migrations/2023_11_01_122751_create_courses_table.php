@@ -29,7 +29,7 @@ return new class extends Migration
             $table->unsignedInteger('time')->nullable();
 
             $table->float('priority')->nullable();
-            $table->enum('type', CourseRepository::$types);
+            $table->enum('status', CourseRepository::$statuses);
 
             $table->timestamps();
         });

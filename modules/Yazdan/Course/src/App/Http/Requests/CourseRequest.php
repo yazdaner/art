@@ -16,13 +16,12 @@ class CourseRequest extends FormRequest
     {
         $rules = [
             "title" => 'required|min:3|max:190',
-            "slug" => 'required|min:3|max:190|unique:courses,slug',
+            "slug" => 'nullable|min:3|max:190|unique:courses,slug',
             "priority" => 'nullable|numeric',
             "time" => 'nullable|numeric',
             "spot_course_token" => 'required|string',
             "price" => 'required|numeric|min:0|max:10000000',
             "price2" => 'nullable|numeric|min:0|max:10000000',
-            "type" => ["required", Rule::in(CourseRepository::$types)],
             "status" => ["required", Rule::in(CourseRepository::$statuses)],
             "media" => "required|mimes:jpg,png,jpeg",
         ];

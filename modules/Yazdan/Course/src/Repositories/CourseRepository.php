@@ -7,10 +7,6 @@ use Yazdan\Course\App\Models\Course;
 
 class CourseRepository
 {
-    const TYPE_FREE = 'free';
-    const TYPE_CASH = 'cash';
-    static $types = [self::TYPE_FREE, self::TYPE_CASH];
-
     const STATUS_COMPLETED = 'completed';
     const STATUS_NOT_COMPLETED = 'not-completed';
     static $statuses = [self::STATUS_COMPLETED, self::STATUS_NOT_COMPLETED];
@@ -66,10 +62,11 @@ class CourseRepository
             'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
             'priority' => $data->priority,
             'price' => $data->price,
-            'percent' => $data->percent,
-            'type' => $data->type,
+            'price2' => $data->price2,
             'status' => $data->status,
-            'body' => $data->body,
+            'time' => $data->time,
+            'spot_course_token' => $data->spot_course_token,
+            'description' => $data->description,
         ]);
     }
 }
