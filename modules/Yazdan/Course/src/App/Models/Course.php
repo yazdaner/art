@@ -1,11 +1,11 @@
 <?php
 
-namespace Yazdan\Product\App\Models;
+namespace Yazdan\Course\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Media\App\Models\Media;
 
-class Product extends Model
+class Course extends Model
 {
 
     protected $guarded = [];

@@ -12,5 +12,4 @@
         </div>
         <span class="profile__name">کاربر : {{auth()->user()->username}}</span>
     </div>
-
 </form>

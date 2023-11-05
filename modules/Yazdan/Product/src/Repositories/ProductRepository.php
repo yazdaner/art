@@ -17,16 +17,16 @@ class ProductRepository
         return Product::latest()->paginate($value);
     }
 
-    public static function create($value)
+    public static function create($data)
     {
         return Product::create([
             'user_id' => auth()->id(),
-            'title' => $value->title,
-            'slug' => Str::slug($value->title),
-            'category_id' => $value->category_id,
-            'media_id' => $value->media_id,
-            'preview' => $value->preview,
-            'content' => $value->content,
+            'title' => $data->title,
+            'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
+            'category_id' => $data->category_id,
+            'media_id' => $data->media_id,
+            'preview' => $data->preview,
+            'content' => $data->content,
         ]);
     }
 
@@ -42,15 +42,15 @@ class ProductRepository
         });
     }
 
-    public static function updating($ProductId, $value)
+    public static function updating($ProductId, $data)
     {
         return Product::whereId($ProductId)->update([
-            'title' => $value->title,
-            'slug' => Str::slug($value->title),
-            'category_id' => $value->category_id,
-            'media_id' => $value->media_id ?? null,
-            'preview' => $value->preview,
-            'content' => $value->content,
+            'title' => $data->title,
+            'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
+            'category_id' => $data->category_id,
+            'media_id' => $data->media_id ?? null,
+            'preview' => $data->preview,
+            'content' => $data->content,
         ]);
     }
 

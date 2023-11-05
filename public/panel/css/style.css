@@ -655,6 +655,10 @@ textarea {
     content: "\E083";
 }
 
+.sidebar__nav .i-courses a::before {
+    content: "\270D";
+}
+
 .sidebar__nav .i-contacts a::before {
     content: "\E092";
 }

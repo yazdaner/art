@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb25a0e260beba0579fa9ea3d838d7b0",
+    "content-hash": "d39daa7196c4211b81a7d0e960564e6c",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -6469,6 +6469,31 @@
             }
         },
         {
+            "name": "yazdan/course",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Course",
+                "reference": "25dcc886affd4e57db5095df1cbef9f1fcd1d3e9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Course\\App\\Providers\\CourseServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Course\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/dashboard",
             "version": "dev-master",
             "dist": {
@@ -9124,6 +9149,7 @@
         "yazdan/comment": 20,
         "yazdan/common": 20,
         "yazdan/contact": 20,
+        "yazdan/course": 20,
         "yazdan/dashboard": 20,
         "yazdan/front": 20,
         "yazdan/home": 20,

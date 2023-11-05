@@ -1,0 +1,15 @@
+{
+    "name" : "yazdan/course",
+    "autoload" : {
+        "psr-4" : {
+            "Yazdan\\Course\\": "src"
+        }
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Yazdan\\Course\\App\\Providers\\CourseServiceProvider"
+            ]
+        }
+    }
+}

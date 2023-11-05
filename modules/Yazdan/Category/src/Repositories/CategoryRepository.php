@@ -17,12 +17,12 @@ class CategoryRepository
         return Category::latest()->paginate($value);
     }
 
-    public static function create($value)
+    public static function create($data)
     {
         return Category::create([
-            'title' => $value->title,
-            'slug' => $value->slug ?? Str::slug($value->title),
-            'parent_id' => $value->parent_id,
+            'title' => $data->title,
+            'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
+            'parent_id' => $data->parent_id,
         ]);
     }
 
@@ -38,12 +38,12 @@ class CategoryRepository
         });
     }
 
-    public static function updating($categoryId,$value)
+    public static function updating($categoryId,$data)
     {
         return Category::whereId($categoryId)->update([
-            'title' => $value->title,
-            'slug' => $value->slug ?? Str::slug($value->title),
-            'parent_id' => $value->parent_id,
+            'title' => $data->title,
+            'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
+            'parent_id' => $data->parent_id,
         ]);
     }
 

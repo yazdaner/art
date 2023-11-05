@@ -22,6 +22,7 @@
         "yazdan/comment": "dev-master",
         "yazdan/common": "dev-master",
         "yazdan/contact": "dev-master",
+        "yazdan/course": "dev-master",
         "yazdan/dashboard": "dev-master",
         "yazdan/front": "dev-master",
         "yazdan/home": "dev-master",
@@ -108,6 +109,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Blog"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Course"
         }
     ],
     "scripts": {

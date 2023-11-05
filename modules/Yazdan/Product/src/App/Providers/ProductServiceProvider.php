@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use Yazdan\Product\App\Policies\ProductPolicy;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
-class RoleServiceProvider extends ServiceProvider
+class ProductServiceProvider extends ServiceProvider
 {
 
     public function register()
