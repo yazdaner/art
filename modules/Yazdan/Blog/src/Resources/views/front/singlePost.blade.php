@@ -1,6 +1,6 @@
 <div class="card blog rounded border-0 shadow overflow-hidden">
     <div class="position-relative">
-        <img src="{{$post->getAvatar(600)}}" class="card-img-top single-post-image" alt="...">
+        <img src="{{$post->getMedia(600)}}" class="card-img-top single-post-image" alt="...">
         <div class="overlay rounded-top bg-dark"></div>
     </div>
     <div class="card-body content">

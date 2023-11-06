@@ -36,9 +36,9 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
-    public function avatar()
+    public function media()
     {
-        return $this->belongsTo(Media::class, 'avatar_id');
+        return $this->belongsTo(Media::class, 'media_id');
     }
 
 
@@ -67,10 +67,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->username ? route('users.showProfile', $this->username) : route('users.showProfile', 'username');
     }
 
-    public function getAvatar($size = 'original')
+    public function getMedia($size = 'original')
     {
-        if (isset($this->avatar_id)) {
-            return $this->avatar->thumb($size);
+        if (isset($this->media_id)) {
+            return $this->media->thumb($size);
         } else {
             return asset('assets/images/user.png');
         }

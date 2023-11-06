@@ -4,7 +4,7 @@
             @foreach ($sliders as $slider)
             <div class="carousel-item  @if($loop->first) active @endif" data-bs-interval="3000">
                 <div class="bg-home bg-animation-left d-flex align-items-center"
-                    style="background-image:url('{{$slider->getAvatar()}}')">
+                    style="background-image:url('{{$slider->getMedia()}}')">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-5 col-md-5">

@@ -16,7 +16,7 @@ class Course extends Model
     }
 
 
-    public function getAvatar($size = 'original')
+    public function getMedia($size = 'original')
     {
         if (isset($this->media_id)) {
             return $this->media->thumb($size);

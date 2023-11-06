@@ -20,7 +20,7 @@
                     @foreach ($latestPosts as $post)
                     <div class="clearfix post-recent">
                         <div class="post-recent-thumb float-start"> <a href="{{$post->path()}}"> <img alt="img"
-                                    src="{{$post->getAvatar(60)}}" class="img-fluid rounded"></a></div>
+                                    src="{{$post->getMedia(60)}}" class="img-fluid rounded"></a></div>
                         <div class="post-recent-content float-start"><a href="{{$post->path()}}">{{$post->title}} </a><span
                                 class="text-muted mt-2">{{verta($post->created_at)->format('%B %Y')}}</span></div>
                     </div>

@@ -23,14 +23,7 @@ class SliderController extends Controller
     {
         $this->authorize('manage', Slider::class);
 
-        if (isset($request->media)) {
-            $images = MediaFileService::publicUpload($request->media);
-            if ($images == false) {
-                newFeedbacks('نا موفق', 'فرمت فایل نامعتبر میباشد', 'error');
-                return back();
-            }
-            $request->request->add(['media_id' => $images->id]);
-        }
+       $request = storeImage($request);
         SliderRepository::store($request);
         newFeedbacks();
         return redirect()->route('admin.sliders.index');
@@ -47,19 +40,7 @@ class SliderController extends Controller
     {
         $this->authorize('manage', Slider::class);
 
-        if ($request->hasFile('media')) {
-            $images = MediaFileService::publicUpload($request->media);
-            if ($images == false) {
-                newFeedbacks('نا موفق', 'فرمت فایل نامعتبر میباشد', 'error');
-                return back();
-            }
-            if ($slider->media) {
-                $slider->media->delete();
-            }
-            $request->request->add(['media_id' => $images->id]);
-        } else {
-            $request->request->add(['media_id' => $slider->media_id]);
-        }
+        $request = updateImage($request,$slider);
 
         SliderRepository::update($slider->id, $request);
         newFeedbacks();
@@ -69,11 +50,6 @@ class SliderController extends Controller
     public function destroy(Slider $slider)
     {
         $this->authorize('manage', Slider::class);
-        if ($slider->media) {
-            $slider->media->delete();
-        }
-        $slider->delete();
-
-        return AjaxResponses::SuccessResponses();
+        destroyImage($slider);
     }
 }

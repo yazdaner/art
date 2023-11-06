@@ -49,7 +49,7 @@
                             <tr role="row" class="">
                                 <td>{{$user->key}}</td>
                                 <td>
-                                    <a href="{{$user->getAvatar()}}" target="_blank"><img src="{{$user->getAvatar(60)}}" class="profile_sm"></a>
+                                    <a href="{{$user->getMedia()}}" target="_blank"><img src="{{$user->getMedia(60)}}" class="profile_sm"></a>
                                 </td>
                                 <td>{{$user->username}}</td>
                                 <td>{{$user->email}}</td>

@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-6">
                 <div class="card blog blog-detail border-0 shadow rounded">
-                    <img src="{{$blog->getAvatar()}}" class="img-fluid rounded-top post-main-img" alt="">
+                    <img src="{{$blog->getMedia()}}" class="img-fluid rounded-top post-main-img" alt="">
                     <div class="card-body">
                         <div class="post-meta mb-4">
                             <ul class="list-unstyled mb-0">

@@ -38,6 +38,10 @@ function storeImage($request)
 {
     if (isset($request->media)) {
         $images = MediaFileService::publicUpload($request->media);
+        if ($images == false) {
+            newFeedbacks('نا موفق', 'فرمت فایل نامعتبر میباشد', 'error');
+            return back();
+        }
         $request->request->add(['media_id' => $images->id]);
     }
 }

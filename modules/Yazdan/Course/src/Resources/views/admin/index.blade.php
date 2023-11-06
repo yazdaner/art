@@ -26,7 +26,7 @@
                             <tr role="row" class="">
                                 <td><a href="">{{$courses->firstItem() + $key}}</a></td>
                                 <td>
-                                    <a href="{{$course->getAvatar()}}" target="_blank"><img src="{{$course->getAvatar(60)}}" class="profile_sm"></a>
+                                    <a href="{{$course->getMedia()}}" target="_blank"><img src="{{$course->getMedia(60)}}" class="profile_sm"></a>
                                 </td>
                                 <td><a href="">{{$course->title}}</a></td>
                                 <td>{{$course->slug}}</td>
