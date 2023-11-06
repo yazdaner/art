@@ -36,10 +36,11 @@ class BlogController extends Controller
     {
         $this->authorize('manage', Blog::class);
         if (isset($request->media)) {
-              $images = MediaFileService::publicUpload($request->media);if($images == false){
-            newFeedbacks('نا موفق','فرمت فایل نامعتبر میباشد','error');
-            return back();
-        }
+            $images = MediaFileService::publicUpload($request->media);
+            if ($images == false) {
+                newFeedbacks('نا موفق', 'فرمت فایل نامعتبر میباشد', 'error');
+                return back();
+            }
             $request->request->add(['media_id' => $images->id]);
         }
         BlogRepository::create($request);
@@ -60,20 +61,7 @@ class BlogController extends Controller
     {
         $this->authorize('manage', Blog::class);
         $blog = BlogRepository::findById($id);
-        if ($request->hasFile('media')) {
-            if ($blog->media) {
-                $blog->media->delete();
-            }
-              $images = MediaFileService::publicUpload($request->media);if($images == false){
-            newFeedbacks('نا موفق','فرمت فایل نامعتبر میباشد','error');
-            return back();
-        }
-            $request->request->add(['media_id' => $images->id]);
-        } else {
-            if ($blog->media && $blog->media->id) {
-                $request->request->add(['media_id' => $blog->media->id]);
-            }
-        }
+        $request = updateImage($request,$blog);
         BlogRepository::updating($id, $request);
         newFeedbacks();
         return redirect(route('admin.blogs.index'));
@@ -90,13 +78,13 @@ class BlogController extends Controller
     public function blogs()
     {
         $blogs = Blog::latest()->paginate(1);
-        return view('Blog::front.index',compact('blogs'));
+        return view('Blog::front.index', compact('blogs'));
     }
 
     public function blogShow(Blog $blog, Request $request)
     {
         $latestPosts = Blog::orderBy('updated_at', 'DESC')->take(5)->get();
-        $relatedPosts = Blog::where('category_id',$blog->category->id)->orderBy('updated_at', 'DESC')->take(2)->get();
+        $relatedPosts = Blog::where('category_id', $blog->category->id)->orderBy('updated_at', 'DESC')->take(2)->get();
         $comments = $blog->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
 
         if (!auth()->check()) { //guest user identified by ip
@@ -108,10 +96,10 @@ class BlogController extends Controller
             $cookie = cookie($cookie_name, '1', 60); //set the cookie
             $blog->incrementReadCount(); //count the view
             return response()
-                ->view('Blog::front.show', compact('blog','latestPosts','relatedPosts','comments'))
+                ->view('Blog::front.show', compact('blog', 'latestPosts', 'relatedPosts', 'comments'))
                 ->withCookie($cookie); //store the cookie
         } else {
-            return view('Blog::front.show', compact('blog','latestPosts','relatedPosts','comments')); //this view is not counted
+            return view('Blog::front.show', compact('blog', 'latestPosts', 'relatedPosts', 'comments')); //this view is not counted
         }
     }
 }

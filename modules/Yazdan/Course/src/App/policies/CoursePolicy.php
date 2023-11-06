@@ -10,9 +10,9 @@ class CoursePolicy
 {
     use HandlesAuthorization;
 
-    public function index(User $user)
+    public function manage(User $user)
     {
-        return  $user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_PRODUCT);
+        return  $user->hasPermissionTo(PermissionRepository::PERMISSION_MANAGE_COURSE);
     }
 }
 

@@ -27,25 +27,17 @@ class CourseController extends Controller
 
     public function store(CourseRequest $request)
     {
-        $this->authorize('create', Course::class);
-        if (isset($request->media)) {
-            $images = MediaFileService::publicUpload($request->media);
-            $request->request->add(['media_id' => $images->id]);
-        }
+        $this->authorize('manage', Course::class);
+        $request = storeImage($request);
         CourseRepository::store($request);
         newFeedbacks();
         return redirect(route('admin.courses.index'));
     }
 
-    public function destroy($id)
+    public function destroy(Course $course)
     {
         $this->authorize('manage', Course::class);
-        $course = CourseRepository::findById($id);
-        if ($course->media) {
-            $course->media->delete();
-        }
-        $course->delete();
-        return AjaxResponses::SuccessResponses();
+        destroyImage($course);
     }
 
     public function edit(Course $course)
@@ -53,5 +45,15 @@ class CourseController extends Controller
         $this->authorize('manage', Course::class);
         $statuses = CourseRepository::$statuses;
         return view('Course::admin.edit', compact('course','statuses'));
+    }
+
+    public function update(CourseRequest $request,$id)
+    {
+        $this->authorize('manage', Course::class);
+        $course = CourseRepository::findById($id);
+        $request = updateImage($request,$course);
+        CourseRepository::updating($course->id,$request);
+        newFeedbacks();
+        return redirect(route('admin.courses.index'));
     }
 }

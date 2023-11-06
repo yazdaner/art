@@ -34,18 +34,6 @@ class CourseRepository
         });
     }
 
-    public static function updating($courseId, $value)
-    {
-        return Course::whereId($courseId)->update([
-            'title' => $value->title,
-            'slug' => Str::slug($value->title),
-            'category_id' => $value->category_id,
-            'media_id' => $value->media_id ?? null,
-            'preview' => $value->preview,
-            'content' => $value->content,
-        ]);
-    }
-
     public static function delete($courseId)
     {
         $Course = Course::whereId($courseId)->first();
@@ -57,6 +45,22 @@ class CourseRepository
     {
         return Course::create([
             'user_id' => auth()->id(),
+            'media_id' => $data->media_id,
+            'title' => $data->title,
+            'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
+            'priority' => $data->priority,
+            'price' => $data->price,
+            'price2' => $data->price2,
+            'status' => $data->status,
+            'time' => $data->time,
+            'spot_course_token' => $data->spot_course_token,
+            'description' => $data->description,
+        ]);
+    }
+
+    public static function updating($id,$data)
+    {
+        return Course::whereId($id)->update([
             'media_id' => $data->media_id,
             'title' => $data->title,
             'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),

@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Morilog\Jalali\Jalalian;
+use Illuminate\Support\Facades\Route;
+use Yazdan\Common\Responses\AjaxResponses;
+use Yazdan\Media\Services\MediaFileService;
 
 function newFeedbacks($title = 'با موفقعیت',$body = 'عملیات انجام شد',$type = 'success')
 {
@@ -28,4 +30,43 @@ function getJalaliFromFormat($date, $format = "Y/m/d" ){
 function fromCarbon($date, $format = 'Y/m/d H:i')
 {
     return Jalalian::fromCarbon($date)->format($format);
+}
+
+
+
+function storeImage($request)
+{
+    if (isset($request->media)) {
+        $images = MediaFileService::publicUpload($request->media);
+        $request->request->add(['media_id' => $images->id]);
+    }
+}
+
+function destroyImage($model)
+{
+    if ($model->media) {
+        $model->media->delete();
+    }
+    $model->delete();
+    return AjaxResponses::SuccessResponses();
+}
+
+function updateImage($request,$model)
+{
+    if (isset($request->media)) {
+        if ($model->media) {
+            $model->media->delete();
+        }
+        $images = MediaFileService::publicUpload($request->media);
+        if ($images == false) {
+            newFeedbacks('نا موفق', 'فرمت فایل نامعتبر میباشد', 'error');
+            return back();
+        }
+        $request->request->add(['media_id' => $images->id]);
+    }else {
+        if ($model->media && $model->media->id) {
+           $request->request->add(['media_id' => $model->media->id]);
+        }
+    }
+    return $request;
 }

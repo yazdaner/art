@@ -5,3 +5,16 @@ ul{
     width: 100% !important;
     padding: 10px 20px !important;
 }
+.jq-toast-heading{
+    font-size: 18px !important;
+ }
+
+ .jq-toast-single{
+    text-align: right !important;
+    padding-right: 25px !important;
+ }
+
+ .text-break {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}

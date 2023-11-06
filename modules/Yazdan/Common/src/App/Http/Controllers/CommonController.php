@@ -5,15 +5,10 @@ namespace Yazdan\Common\App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yazdan\Common\App\Models\Common;
+use Yazdan\Media\Services\MediaFileService;
 
 class CommonController extends Controller
 {
-    public function index()
-    {
-        $this->authorize('index',Common::class);
-        return view('Dashboard::index');
-    }
-
     public function postImagesUpload(Request $request)
     {
         $file = $request->file('upload');

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
 
-            $table->foreignId('media_id');
-            $table->foreign('media_id')->references('id')->on('media')->onDelete('CASCADE');
+            $table->foreignId('media_id')->nullable();
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('set null');
 
             $table->string('title');
             $table->string('slug');
