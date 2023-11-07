@@ -64,7 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->username ? route('users.showProfile', $this->username) : route('users.showProfile', 'username');
     }
 
-    public function getMedia($size = 'original')
+    public function getImage($size = 'original')
     {
         if (isset($this->media_id)) {
             return $this->media->thumb($size);

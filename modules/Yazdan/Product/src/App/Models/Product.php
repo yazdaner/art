@@ -16,7 +16,7 @@ class Product extends Model
     }
 
 
-    public function getMedia($size = 'original')
+    public function getImage($size = 'original')
     {
         if (isset($this->avatar_id)) {
             return $this->avatar->thumb($size);

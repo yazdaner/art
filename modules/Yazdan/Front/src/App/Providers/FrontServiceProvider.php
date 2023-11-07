@@ -46,9 +46,9 @@ class FrontServiceProvider extends ServiceProvider
             $view->with(compact('about'));
         });
 
-        // view()->composer('Front::sections.courses', function ($view) {
-        //     $courses = Course::take(4)->all();
-        //     $view->with(compact('about'));
-        // });
+        view()->composer('Front::sections.courses', function ($view) {
+            $courses = Course::all();
+            $view->with(compact('courses'));
+        });
     }
 }

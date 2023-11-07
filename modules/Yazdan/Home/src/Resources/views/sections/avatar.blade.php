@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-lg-2 col-md-3 text-md-start text-center">
-                                <img src="{{auth()->user()->getMedia(300)}}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                <img src="{{auth()->user()->getImage(300)}}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                             </div><!--end col-->
 
                             <div class="col-lg-10 col-md-9">

@@ -3,7 +3,7 @@
     <div class="profile__info border cursor-pointer text-center">
         <div class="avatar__img">
 
-            <img src="{{auth()->user()->getMedia()}}" class="avatar___img">
+            <img src="{{auth()->user()->getImage()}}" class="avatar___img">
 
 
             <input name="image" onchange="this.form.submit()" type="file" accept="image/*" class="hidden avatar-img__input">

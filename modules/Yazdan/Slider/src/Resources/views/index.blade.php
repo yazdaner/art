@@ -24,7 +24,7 @@
                         @foreach($sliders as $slider)
                         <tr role="row" class="">
                             <td><a href="">{{ $slider->id }}</a></td>
-                            <td width="80"><img src="{{ $slider->getMedia(60) }}" alt="" width="80"></td>
+                            <td width="80"><img src="{{ $slider->getImage(60) }}" alt="" width="80"></td>
                             <td>{{ $slider->priority }}</td>
                             <td>{{ $slider->link }}</td>
                             <td>{{ __($slider->type) }}</td>

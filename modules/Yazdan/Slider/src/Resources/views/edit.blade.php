@@ -12,7 +12,7 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('patch')
-                <img src="{{ $slider->getMedia(60) }}" alt="" width="80">
+                <img src="{{ $slider->getImage(60) }}" alt="" width="80">
                 <x-file-upload type="file" name="media" placeholder="تصویر" />
                 <x-input type="number" name="priority" placeholder="الویت" value="{{ $slider->priority }}" />
                 <x-input type="text" name="link" placeholder="لینک" value="{{ $slider->link }}" />

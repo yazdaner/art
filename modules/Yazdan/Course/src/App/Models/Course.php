@@ -20,7 +20,7 @@ class Course extends Model
         return $this->belongsTo(Media::class, 'video_id');
     }
 
-    public function getMedia($size = 'original')
+    public function getImage($size = 'original')
     {
         if (isset($this->media_id)) {
             return $this->media->thumb($size);

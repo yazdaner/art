@@ -14,7 +14,6 @@ class CourseController extends Controller
     public function index()
     {
         $this->authorize('manage', Course::class);
-
         $courses = CourseRepository::getAllPaginate(10);
         return view('Course::admin.index', compact('courses'));
     }
@@ -57,9 +56,7 @@ class CourseController extends Controller
         $course = CourseRepository::findById($id);
         $request = updateImage($request,$course);
         $request = updateVideo($request,$course);
-
         CourseRepository::updating($course->id,$request);
-
         newFeedbacks();
         return redirect(route('admin.courses.index'));
     }

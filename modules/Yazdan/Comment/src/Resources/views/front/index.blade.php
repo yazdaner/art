@@ -10,7 +10,7 @@
                     <div class="d-flex justify-content-between">
                         <div class="d-flex align-items-center">
                             <a class="pe-3" href="#">
-                                <img src="{{$comment->user->getMedia(60)}}"
+                                <img src="{{$comment->user->getImage(60)}}"
                                     class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
                             </a>
                             <div class="commentor-detail">
@@ -31,7 +31,7 @@
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <a class="pe-3" href="#">
-                                        <img src="{{$reply->user->getMedia(60)}}"
+                                        <img src="{{$reply->user->getImage(60)}}"
                                             class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
                                     </a>
                                     <div class="commentor-detail">

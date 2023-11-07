@@ -27,7 +27,7 @@
                             <tr role="row" class="">
                                 <td><a href="">{{$blogs->firstItem() + $key}}</a></td>
                                 <td>
-                                    <a href="{{$blog->getMedia()}}" target="_blank"><img src="{{$blog->getMedia(60)}}" class="profile_sm"></a>
+                                    <a href="{{$blog->getImage()}}" target="_blank"><img src="{{$blog->getImage(60)}}" class="profile_sm"></a>
                                 </td>
                                 <td><a href="">{{$blog->title}}</a></td>
                                 <td>{{$blog->slug}}</td>
