@@ -10,6 +10,7 @@ use Yazdan\Setting\App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 use Yazdan\Slider\Repositories\SliderRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
+use Yazdan\Course\App\Models\Course;
 
 class FrontServiceProvider extends ServiceProvider
 {
@@ -20,17 +21,15 @@ class FrontServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views/', 'Front');
 
-
         view()->composer('Front::sections.slider', function ($view) {
-            $sliders = Slider::where('type',SliderRepository::TYPE_MAIN)->where('status',true)->orderBy('priority')->get();
+            $sliders = Slider::where('type', SliderRepository::TYPE_MAIN)->where('status', true)->orderBy('priority')->get();
             $view->with(compact('sliders'));
         });
 
-        view()->composer(['Front::sections.footer','Home::sections.sidebar','Contact::front.index','Blog::front.show'], function ($view) {
+        view()->composer(['Front::sections.footer', 'Home::sections.sidebar', 'Contact::front.index', 'Blog::front.show'], function ($view) {
             $setting = Setting::first();
             $view->with(compact('setting'));
         });
-
 
         view()->composer('Front::sections.navbar', function ($view) {
             $categories = CategoryRepository::tree();
@@ -43,8 +42,13 @@ class FrontServiceProvider extends ServiceProvider
         });
 
         view()->composer('Front::sections.about', function ($view) {
-            $about = About::select('banner4','banner5','banner6','frontBody')->first();
+            $about = About::select('banner4', 'banner5', 'banner6', 'frontBody')->first();
             $view->with(compact('about'));
         });
+
+        // view()->composer('Front::sections.courses', function ($view) {
+        //     $courses = Course::take(4)->all();
+        //     $view->with(compact('about'));
+        // });
     }
 }

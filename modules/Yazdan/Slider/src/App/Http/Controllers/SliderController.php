@@ -51,5 +51,7 @@ class SliderController extends Controller
     {
         $this->authorize('manage', Slider::class);
         destroyImage($slider);
+        $slider->delete();
+        return AjaxResponses::SuccessResponses();
     }
 }

@@ -19,10 +19,14 @@ return new class extends Migration
             $table->foreignId('media_id')->nullable();
             $table->foreign('media_id')->references('id')->on('media')->onDelete('set null');
 
+            $table->foreignId('video_id')->nullable();
+            $table->foreign('video_id')->references('id')->on('media')->onDelete('set null');
+
             $table->string('title');
             $table->string('slug');
             $table->string('spot_course_token');
-            $table->longText('description')->nullable();
+            $table->text('description')->nullable();
+            $table->longText('body')->nullable();
 
             $table->unsignedInteger('price')->default(0);
             $table->unsignedInteger('price2')->nullable();

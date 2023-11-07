@@ -6,10 +6,7 @@
                     <h4 class="title mb-4">دوره های آموزشی</h4>
                 </div>
             </div>
-            <!--end col-->
         </div>
-        <!--end row-->
-
         <div class="row">
             <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                 <div
@@ -19,7 +16,6 @@
                                 src="https://atabakart.com/app/files/course/orginal/62b971c944363.jpg"
                                 alt="دوره رنگ روغن " class="course_img"></a>
                     </div>
-
                     <div class="card-body p-0 content">
                         <h5 class="mt-4">
                             <a href="./course.html" class="title text-dark">دوره رنگ روغن </a>
@@ -31,7 +27,6 @@
                     </div>
                 </div>
             </div>
-            <!--end col-->
             <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                 <div
                     class="card features feature-clean explore-feature p-4 px-md-3 border-0 rounded-md shadow text-center">
@@ -52,7 +47,6 @@
                     </div>
                 </div>
             </div>
-            <!--end col-->
             <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                 <div
                     class="card features feature-clean explore-feature p-4 px-md-3 border-0 rounded-md shadow text-center">
@@ -73,7 +67,6 @@
                     </div>
                 </div>
             </div>
-            <!--end col-->
             <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                 <div
                     class="card features feature-clean explore-feature p-4 px-md-3 border-0 rounded-md shadow text-center">
@@ -94,11 +87,6 @@
                     </div>
                 </div>
             </div>
-            <!--end col-->
         </div>
-        <!--end row-->
     </div>
-    <!--end container-->
-
-    <!--end container-->
 </section>

@@ -15,6 +15,10 @@ class Course extends Model
         return $this->belongsTo(Media::class, 'media_id');
     }
 
+    public function video()
+    {
+        return $this->belongsTo(Media::class, 'video_id');
+    }
 
     public function getMedia($size = 'original')
     {

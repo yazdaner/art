@@ -24,11 +24,13 @@ class CourseRequest extends FormRequest
             "price2" => 'nullable|numeric|min:0|max:10000000',
             "status" => ["required", Rule::in(CourseRepository::$statuses)],
             "media" => "required|mimes:jpg,png,jpeg",
+            "video" => "required|mimes:mp4,mkv",
         ];
 
         if (request()->method === 'PUT') {
             $rules['media'] = "nullable|mimes:jpg,png,jpeg";
-            $rules['slug'] = 'required|min:3|max:190|unique:courses,slug,' . request()->route('course');
+            $rules['video'] = "nullable|mimes:mp4,mkv";
+            $rules['slug'] = 'nullable|min:3|max:190|unique:courses,slug,' . request()->route('course');
         }
 
         return $rules;

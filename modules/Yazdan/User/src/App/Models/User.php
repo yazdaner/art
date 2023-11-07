@@ -30,17 +30,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
 
     public function media()
     {
         return $this->belongsTo(Media::class, 'media_id');
     }
-
 
     public function sendEmailVerificationNotification()
     {

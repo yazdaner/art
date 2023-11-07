@@ -29,6 +29,7 @@ class CourseController extends Controller
     {
         $this->authorize('manage', Course::class);
         $request = storeImage($request);
+        $request = storeVideo($request);
         CourseRepository::store($request);
         newFeedbacks();
         return redirect(route('admin.courses.index'));
@@ -38,6 +39,9 @@ class CourseController extends Controller
     {
         $this->authorize('manage', Course::class);
         destroyImage($course);
+        destroyVideo($course);
+        $course->delete();
+        return AjaxResponses::SuccessResponses();
     }
 
     public function edit(Course $course)
@@ -52,7 +56,10 @@ class CourseController extends Controller
         $this->authorize('manage', Course::class);
         $course = CourseRepository::findById($id);
         $request = updateImage($request,$course);
+        $request = updateVideo($request,$course);
+
         CourseRepository::updating($course->id,$request);
+
         newFeedbacks();
         return redirect(route('admin.courses.index'));
     }

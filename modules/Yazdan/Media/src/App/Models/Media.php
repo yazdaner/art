@@ -20,13 +20,10 @@ class Media extends Model
         });
     }
 
-
-
     public function thumb($size = 'original')
     {
         return MediaFileService::thumb($this,$size);
     }
-
 
     public function download()
     {

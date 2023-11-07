@@ -15,6 +15,7 @@ class VideoFileService extends DefaultFileService implements FileServiceContract
         Storage::putFileAs($dir, $file, $fileFullName);
         return ['video' => $fileFullName];
     }
+
     public static function thumb(Media $media,string $size){
         return asset('img/video-thumb.png');
     }

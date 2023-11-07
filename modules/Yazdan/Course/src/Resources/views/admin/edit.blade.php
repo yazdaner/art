@@ -30,9 +30,14 @@
                 </x-select>
 
                 <x-file-upload name="media" placeholder="تصویر دوره" :value="$course->media" />
+                <x-video-upload name="video" placeholder="ویدیو دمو دوره" :value="$course->video"/>
 
                 <div class="col-12">
                     <x-text-area name="description" placeholder="توضیحات" value="{{ $course->description }}" />
+                </div>
+
+                <div class="col-12">
+                    <x-text-area name="body" placeholder="محتوا" value="{{ $course->body }}" />
                 </div>
 
                 <button type="submit" class="btn btn-yazdan">ویرایش</button>
@@ -45,7 +50,7 @@
 @section('script')
 <script src="//cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('description', {
+    CKEDITOR.replace('body', {
         language: 'fa',
         filebrowserUploadUrl: '{{ route('admin.editor-upload', ['_token' => csrf_token()]) }}',
         filebrowserUploadMethod: 'form'

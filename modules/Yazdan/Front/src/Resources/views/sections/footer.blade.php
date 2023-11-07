@@ -13,11 +13,7 @@
                 <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
                     @include('Setting::front.social')
                 </ul>
-
-                <!--end icon-->
             </div>
-            <!--end col-->
-
             <div class="col-lg-3 col-md-3 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <h5 class="text-light footer-head">دسترسی سریع</h5>
                 <ul class="list-unstyled footer-list mt-4">
@@ -42,8 +38,6 @@
 
                 </ul>
             </div>
-            <!--end col-->
-
             <div class="col-lg-3 col-md-3 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <h5 class="text-light footer-head">جدیدترین دوره ها</h5>
                 <ul class="list-unstyled footer-list mt-4">
@@ -65,8 +59,6 @@
                     </li>
                 </ul>
             </div>
-            <!--end col-->
-
             <div class="col-lg-3 col-md-3 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <h5 class="text-light footer-head">خبرنامه</h5>
                 <p class="mt-4">
@@ -95,13 +87,9 @@
 
                 </form>
             </div>
-            <!--end col-->
         </div>
-        <!--end row-->
     </div>
-    <!--end container-->
 </footer>
-<!--end footer-->
 <footer class="footer footer-bar">
     <div class="container text-center">
         <div class="row align-items-center">
@@ -116,11 +104,7 @@
                     </p>
                 </div>
             </div>
-            <!--end col-->
         </div>
-        <!--end row-->
     </div>
-    <!--end container-->
 </footer>
-<!--end footer-->
 <!-- Footer End -->

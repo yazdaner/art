@@ -46,6 +46,7 @@ class CourseRepository
         return Course::create([
             'user_id' => auth()->id(),
             'media_id' => $data->media_id,
+            'video_id' => $data->video_id,
             'title' => $data->title,
             'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
             'priority' => $data->priority,
@@ -55,6 +56,7 @@ class CourseRepository
             'time' => $data->time,
             'spot_course_token' => $data->spot_course_token,
             'description' => $data->description,
+            'body' => $data->body,
         ]);
     }
 
@@ -62,6 +64,7 @@ class CourseRepository
     {
         return Course::whereId($id)->update([
             'media_id' => $data->media_id,
+            'video_id' => $data->video_id,
             'title' => $data->title,
             'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
             'priority' => $data->priority,
@@ -71,6 +74,7 @@ class CourseRepository
             'time' => $data->time,
             'spot_course_token' => $data->spot_course_token,
             'description' => $data->description,
+            'body' => $data->body,
         ]);
     }
 }

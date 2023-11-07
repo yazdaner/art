@@ -43,7 +43,6 @@ class UserController extends Controller
 
         UserRepository::upload($request,$userId);
         UserRepository::update($request,$userId);
-
         newFeedbacks();
         return redirect()->route('admin.users.index');
     }
