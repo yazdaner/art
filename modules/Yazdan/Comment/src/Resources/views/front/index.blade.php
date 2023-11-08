@@ -1,6 +1,6 @@
 <div class="comments-area">
-    @include('Comment::front.create', ["commentable" => $blog])
-    @include("Comment::front.reply", ["commentable" => $blog])
+    @include('Comment::front.create', ["commentable" => $commentable])
+    @include("Comment::front.reply", ["commentable" => $commentable])
     <div class="card shadow rounded border-0 mt-4">
         <div class="card-body">
             <h5 class="card-title mb-0">نظرات :</h5>

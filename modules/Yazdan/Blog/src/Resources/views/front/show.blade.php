@@ -7,12 +7,10 @@
                 <div class="page-next-level">
                     <h2> {{$blog->title}} </h2>
                     <ul class="list-unstyled mt-4">
-                        {{-- <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i>
-                            {{$blog->user->name != "" ? $blog->user->name : $blog->user->username}}</li> --}}
-                            <li class="list-inline-item h6 date text-muted"><i
-                                class="bi bi-grid"></i> {{$blog->category->title}} </li>
+                        <li class="list-inline-item h6 date text-muted"><i class="bi bi-grid"></i>
+                            {{$blog->category->title}} </li>
 
-                            <li class="list-inline-item h6 date text-muted"><i
+                        <li class="list-inline-item h6 date text-muted"><i
                                 class="mdi mdi-calendar-check"></i>{{verta($blog->created_at)->format('%B %Y')}} </li>
                     </ul>
                     <div class="page-next">
@@ -51,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                @include('Comment::front.index')
+                @include('Comment::front.index',["commentable" => $blog])
                 <div class="card shadow rounded border-0 mt-4">
                     <div class="card-body">
                         <h5 class="card-title mb-0">پست های مرتبط :</h5>

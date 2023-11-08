@@ -2,7 +2,7 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+            <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
                 <a href="#" class="logo-footer">
                     <img src="/assets/images/logo-light.png" height="24" alt="" />
                 </a>
@@ -14,7 +14,7 @@
                     @include('Setting::front.social')
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-3 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+            <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <h5 class="text-light footer-head">دسترسی سریع</h5>
                 <ul class="list-unstyled footer-list mt-4">
                     <li>
@@ -38,7 +38,7 @@
 
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-3 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+            <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <h5 class="text-light footer-head">جدیدترین دوره ها</h5>
                 <ul class="list-unstyled footer-list mt-4">
                     <li>
@@ -58,34 +58,6 @@
                             دیجیتال آرت </a>
                     </li>
                 </ul>
-            </div>
-            <div class="col-lg-3 col-md-3 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                <h5 class="text-light footer-head">خبرنامه</h5>
-                <p class="mt-4">
-                    ایمیل خود را وارد کنید تا اخبار دوره‌ها وجدیدترین آثار هنری را برای شما ارسال کنیم.
-                </p>
-                <form method="post" action="https://atabakart.com/main">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="foot-subscribe mb-3">
-                                <label class="form-label">ایمیل خود را بنویسید
-                                    <span class="text-danger">*</span></label>
-                                <div class="form-icon position-relative">
-                                    <i data-feather="mail" class="fea icon-sm icons"></i>
-                                    <input type="email" name="email2" value="" id="emailsubscribe"
-                                        class="form-control ps-5 rounded" placeholder="ایمیل شما: " required />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="d-grid">
-                                <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary"
-                                    value="ارسال" />
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
             </div>
         </div>
     </div>

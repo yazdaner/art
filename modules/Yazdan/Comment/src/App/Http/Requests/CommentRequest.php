@@ -22,4 +22,11 @@ class CommentRequest extends FormRequest
             "commentable_type" => ["required", new CommentableRule()],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            "body" => "کامنت",
+        ];
+    }
 }

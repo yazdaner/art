@@ -35,6 +35,8 @@ return new class extends Migration
             $table->float('priority')->nullable();
             $table->enum('status', CourseRepository::$statuses);
 
+            $table->bigInteger('views')->unsigned()->default(0)->index();
+
             $table->timestamps();
         });
     }

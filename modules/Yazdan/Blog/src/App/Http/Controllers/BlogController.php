@@ -54,7 +54,7 @@ class BlogController extends Controller
     {
         $this->authorize('manage', Blog::class);
         $blog = BlogRepository::findById($id);
-        $request = updateImage($request,$blog);
+        $request = updateImage($request, $blog);
         BlogRepository::updating($id, $request);
         newFeedbacks();
         return redirect(route('admin.blogs.index'));
@@ -68,31 +68,24 @@ class BlogController extends Controller
         return AjaxResponses::SuccessResponses();
     }
 
+    //front
+
     public function blogs()
     {
-        $blogs = Blog::latest()->paginate(1);
+        $blogs = Blog::latest()->paginate(9);
         return view('Blog::front.index', compact('blogs'));
     }
 
     public function blogShow(Blog $blog, Request $request)
     {
+        $cookie = checkView($blog, $request);
         $latestPosts = Blog::orderBy('updated_at', 'DESC')->take(5)->get();
         $relatedPosts = Blog::where('category_id', $blog->category->id)->orderBy('updated_at', 'DESC')->take(2)->get();
         $comments = $blog->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
-
-        if (!auth()->check()) { //guest user identified by ip
-            $cookie_name = (Str::replace('.', '', ($request->ip())) . '-' . $blog->id . '-' . 'blog');
+        if ($cookie == false) {
+            return view('Blog::front.show', compact('blog', 'latestPosts', 'relatedPosts', 'comments'));
         } else {
-            $cookie_name = (auth()->id() . '-' . $blog->id . '-' . 'blog'); //logged in user
-        }
-        if (Cookie::get($cookie_name) == '') { //check if cookie is set
-            $cookie = cookie($cookie_name, '1', 60); //set the cookie
-            $blog->incrementReadCount(); //count the view
-            return response()
-                ->view('Blog::front.show', compact('blog', 'latestPosts', 'relatedPosts', 'comments'))
-                ->withCookie($cookie); //store the cookie
-        } else {
-            return view('Blog::front.show', compact('blog', 'latestPosts', 'relatedPosts', 'comments')); //this view is not counted
+            return response()->view('Blog::front.show', compact('blog', 'latestPosts', 'relatedPosts', 'comments'))->withCookie($cookie);
         }
     }
 }

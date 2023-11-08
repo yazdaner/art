@@ -1,9 +1,13 @@
 <?php
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Media\Services\MediaFileService;
+use Yazdan\Comment\Repositories\CommentRepository;
 
 function newFeedbacks($title = 'با موفقعیت', $body = 'عملیات انجام شد', $type = 'success')
 {
@@ -111,4 +115,21 @@ function updateVideo($request, $model)
         }
     }
     return $request;
+}
+
+function checkView($model, Request $request)
+{
+    $tableName  = $model->getTable();
+    if (!auth()->check()) {
+        $cookie_name = (Str::replace('.', '', ($request->ip())) . '-' . $model->id . '-' . $tableName);
+    } else {
+        $cookie_name = (auth()->id() . '-' . $model->id . '-' . $tableName);
+    }
+    if (Cookie::get($cookie_name) == '') {
+        $cookie = cookie($cookie_name, '1', 60);
+        $model->incrementReadCount();
+        return $cookie;
+    } else {
+        return false;
+    }
 }

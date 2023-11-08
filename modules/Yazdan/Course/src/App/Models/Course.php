@@ -2,11 +2,13 @@
 
 namespace Yazdan\Course\App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Yazdan\Media\App\Models\Media;
+use Yazdan\Comment\Trait\HasComments;
+use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    use HasComments;
 
     protected $guarded = [];
 
@@ -27,5 +29,10 @@ class Course extends Model
         } else {
             return asset('assets/images/user.png');
         }
+    }
+
+    public function incrementReadCount() {
+        $this->views++;
+        return $this->save();
     }
 }

@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function media()
     {
-        return $this->belongsTo(Media::class, 'media_id');
+        return $this->belongsTo(Media::class, 'avatar_id');
     }
 
     public function sendEmailVerificationNotification()
@@ -66,7 +66,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getImage($size = 'original')
     {
-        if (isset($this->media_id)) {
+        if (isset($this->avatar_id)) {
             return $this->media->thumb($size);
         } else {
             return asset('assets/images/user.png');

@@ -29,7 +29,7 @@ class CommentRepository
         return Comment::query()->latest()->paginate();
     }
 
-    public function store($data)
+    public static function store($data)
     {
         return Comment::query()->create([
             "user_id" => auth()->id(),

@@ -7,7 +7,8 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     'auth',
     'verified'
 ])->group(function () {
-
     Route::resource('courses', CourseController::class);
-
 });
+
+Route::get('/courses', [CourseController::class, 'courses'])->name('courses');
+Route::get('/courses/{course:slug}', [CourseController::class, 'courseShow'])->name('courses.show');

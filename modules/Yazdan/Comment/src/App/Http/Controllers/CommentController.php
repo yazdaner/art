@@ -33,11 +33,11 @@ class CommentController extends Controller
         return view("Comment::admin.index", compact("comments"));
     }
 
-    public function store(CommentRequest $request, CommentRepository $repo)
+    public function store(CommentRequest $request)
     {
-        $repo->store($request->all());
+        CommentRepository::store($request->all());
         newFeedbacks("عملیات موفقیت آمیز", "دیدگاه شما با ثبت گردید.");
-        return back();
+        return back()->withFragment('#comment');
     }
 
     public function accept($id, CommentRepository $commentRepo)
@@ -46,7 +46,6 @@ class CommentController extends Controller
         if ($commentRepo->updateStatus($id, CommentRepository::STATUS_APPROVED)) {
             return AjaxResponses::SuccessResponses();
         }
-
         return AjaxResponses::ErrorResponses();
     }
 
@@ -56,7 +55,6 @@ class CommentController extends Controller
         if ($commentRepo->updateStatus($id, CommentRepository::STATUS_REJECTED)) {
             return AjaxResponses::SuccessResponses();
         }
-
         return AjaxResponses::ErrorResponses();
     }
 
