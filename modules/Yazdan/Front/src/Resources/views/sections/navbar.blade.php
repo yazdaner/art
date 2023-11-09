@@ -51,7 +51,7 @@
                     </ul>
                 </li>
                 <li class="has-submenu parent-menu-item">
-                    <a class="d-none d-sm-none d-md-block d-lg-block" href="./course.html">دوره ها </a>
+                    <a class="d-none d-sm-none d-md-block d-lg-block" href="{{route('courses')}}">دوره ها </a>
                     <a class="d-block d-sm-block d-md-none d-lg-none" href="javascript:void(0)">دوره ها </a>
                     <span class="menu-arrow"></span>
                     <ul class="submenu">

@@ -7,7 +7,8 @@
                 <div class="mt-4">
                     <div class="">
                         <p>وضعیت دوره : {{__($course->status)}}</p>
-                        <p>قیمت دوره : {{__($course->price)}}</p>
+                        @include('Course::front.coursePrice')
+                        <p>نام مدرس دوره : {{__($course->user->name ?? $course->user->username)}}</p>
                     </div>
                 </div>
             </div>
