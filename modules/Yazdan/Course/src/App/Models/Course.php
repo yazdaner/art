@@ -35,4 +35,10 @@ class Course extends Model
         $this->views++;
         return $this->save();
     }
+
+    public function path()
+    {
+        return route('courses.show',$this->slug);
+    }
+
 }
