@@ -11,6 +11,7 @@ interface GatewayContract
     public function verify(Payment $payment);
 
     public function redirect();
+
     public function getName();
 
 }

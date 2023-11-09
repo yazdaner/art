@@ -118,6 +118,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Payment"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Product"
         }
     ],
     "scripts": {

@@ -1,0 +1,18 @@
+{
+    "name" : "yazdan/cart",
+    "autoload" : {
+        "psr-4" : {
+            "Yazdan\\Cart\\": "src"
+        }
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Yazdan\\Cart\\App\\Providers\\CartServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "darryldecode/cart": "^4.2"
+    }
+}
