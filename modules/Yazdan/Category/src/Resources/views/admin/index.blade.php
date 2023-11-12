@@ -15,6 +15,7 @@
                             <th>نام دسته بندی</th>
                             <th>نام انگلیسی دسته بندی</th>
                             <th>دسته پدر</th>
+                            <th>نوع</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -25,6 +26,7 @@
                                 <td><a href="">{{$category->title}}</a></td>
                                 <td>{{$category->slug}}</td>
                                 <td>{{$category->parent}}</td>
+                                <td>{{__($category->type_name)}}</td>
                                 <td>
                                     <a href="" onclick="deleteItem(event,'{{route('admin.categories.destroy',$category->id)}}')" class="item-delete mlg-15" title="حذف"></a>
                                     <a href="{{route('admin.categories.edit',$category->id)}}" class="item-edit" title="ویرایش"></a>
