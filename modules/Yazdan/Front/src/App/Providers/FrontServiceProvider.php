@@ -11,6 +11,7 @@ use Illuminate\Support\ServiceProvider;
 use Yazdan\Slider\Repositories\SliderRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
 use Yazdan\Course\App\Models\Course;
+use Yazdan\Product\App\Models\Product;
 
 class FrontServiceProvider extends ServiceProvider
 {
@@ -32,8 +33,9 @@ class FrontServiceProvider extends ServiceProvider
         });
 
         view()->composer('Front::sections.navbar', function ($view) {
-            $categories = CategoryRepository::tree();
-            $view->with(compact('categories'));
+            $blogCategories = CategoryRepository::treeWithType(Blog::class);
+            $productCategories = CategoryRepository::treeWithType(Product::class);
+            $view->with(compact('blogCategories','productCategories'));
         });
 
         view()->composer('Front::sections.blogs', function ($view) {

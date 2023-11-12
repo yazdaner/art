@@ -29,6 +29,17 @@ class CategoryRepository
         return Category::where('type',$type)->get();
     }
 
+
+    public static function tree()
+    {
+        return Category::where('parent_id',null)->with('subCategory')->get();
+    }
+
+    public static function treeWithType($type)
+    {
+        return Category::where('parent_id',null)->where('type',$type)->with('subCategory')->get();
+    }
+
     public static function getAllPaginate($value)
     {
         return Category::latest()->paginate($value);
@@ -75,10 +86,5 @@ class CategoryRepository
     public static function delete($categoryId)
     {
         return Category::whereId($categoryId)->delete();
-    }
-
-    public static function tree()
-    {
-        return Category::where('parent_id',null)->with('subCategory')->get();
     }
 }
