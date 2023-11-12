@@ -1,6 +1,6 @@
 <?php
 
-namespace Yazdan\Blog\App\Http\Controllers;
+namespace Yazdan\Product\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Yazdan\Product\App\Models\Product;
@@ -13,8 +13,8 @@ class ProductController extends Controller
     {
         $this->authorize('manage', Product::class);
 
-        $blogs = ProductRepository::getAllPaginate(10);
-        return view('Blog::admin.index', compact('blogs'));
+        $products = ProductRepository::getAllPaginate(10);
+        return view('Product::admin.index', compact('products'));
     }
 
 }

@@ -7,6 +7,13 @@ use Yazdan\Product\App\Models\Product;
 
 class ProductRepository
 {
+    const STATUS_ACTIVE = 'active';
+    const STATUS_INACTIVE = 'inactive';
+
+    static $statuses = [
+        self::STATUS_ACTIVE,
+        self::STATUS_INACTIVE,
+    ];
     public static function getAll()
     {
         return Product::all();

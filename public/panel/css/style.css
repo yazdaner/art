@@ -435,6 +435,8 @@ textarea {
     border-radius: 40px;
     cursor: pointer;
     margin-top: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .btn-yazdan , .btn-yazdan:visited , .btn-yazdan:active {
@@ -700,6 +702,10 @@ textarea {
 
 .sidebar__nav .i-coupon a::before {
     content: "\E126";
+}
+
+.sidebar__nav .i-products a::before {
+    content: "\1F6D2";
 }
 
 .item-coupon:before {

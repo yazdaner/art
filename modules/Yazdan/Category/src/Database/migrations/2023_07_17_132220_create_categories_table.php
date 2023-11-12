@@ -23,7 +23,7 @@ class CreateCategoriesTable extends Migration
             $table->string('type')->nullable();
 
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

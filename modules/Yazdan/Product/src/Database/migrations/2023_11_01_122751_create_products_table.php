@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Yazdan\Product\Repositories\ProductRepository;
 
 return new class extends Migration
 {
@@ -13,15 +14,21 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreignId('primary_image')->nullable();
+            $table->foreign('primary_image')->references('id')->on('media')->onDelete('set null');
+
             $table->string('title');
+            $table->string('slug')->unique();
 
-            $table->unsignedInteger('price')->default(0);
-            $table->unsignedInteger('quantity')->default(0);
-            $table->string('sku')->nullable();
+            $table->text('description')->nullable();
 
-            $table->unsignedInteger('sale_price')->nullable();
-            $table->timestamp('date_on_sale_from')->nullable();
-            $table->timestamp('date_on_sale_to')->nullable();
+            $table->enum('status',ProductRepository::$statuses);
+
+            $table->unsignedInteger('delivery_amount')->default(0);
+            $table->unsignedInteger('delivery_amount_per_product')->default(0);
 
             $table->timestamps();
         });

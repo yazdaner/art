@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('video_id')->references('id')->on('media')->onDelete('set null');
 
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('spot_course_token');
             $table->text('description')->nullable();
             $table->longText('body')->nullable();
