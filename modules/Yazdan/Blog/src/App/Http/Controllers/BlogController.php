@@ -28,7 +28,7 @@ class BlogController extends Controller
     public function create()
     {
         $this->authorize('manage', Blog::class);
-        $categories = CategoryRepository::getAll();
+        $categories = CategoryRepository::getTypeAll(Blog::class);
         return view('Blog::admin.create', compact('categories'));
     }
 
@@ -63,7 +63,6 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $this->authorize('manage', Blog::class);
-
         BlogRepository::delete($id);
         return AjaxResponses::SuccessResponses();
     }

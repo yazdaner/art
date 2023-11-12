@@ -19,6 +19,16 @@ class CategoryRepository
         return Category::all();
     }
 
+    public static function getCategoeyById($id)
+    {
+        return Category::whereId($id)->first();
+    }
+
+    public static function getTypeAll($type)
+    {
+        return Category::where('type',$type)->get();
+    }
+
     public static function getAllPaginate($value)
     {
         return Category::latest()->paginate($value);
@@ -27,7 +37,7 @@ class CategoryRepository
     public static function create($data)
     {
         if($data->parent_id != null){
-            $data->type = null;
+            $data->type = self::getCategoeyById($data->parent_id)->type;
         }
         return Category::create([
             'title' => $data->title,
@@ -52,7 +62,7 @@ class CategoryRepository
     public static function updating($categoryId,$data)
     {
         if($data->parent_id != null){
-            $data->type = null;
+            $data->type = self::getCategoeyById($data->parent_id)->type;
         }
         return Category::whereId($categoryId)->update([
             'title' => $data->title,
