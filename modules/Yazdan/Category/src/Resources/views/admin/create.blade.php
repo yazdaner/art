@@ -9,6 +9,7 @@
 
         <p class="box__title margin-top-15">نوع دسته بندی</p>
         <x-validation-error field="type" />
+        <x-validation-error field="parent_id" />
 
         <div class="notificationGroup">
             <input id="parent-field" name="type" type="radio" />
@@ -22,7 +23,7 @@
 
         <div class="selectTypeContainer d-none">
             <p class="box__title margin-bottom-15">نوع دسته بندی</p>
-            <select name="type" id="parent_id">
+            <select name="type" id="type">
                 <option value="">ندارد</option>
                 @foreach ($types as $name => $type)
                 <option value="{{$type}}">{{__($name)}}</option>

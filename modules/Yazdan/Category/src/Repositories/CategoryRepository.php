@@ -51,10 +51,14 @@ class CategoryRepository
 
     public static function updating($categoryId,$data)
     {
+        if($data->parent_id != null){
+            $data->type = null;
+        }
         return Category::whereId($categoryId)->update([
             'title' => $data->title,
             'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
             'parent_id' => $data->parent_id,
+            'type' => $data->type,
         ]);
     }
 

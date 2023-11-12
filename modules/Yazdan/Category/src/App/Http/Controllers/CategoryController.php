@@ -31,9 +31,10 @@ class CategoryController extends Controller
     public function edit($categoryId)
     {
         $this->authorize('manage', Category::class);
+        $types = CategoryRepository::$types;
         $category = CategoryRepository::findById($categoryId);
         $parentCategories = CategoryRepository::getAllExceptById($categoryId);
-        return view('Category::admin.edit', compact('category', 'parentCategories'));
+        return view('Category::admin.edit', compact('category', 'parentCategories','types'));
     }
 
     public function update($categoryId, CategoryRequest $request)
