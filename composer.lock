@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db220e484f59cee2c539bd13efd20595",
+    "content-hash": "8c1efffada766e05b4af24b7fb49c8e7",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -6619,6 +6619,31 @@
             }
         },
         {
+            "name": "yazdan/product",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Product",
+                "reference": "27d7c7e0f79214383d2a7f4d8137d03e9b1184a5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Product\\App\\Providers\\ProductServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Product\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/role",
             "version": "dev-master",
             "dist": {
@@ -9180,6 +9205,7 @@
         "yazdan/home": 20,
         "yazdan/media": 20,
         "yazdan/payment": 20,
+        "yazdan/product": 20,
         "yazdan/role": 20,
         "yazdan/setting": 20,
         "yazdan/slider": 20,

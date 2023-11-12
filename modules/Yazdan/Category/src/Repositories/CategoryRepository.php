@@ -3,10 +3,17 @@
 namespace Yazdan\Category\Repositories;
 
 use Illuminate\Support\Str;
+use Yazdan\Blog\App\Models\Blog;
 use Yazdan\Category\App\Models\Category;
+use Yazdan\Product\App\Models\Product;
 
 class CategoryRepository
 {
+    static $types = [
+        'products' => Product::class,
+        'blogs' => Blog::class
+    ];
+
     public static function getAll()
     {
         return Category::all();
@@ -19,10 +26,14 @@ class CategoryRepository
 
     public static function create($data)
     {
+        if($data->parent_id != null){
+            $data->type = null;
+        }
         return Category::create([
             'title' => $data->title,
             'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
             'parent_id' => $data->parent_id,
+            'type' => $data->type,
         ]);
     }
 

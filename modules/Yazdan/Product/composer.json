@@ -1,5 +1,5 @@
 {
-    "name" : "yazdan/poduct",
+    "name" : "yazdan/product",
     "autoload" : {
         "psr-4" : {
             "Yazdan\\Product\\": "src"

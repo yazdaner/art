@@ -18,6 +18,7 @@ class CategoryServiceProvider extends ServiceProvider
             ->group(__DIR__ . '/../../Routes/category_routes.php');
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views/', 'Category');
         $this->loadMigrationsFrom(__DIR__ . '/../../Database/migrations/');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../../Resources/Lang');
 
         Gate::policy(Category::class, CategoryPolicy::class);
     }

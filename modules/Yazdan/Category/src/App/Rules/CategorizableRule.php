@@ -1,11 +1,11 @@
 <?php
 
-namespace Yazdan\Comment\App\Rules;
+namespace Yazdan\Category\App\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-class CommentableRule implements ValidationRule
+class CategorizableRule implements ValidationRule
 {
     /**
      * Run the validation rule.
@@ -14,8 +14,8 @@ class CommentableRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!class_exists($value) && !method_exists($value, "comments")) {
-            $fail('The validation error message.');
+        if (!class_exists($value) && !method_exists($value, "category")) {
+            $fail('The validation of :attribute has error message.');
         }
     }
 }

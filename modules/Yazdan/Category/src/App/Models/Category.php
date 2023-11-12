@@ -11,11 +11,7 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'categories';
-    protected $fillable = [
-        'title',
-        'slug',
-        'parent_id'
-    ];
+    protected $guarded = [];
 
     public function getParentAttribute()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yazdan\RolePermissions\App\Providers;
+namespace Yazdan\Product\App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;

@@ -177,6 +177,7 @@ return [
         'size'                  => 'اندازه',
         'terms'                 => 'شرایط',
         'province'              => 'استان',
-        'verify_code'              => 'کد',
+        'verify_code'           => 'کد',
+        'empty'                 => 'خالی',
     ],
 ];
