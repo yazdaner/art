@@ -662,7 +662,7 @@ textarea {
 }
 
 .sidebar__nav .i-contacts a::before {
-    content: "\E092";
+    content: "\1F4DE";
 }
 
 .sidebar__nav .i-about a::before {

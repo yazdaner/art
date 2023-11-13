@@ -49,23 +49,31 @@ class ProductRepository
         });
     }
 
-    public static function updating($ProductId, $data)
-    {
-        return Product::whereId($ProductId)->update([
-            'title' => $data->title,
-            'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
-            'category_id' => $data->category_id,
-            'media_id' => $data->media_id ?? null,
-            'preview' => $data->preview,
-            'content' => $data->content,
-        ]);
-    }
 
     public static function delete($ProductId)
     {
         $Product = Product::whereId($ProductId)->first();
         $Product->comments()->delete();
         return $Product->delete();
+    }
+
+    public static function store($data)
+    {
+        return Product::create([
+            'user_id' => auth()->id(),
+            'media_id' => $data->media_id,
+            'video_id' => $data->video_id,
+            'title' => $data->title,
+            'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
+            'priority' => $data->priority,
+            'price' => $data->price,
+            'price2' => $data->price2,
+            'status' => $data->status,
+            'time' => $data->time,
+            'spot_course_token' => $data->spot_course_token,
+            'description' => $data->description,
+            'body' => $data->body,
+        ]);
     }
 
 }
