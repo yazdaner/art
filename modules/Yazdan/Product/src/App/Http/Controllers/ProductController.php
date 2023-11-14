@@ -5,6 +5,7 @@ namespace Yazdan\Product\App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yazdan\Product\App\Models\Product;
+use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Product\Repositories\ProductRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
 use Yazdan\Product\App\Http\Requests\ProductRequest;
@@ -53,6 +54,13 @@ class ProductController extends Controller
         ProductRepository::update($product->id,$request);
         newFeedbacks();
         return redirect(route('admin.products.index'));
+    }
+
+    public function destroy($id)
+    {
+        $this->authorize('manage', Product::class);
+        ProductRepository::delete($id);
+        return AjaxResponses::SuccessResponses();
     }
 
 }

@@ -3,8 +3,8 @@
 namespace Yazdan\Product\Repositories;
 
 use Illuminate\Support\Str;
+use Yazdan\Media\App\Models\Gallery;
 use Yazdan\Product\App\Models\Product;
-use Yazdan\Product\App\Models\ProductImages;
 
 class ProductRepository
 {
@@ -38,9 +38,9 @@ class ProductRepository
     }
 
 
-    public static function delete($ProductId)
+    public static function delete($id)
     {
-        $Product = Product::whereId($ProductId)->first();
+        $Product = Product::whereId($id)->first();
         $Product->comments()->delete();
         return $Product->delete();
     }
@@ -59,8 +59,9 @@ class ProductRepository
         ]);
 
         foreach($data->images_id as $image_id){
-            ProductImages::create([
-                'product_id' => $product->id,
+            Gallery::create([
+                'gallerisable_id' => $product->id,
+                'gallerisable_type' => Product::class,
                 'image' => $image_id,
             ]);
         }

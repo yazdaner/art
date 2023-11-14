@@ -17,10 +17,10 @@ class ProductRequest extends FormRequest
     {
         $rules = [
             'category_id' => ['required','exists:categories,id'],
-            "media" => ['required','mimes:jpg,png,jpeg','max:2048'],
+            'media' => ['required','mimes:jpg,png,jpeg','max:2048'],
             'title' => ['required','string','max:255','unique:blogs,title'],
             'body' => ['required'],
-            "status" => ["required", Rule::in(ProductRepository::$statuses)],
+            'status' => ['required', Rule::in(ProductRepository::$statuses)],
             'body' => ['required'],
             'delivery_amount' => ['nullable','integer'],
             'delivery_amount_per_product' => ['nullable','integer'],
