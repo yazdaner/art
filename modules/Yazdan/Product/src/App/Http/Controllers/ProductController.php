@@ -2,7 +2,7 @@
 
 namespace Yazdan\Product\App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Yazdan\Product\App\Models\Product;
 use Yazdan\Common\Responses\AjaxResponses;
@@ -25,16 +25,28 @@ class ProductController extends Controller
         $this->authorize('manage', Product::class);
         $statuses = ProductRepository::$statuses;
         $categories = CategoryRepository::getTypeAll(Product::class);
-        return view('Product::admin.create', compact('statuses','categories'));
+        return view('Product::admin.create', compact('statuses', 'categories'));
     }
 
 
     public function store(ProductRequest $request)
     {
         $this->authorize('manage', Product::class);
-        $request = storeImage($request);
-        $request = storeImages($request);
-        ProductRepository::store($request);
+
+        try {
+            DB::beginTransaction();
+
+            $request = storeImage($request);
+            $request = storeImages($request);
+            ProductRepository::store($request);
+
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            newFeedbacks('error', $ex->getMessage(), 'error');
+            return redirect(route('admin.products.index'));
+        }
+
         newFeedbacks();
         return redirect(route('admin.products.index'));
     }
@@ -44,14 +56,15 @@ class ProductController extends Controller
         $this->authorize('manage', Product::class);
         $statuses = ProductRepository::$statuses;
         $categories = CategoryRepository::getTypeAll(Product::class);
-        return view('Product::admin.edit', compact('product', 'statuses','categories'));
+        return view('Product::admin.edit', compact('product', 'statuses', 'categories'));
     }
 
-    public function update(Product $product,ProductRequest $request)
+    public function update(Product $product, ProductRequest $request)
     {
         $this->authorize('manage', Product::class);
-        $request = updateImage($request,$product);
-        ProductRepository::update($product->id,$request);
+
+        $request = updateImage($request, $product);
+        ProductRepository::update($product->id, $request);
         newFeedbacks();
         return redirect(route('admin.products.index'));
     }
@@ -59,8 +72,17 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $this->authorize('manage', Product::class);
-        ProductRepository::delete($id);
+
+        try {
+            DB::beginTransaction();
+
+            ProductRepository::delete($id);
+
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return AjaxResponses::ErrorResponses();
+        }
         return AjaxResponses::SuccessResponses();
     }
-
 }

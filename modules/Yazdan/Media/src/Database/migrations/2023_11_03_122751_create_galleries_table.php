@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->morphs('gallerisable');
 
-            $table->foreignId('image')->nullable();
-            $table->foreign('image')->references('id')->on('media')->onDelete('cascade');
+            $table->foreignId('media_id')->nullable();
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('cascade');
 
             $table->timestamps();
         });
