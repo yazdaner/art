@@ -2,11 +2,12 @@
 
 namespace Yazdan\Product\App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Yazdan\Category\Repositories\CategoryRepository;
+use App\Http\Controllers\Controller;
 use Yazdan\Product\App\Models\Product;
 use Yazdan\Product\Repositories\ProductRepository;
+use Yazdan\Category\Repositories\CategoryRepository;
+use Yazdan\Product\App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -28,7 +29,7 @@ class ProductController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $this->authorize('manage', Course::class);
         $request = storeImage($request);

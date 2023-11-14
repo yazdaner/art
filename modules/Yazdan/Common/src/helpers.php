@@ -101,7 +101,6 @@ function updateImage($request, $model)
     return $request;
 }
 
-
 function storeVideo($request)
 {
     if (isset($request->video)) {

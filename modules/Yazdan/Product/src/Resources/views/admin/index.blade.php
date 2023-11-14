@@ -11,7 +11,7 @@
                 <a class="btn btn-yazdan" href="{{route('admin.products.create')}}">ایجاد محصول</a>
             </div>
             <div class="table__box">
-                <table class="table">
+                <table class="table align-middle">
                     <thead role="rowgroup">
                         <tr role="row" class="title-row">
                             <th>شناسه</th>
@@ -26,7 +26,7 @@
                             <tr role="row" class="">
                                 <td><a href="">{{$products->firstItem() + $key}}</a></td>
                                 <td>
-                                    <a href="{{$product->getImage()}}" target="_blank"><img src="{{$product->getImage(60)}}" class="profile_sm"></a>
+                                    <a href="{{$product->getImage(60)}}" target="_blank"><img src="{{$product->getImage(60)}}" class="profile_sm"></a>
                                 </td>
                                 <td><a href="">{{$product->title}}</a></td>
                                 <td>{{$product->slug}}</td>
