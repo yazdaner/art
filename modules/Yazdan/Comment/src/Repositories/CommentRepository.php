@@ -72,7 +72,6 @@ class CommentRepository
 
     public function searchBody($body)
     {
-
         if (!is_null($body)) {
             $this->query->where("body", "like", "%" . $body . "%");
         }
@@ -99,13 +98,11 @@ class CommentRepository
 
     public function searchName($name)
     {
-
         if (!is_null($name)) {
             $this->query->whereHas("user", function ($q) use ($name) {
                 return $q->where("name", "like", "%" . $name . "%");
             });
         }
-
         return $this;
     }
 }

@@ -44,5 +44,4 @@
     </div>
 </div>
 @endsection
-
-@include('Common::views.admin.ckeditor',['names' => ['body']])
+@include('Common::views.admin.ckeditor',['names' => 'body'])

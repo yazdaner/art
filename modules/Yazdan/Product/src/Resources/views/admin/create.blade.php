@@ -44,13 +44,5 @@
     </div>
 </div>
 @endsection
-@section('script')
-<script src="//cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('body', {
-        language: 'fa',
-        filebrowserUploadUrl: '{{ route('admin.editor-upload', ['_token' => csrf_token()]) }}',
-        filebrowserUploadMethod: 'form'
-    });
-</script>
-@endsection
+@include('Common::views.admin.ckeditor',['names' => ['body']])
+
