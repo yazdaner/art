@@ -4,6 +4,7 @@ namespace Yazdan\Product\Repositories;
 
 use Illuminate\Support\Str;
 use Yazdan\Product\App\Models\Product;
+use Yazdan\Product\App\Models\ProductImages;
 
 class ProductRepository
 {
@@ -59,21 +60,24 @@ class ProductRepository
 
     public static function store($data)
     {
-        return Product::create([
-            'user_id' => auth()->id(),
+        $product = Product::create([
             'media_id' => $data->media_id,
-            'video_id' => $data->video_id,
+            'category_id' => $data->category_id,
             'title' => $data->title,
             'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
-            'priority' => $data->priority,
-            'price' => $data->price,
-            'price2' => $data->price2,
+            'delivery_amount' => $data->delivery_amount,
+            'delivery_amount_per_product' => $data->delivery_amount_per_product,
             'status' => $data->status,
-            'time' => $data->time,
-            'spot_course_token' => $data->spot_course_token,
-            'description' => $data->description,
             'body' => $data->body,
         ]);
+
+        foreach($data->images_id as $image_id){
+            ProductImages::create([
+                'product_id' => $product->id,
+                'image' => $image_id,
+            ]);
+        }
+
     }
 
 }

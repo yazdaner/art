@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('primary_image')->nullable();
-            $table->foreign('primary_image')->references('id')->on('media')->onDelete('set null');
+            $table->foreignId('media_id')->nullable();
+            $table->foreign('media_id')->references('id')->on('media')->onDelete('set null');
 
             $table->string('title');
             $table->string('slug')->unique();

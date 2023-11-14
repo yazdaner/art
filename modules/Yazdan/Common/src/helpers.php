@@ -53,6 +53,24 @@ function storeImage($request)
     return $request;
 }
 
+
+function storeImages($request)
+{
+    if (isset($request->images)) {
+        $images = [];
+        foreach ($request->images as $image) {
+            $response = MediaFileService::publicUpload($image);
+            if ($response == false) {
+                newFeedbacks('نا موفق', 'فرمت فایل نامعتبر میباشد', 'error');
+                return back();
+            }
+            $images[] = $response->id;
+        }
+        $request->request->add(['images_id' => $images]);
+    }
+    return $request;
+}
+
 function destroyImage($model)
 {
     if ($model->media) $model->media->delete();

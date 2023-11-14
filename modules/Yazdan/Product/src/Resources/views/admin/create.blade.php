@@ -18,7 +18,7 @@
                 <x-input name="delivery_amount" type="number" placeholder="مبلغ ارسال" />
                 <x-input name="delivery_amount_per_product" type="number" placeholder="مبلغ ارسال به ازای هر محصول" />
 
-                <x-select name="status" placeholder="دسته بندی محصول">
+                <x-select name="category_id" placeholder="دسته بندی محصول">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}" @if (old('category') == $category->title) selected @endif>{{$category->title}}</option>
                     @endforeach
@@ -30,7 +30,7 @@
                     @endforeach
                 </x-select>
 
-                <x-file-upload name="primary_image" placeholder="تصویر اصلی محصول" />
+                <x-file-upload name="media" placeholder="تصویر اصلی محصول" />
                 <x-file-upload name="images[]" placeholder="تصاویر محصول" multiple="true" />
 
                 <div class="col-12">

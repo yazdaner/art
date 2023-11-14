@@ -30,13 +30,12 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         $this->authorize('manage', Course::class);
         $request = storeImage($request);
-        $request = storeVideo($request);
+        $request = storeImages($request);
         ProductRepository::store($request);
         newFeedbacks();
-        return redirect(route('admin.courses.index'));
+        return redirect(route('admin.products.index'));
     }
 
 }
