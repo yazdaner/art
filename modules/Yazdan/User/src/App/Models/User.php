@@ -2,19 +2,19 @@
 
 namespace Yazdan\User\App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
+use Yazdan\Media\Traits\HasMedia;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
-use Yazdan\Media\App\Models\Media;
-use Yazdan\User\App\Notifications\ResetPasswordEmailCodeNotification;
 use Yazdan\User\App\Notifications\VerifyMailNotification;
+use Yazdan\User\App\Notifications\ResetPasswordEmailCodeNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles,HasMedia;
 
     protected $fillable = [
         'name',
@@ -34,10 +34,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function media()
-    {
-        return $this->belongsTo(Media::class, 'avatar_id');
-    }
 
     public function sendEmailVerificationNotification()
     {
@@ -62,15 +58,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function profilePath()
     {
         return $this->username ? route('users.showProfile', $this->username) : route('users.showProfile', 'username');
-    }
-
-    public function getImage($size = 'original')
-    {
-        if (isset($this->avatar_id)) {
-            return $this->media->thumb($size);
-        } else {
-            return asset('assets/images/user.png');
-        }
     }
 
 }

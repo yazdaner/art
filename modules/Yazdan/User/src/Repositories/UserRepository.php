@@ -58,7 +58,7 @@ class UserRepository
             'username' => $value->username,
             'mobile' => $value->mobile,
             'status' => $value->status,
-            'avatar_id' => $value->avatar_id,
+            'media_id' => $value->media_id,
         ];
 
         if ($value->password) {
@@ -77,9 +77,9 @@ class UserRepository
                 $user->avatar->delete();
             }
             $images = MediaFileService::publicUpload($request->avatar);
-            return $request->request->add(['avatar_id' => $images->id]);
+            return $request->request->add(['media_id' => $images->id]);
         } else {
-            return $request->request->add(['avatar_id' => $user->avatar_id]);
+            return $request->request->add(['media_id' => $user->media_id]);
         }
     }
 

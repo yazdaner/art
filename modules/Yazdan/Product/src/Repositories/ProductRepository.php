@@ -25,19 +25,6 @@ class ProductRepository
         return Product::latest()->paginate($value);
     }
 
-    public static function create($data)
-    {
-        return Product::create([
-            'user_id' => auth()->id(),
-            'title' => $data->title,
-            'slug' => $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
-            'category_id' => $data->category_id,
-            'media_id' => $data->media_id,
-            'preview' => $data->preview,
-            'content' => $data->content,
-        ]);
-    }
-
     public static function findById($id)
     {
         return Product::find($id);
@@ -77,7 +64,20 @@ class ProductRepository
                 'image' => $image_id,
             ]);
         }
+    }
 
+    public static function update($id,$data)
+    {
+        return Product::whereId($id)->update([
+            'media_id' => $data->media_id,
+            'category_id' => $data->category_id,
+            'title' => $data->title,
+            'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
+            'delivery_amount' => $data->delivery_amount,
+            'delivery_amount_per_product' => $data->delivery_amount_per_product,
+            'status' => $data->status,
+            'body' => $data->body,
+        ]);
     }
 
 }

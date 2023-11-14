@@ -93,7 +93,7 @@ class UserController extends Controller
             return back();
         }
         if(auth()->user()->avatar) auth()->user()->avatar->delete();
-        auth()->user()->avatar_id = $image->id;
+        auth()->user()->media_id = $image->id;
         auth()->user()->save();
         newFeedbacks();
         return back();

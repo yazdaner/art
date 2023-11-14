@@ -15,7 +15,6 @@ class ProductController extends Controller
     public function index()
     {
         $this->authorize('manage', Product::class);
-
         $products = ProductRepository::getAllPaginate(10);
         return view('Product::admin.index', compact('products'));
     }
@@ -31,10 +30,27 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $this->authorize('manage', Course::class);
+        $this->authorize('manage', Product::class);
         $request = storeImage($request);
         $request = storeImages($request);
         ProductRepository::store($request);
+        newFeedbacks();
+        return redirect(route('admin.products.index'));
+    }
+
+    public function edit(Product $product)
+    {
+        $this->authorize('manage', Product::class);
+        $statuses = ProductRepository::$statuses;
+        $categories = CategoryRepository::getTypeAll(Product::class);
+        return view('Product::admin.edit', compact('product', 'statuses','categories'));
+    }
+
+    public function update(Product $product,ProductRequest $request)
+    {
+        $this->authorize('manage', Product::class);
+        $request = updateImage($request,$product);
+        ProductRepository::update($product->id,$request);
         newFeedbacks();
         return redirect(route('admin.products.index'));
     }
