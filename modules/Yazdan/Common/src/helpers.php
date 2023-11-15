@@ -5,9 +5,7 @@ use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cookie;
-use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Media\Services\MediaFileService;
-use Yazdan\Comment\Repositories\CommentRepository;
 
 function newFeedbacks($title = 'با موفقعیت', $body = 'عملیات انجام شد', $type = 'success')
 {
@@ -74,6 +72,15 @@ function storeImages($request)
 function destroyImage($model)
 {
     if ($model->media) $model->media->delete();
+}
+
+function destroyImages($model)
+{
+    if ($model->galleries){
+        foreach($model->galleries as $image){
+            $image->media->delete();
+        }
+    }
 }
 
 function destroyVideo($model)

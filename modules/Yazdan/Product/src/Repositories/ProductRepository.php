@@ -44,10 +44,7 @@ class ProductRepository
         $product = Product::whereId($id)->first();
 
         // gallery
-        $images = $product->galleries;
-        foreach($images as $image){
-            $image->media->delete();
-        }
+        destroyImages($product);
 
         // media
         destroyImage($product);
@@ -95,6 +92,18 @@ class ProductRepository
             'status' => $data->status,
             'body' => $data->body,
         ]);
+    }
+
+
+    public static function addImagesGallery($model,$data)
+    {
+        foreach($data->images_id as $image_id){
+            Gallery::create([
+                'gallerisable_id' => $model->id,
+                'gallerisable_type' => get_class($model),
+                'media_id' => $image_id,
+            ]);
+        }
     }
 
 }

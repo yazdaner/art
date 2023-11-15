@@ -33,6 +33,7 @@
                                 <td>
                                     <a href="" onclick="deleteItem(event,'{{route('admin.products.destroy',$product->id)}}')" class="item-delete mlg-15" title="حذف"></a>
                                     <a href="{{route('admin.products.edit',$product->id)}}" class="item-edit" title="ویرایش"></a>
+                                    <a href="{{route('admin.products.editGallery',$product->id)}}" class="font-16" title="ویرایش گالری"><i class="bi bi-image-fill"></i></a>
                                 </td>
                             </tr>
                         @endforeach

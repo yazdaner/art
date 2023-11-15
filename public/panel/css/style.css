@@ -30,10 +30,19 @@ body {
     color: #636e72;
 }
 
-a, a:active, a:focus, a:visited {
-    text-decoration: none;
+
+a{
     color: #444;
 }
+
+a, a:active, a:focus, a:visited {
+    text-decoration: none;
+}
+
+.btn {
+    color: white !important;
+}
+
 
 ul li {
     list-style: none;
@@ -1137,6 +1146,12 @@ textarea {
     content: '\e141';
     font-size: 16px;
 }
+
+.item-edit-gallery:before {
+    content: '\e141';
+    font-size: 16px;
+}
+
 .tab__box{
     background: #fff;
     margin-bottom: 30px;

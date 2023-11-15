@@ -9,5 +9,8 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
 ])->group(function () {
 
     Route::resource('products', ProductController::class);
+    Route::get('products/{product}/editGallery',[ProductController::class,'editGallery'])->name('products.editGallery');
+    Route::get('galleries/{gallery}/delete',[ProductController::class,'deleteImageGallery'])->name('gallery.delete');
+    Route::post('products/{product}/addImageGallery',[ProductController::class,'addImagesGallery'])->name('products.addImagesGallery');
 
 });
