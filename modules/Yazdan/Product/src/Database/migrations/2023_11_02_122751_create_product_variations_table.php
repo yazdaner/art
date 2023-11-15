@@ -17,10 +17,11 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('title');
-            $table->unsignedInteger('price')->default(0);
-            $table->unsignedInteger('price2')->default(0);
             $table->unsignedInteger('quantity')->default(0);
             $table->string('sku')->nullable();
+            $table->unsignedInteger('price')->default(0);
+            $table->unsignedInteger('price2')->default(0);
+
 
             $table->timestamps();
         });

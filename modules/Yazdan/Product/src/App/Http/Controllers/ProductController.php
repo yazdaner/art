@@ -2,14 +2,15 @@
 
 namespace Yazdan\Product\App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Yazdan\Media\App\Models\Gallery;
 use Yazdan\Product\App\Models\Product;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Product\Repositories\ProductRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
+use Yazdan\Product\App\Http\Requests\GalleryRequest;
 use Yazdan\Product\App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
@@ -84,10 +85,10 @@ class ProductController extends Controller
         return AjaxResponses::SuccessResponses();
     }
 
-    public function editGallery(Product $product)
+    public function gallery(Product $product)
     {
         $this->authorize('manage', Product::class);
-        return view('Product::admin.editGallery', compact('product'));
+        return view('Product::admin.gallery', compact('product'));
     }
 
     public function deleteImageGallery(Gallery $gallery)
@@ -106,7 +107,7 @@ class ProductController extends Controller
         return back();
     }
 
-    public function addImagesGallery(Product $product,Request $request)
+    public function addImagesGallery(Product $product,GalleryRequest $request)
     {
         $this->authorize('manage', Product::class);
 

@@ -8,9 +8,15 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     'verified'
 ])->group(function () {
 
+    // products
     Route::resource('products', ProductController::class);
-    Route::get('products/{product}/editGallery',[ProductController::class,'editGallery'])->name('products.editGallery');
-    Route::get('galleries/{gallery}/delete',[ProductController::class,'deleteImageGallery'])->name('gallery.delete');
+
+    // gallery
+    Route::get('products/{product}/gallery',[ProductController::class,'gallery'])->name('products.gallery');
     Route::post('products/{product}/addImageGallery',[ProductController::class,'addImagesGallery'])->name('products.addImagesGallery');
+    Route::get('galleries/{gallery}/delete',[ProductController::class,'deleteImageGallery'])->name('gallery.delete');
+
+    // variation
+    Route::resource('variations', VariationController::class);
 
 });
