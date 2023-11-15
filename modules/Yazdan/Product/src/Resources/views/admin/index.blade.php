@@ -18,6 +18,7 @@
                             <th>بنر</th>
                             <th>عنوان</th>
                             <th>اسلاگ</th>
+                            <th>متغیر های محصول</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>
@@ -30,6 +31,9 @@
                                 </td>
                                 <td><a href="">{{$product->title}}</a></td>
                                 <td>{{$product->slug}}</td>
+                                <td>
+                                    <a href="{{route('admin.variations.index',$product->id)}}" class="btn btn-yazdan" title="متغیر های محصول">مشاهده</a>
+                                </td>
                                 <td>
                                     <a href="" onclick="deleteItem(event,'{{route('admin.products.destroy',$product->id)}}')" class="item-delete mlg-15" title="حذف"></a>
                                     <a href="{{route('admin.products.edit',$product->id)}}" class="item-edit" title="ویرایش"></a>

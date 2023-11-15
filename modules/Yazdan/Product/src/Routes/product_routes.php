@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Yazdan\Product\App\Http\Controllers\ProductController;
+use Yazdan\Product\App\Http\Controllers\VariationController;
 
 Route::prefix('admin-panel')->name('admin.')->middleware([
     'auth',
@@ -17,6 +18,7 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     Route::get('galleries/{gallery}/delete',[ProductController::class,'deleteImageGallery'])->name('gallery.delete');
 
     // variation
-    Route::resource('variations', VariationController::class);
+
+    Route::get('variations/{product}',[VariationController::class,'index'])->name('variations.index');
 
 });

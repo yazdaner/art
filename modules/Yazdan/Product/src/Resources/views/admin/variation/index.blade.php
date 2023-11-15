@@ -1,12 +1,12 @@
 @extends('Dashboard::master')
 @section('breadcrumb')
-    <li><a href="#" title="دسته بندی ها">دسته بندی ها</a></li>
+    <li><a href="#" title="متغییر های محصول">متغییر های محصول</a></li>
 @endsection
 @section('content')
-<div class="main-content padding-0 categories">
+<div class="main-content padding-0">
     <div class="row no-gutters  ">
         <div class="col-8 margin-left-10 margin-bottom-15 border-radius-3">
-            <p class="box__title">دسته بندی ها</p>
+            <p class="box__title">متغییر های محصول</p>
             <div class="table__box">
                 <table class="table">
                     <thead role="rowgroup">
@@ -20,25 +20,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $key => $category)
-                            <tr role="row" class="">
-                                <td><a href="">{{$categories->firstItem() + $key}}</a></td>
-                                <td><a href="">{{$category->title}}</a></td>
-                                <td>{{$category->slug}}</td>
-                                <td>{{$category->parent}}</td>
-                                <td>{{__($category->type_name)}}</td>
+                        @foreach ($variations as $key => $variation)
+                            <tr role="row">
+                                <td><a href="">{{++$key}}</a></td>
+                                <td><a href="">{{$variation->title}}</a></td>
+                                <td>{{$variation->quantity}}</td>
+                                <td>{{$variation->price}}</td>
+                                <td>{{$variation->price2}}</td>
+                                <td>{{$variation->sku}}</td>
                                 <td>
-                                    <a href="" onclick="deleteItem(event,'{{route('admin.categories.destroy',$category->id)}}')" class="item-delete mlg-15" title="حذف"></a>
-                                    <a href="{{route('admin.categories.edit',$category->id)}}" class="item-edit" title="ویرایش"></a>
+                                    <a href="" onclick="deleteItem(event,'{{route('admin.variations.destroy',$variation->id)}}')" class="item-delete mlg-15" title="حذف"></a>
+                                    <a href="{{route('admin.variations.edit',$variation->id)}}" class="item-edit" title="ویرایش"></a>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            {{ $categories->links('pagination.admin') }}
         </div>
-        @include('Category::admin.create')
+        @include('Product::admin.variation.create')
     </div>
 </div>
 @endsection

@@ -444,8 +444,6 @@ textarea {
     border-radius: 40px;
     cursor: pointer;
     margin-top: 15px;
-    display: flex;
-    align-items: center;
 }
 
 .btn-yazdan , .btn-yazdan:visited , .btn-yazdan:active {
