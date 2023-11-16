@@ -46,7 +46,7 @@ class VariationController extends Controller
         return view('Product::admin.variation.edit', compact('variation'));
     }
 
-    public function update(Variation $variation,VariationRequest $request)
+    public function update(Variation $variation, VariationRequest $request)
     {
         $this->authorize('manage', Product::class);
         try {
@@ -69,7 +69,7 @@ class VariationController extends Controller
         $this->authorize('manage', Product::class);
         try {
             DB::beginTransaction();
-                $variation->delete();
+            $variation->delete();
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();

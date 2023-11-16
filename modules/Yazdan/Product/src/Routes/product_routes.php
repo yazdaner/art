@@ -26,3 +26,7 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     Route::delete('variations/{variation}/destroy',[VariationController::class,'destroy'])->name('variations.destroy');
 
 });
+
+
+Route::get('/products', [ProductController::class, 'products'])->name('products');
+Route::get('/products/{product:slug}', [ProductController::class, 'productShow'])->name('products.show');

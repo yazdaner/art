@@ -2,6 +2,7 @@
 @section('content')
     @include('Front::sections.slider')
     @include('Front::sections.courses')
+    @include('Front::sections.products')
     @include('Front::sections.galleryCategories')
     @include('Front::sections.galleryPaintings')
     @include('Front::sections.about')

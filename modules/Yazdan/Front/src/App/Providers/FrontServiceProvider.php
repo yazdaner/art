@@ -52,5 +52,10 @@ class FrontServiceProvider extends ServiceProvider
             $courses = Course::all();
             $view->with(compact('courses'));
         });
+
+        view()->composer(['Front::sections.products'], function ($view) {
+            $products = Product::all();
+            $view->with(compact('products'));
+        });
     }
 }

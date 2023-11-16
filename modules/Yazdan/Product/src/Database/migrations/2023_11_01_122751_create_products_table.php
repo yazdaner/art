@@ -26,6 +26,8 @@ return new class extends Migration
             $table->unsignedInteger('delivery_amount')->default(0);
             $table->unsignedInteger('delivery_amount_per_product')->default(0);
 
+            $table->bigInteger('views')->unsigned()->default(0)->index();
+
             $table->timestamps();
         });
     }

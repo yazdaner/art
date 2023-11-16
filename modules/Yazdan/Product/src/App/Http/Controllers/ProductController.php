@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Yazdan\Media\App\Models\Gallery;
 use Yazdan\Product\App\Models\Product;
 use Yazdan\Common\Responses\AjaxResponses;
+use Yazdan\Comment\Repositories\CommentRepository;
 use Yazdan\Product\Repositories\ProductRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
 use Yazdan\Product\App\Http\Requests\GalleryRequest;
@@ -139,5 +140,23 @@ class ProductController extends Controller
     }
 
 
+     //front
+
+     public function products()
+     {
+         $products = Product::latest()->paginate(1);
+         return view('Product::front.index', compact('products'));
+     }
+
+     public function productShow(Product $product, Request $request)
+     {
+         $cookie = checkView($product, $request);
+         $comments = $product->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
+         if ($cookie == false) {
+             return view('Product::front.show', compact('product', 'comments'));
+         } else {
+             return response()->view('Product::front.show', compact('product', 'comments'))->withCookie($cookie);
+         }
+     }
 
 }

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->unsignedInteger('price')->default(0);
             $table->unsignedInteger('price2')->default(0);
 
-
             $table->timestamps();
         });
     }

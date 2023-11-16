@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <div class="page-next-level">
-                    <h4 class="title">گالری نقاشی ها</h4>
+                    <h4 class="title">دوره های آموزشی</h4>
                     <div class="page-next">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb bg-white rounded shadow mb-0">
@@ -28,7 +28,7 @@
                         <div class="col-md-10">
                             <div class="text-center subcribe-form">
                                 <form style="max-width: 800px;">
-                                    <input type="text" id="course" name="name" class="rounded-pill shadow-md bg-white" placeholder="جستجوی کلمه کلیدی...">
+                                    <input type="text" id="product" name="name" class="rounded-pill shadow-md bg-white" placeholder="جستجوی کلمه کلیدی...">
                                         <button type="submit" class="btn btn-pills btn-primary">جستجو </button>
                                 </form>
                             </div>
@@ -42,19 +42,19 @@
         <div class="row align-items-center">
             <div class="col-md-8">
                 <div class="section-title text-center text-md-start">
-                    <h4>همه گالری نقاشی ها</h4>
+                    <h4>همه دوره های آموزشی</h4>
                 </div>
             </div>
         </div>
         <div class="row">
-            @foreach ($courses as $course)
+            @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 mt-5">
-                    @include('Course::front.singleCourse')
+                    @include('Product::front.singleProduct')
                 </div>
             @endforeach
             <div class="col-12 mt-4 pt-2">
                 <div class="d-flex justify-content-center">
-                    {{$courses->links()}}
+                    {{$products->links()}}
                 </div>
             </div>
         </div>
