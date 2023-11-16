@@ -20,5 +20,9 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     // variation
 
     Route::get('variations/{product}',[VariationController::class,'index'])->name('variations.index');
+    Route::post('variations/store',[VariationController::class,'store'])->name('variations.store');
+    Route::get('variations/{variation}/edit',[VariationController::class,'edit'])->name('variations.edit');
+    Route::put('variations/{variation}/update',[VariationController::class,'update'])->name('variations.update');
+    Route::delete('variations/{variation}/destroy',[VariationController::class,'destroy'])->name('variations.destroy');
 
 });

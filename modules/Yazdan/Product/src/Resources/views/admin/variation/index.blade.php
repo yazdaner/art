@@ -1,21 +1,23 @@
 @extends('Dashboard::master')
 @section('breadcrumb')
+    <li><a href="{{route('admin.products.index')}}" title="محصولات">محصولات</a></li>
     <li><a href="#" title="متغییر های محصول">متغییر های محصول</a></li>
 @endsection
 @section('content')
 <div class="main-content padding-0">
     <div class="row no-gutters  ">
         <div class="col-8 margin-left-10 margin-bottom-15 border-radius-3">
-            <p class="box__title">متغییر های محصول</p>
+            <p class="box__title">متغییر های محصول ({{$product->title}})</p>
             <div class="table__box">
                 <table class="table">
                     <thead role="rowgroup">
                         <tr role="row" class="title-row">
                             <th>شناسه</th>
-                            <th>نام دسته بندی</th>
-                            <th>نام انگلیسی دسته بندی</th>
-                            <th>دسته پدر</th>
-                            <th>نوع</th>
+                            <th>عنوان</th>
+                            <th>تعداد</th>
+                            <th>قیمت</th>
+                            <th>قیمت ویژه</th>
+                            <th>شناسه انبارداری</th>
                             <th>عملیات</th>
                         </tr>
                     </thead>

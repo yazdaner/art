@@ -65,8 +65,18 @@ class ProductController extends Controller
     public function update(Product $product, ProductRequest $request)
     {
         $this->authorize('manage', Product::class);
-        $request = updateImage($request, $product);
-        ProductRepository::update($product->id, $request);
+        try {
+            DB::beginTransaction();
+
+            $request = updateImage($request, $product);
+            ProductRepository::update($product->id, $request);
+
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            newFeedbacks('error', $ex->getMessage(), 'error');
+            return redirect(route('admin.products.index'));
+        }
         newFeedbacks();
         return redirect(route('admin.products.index'));
     }
