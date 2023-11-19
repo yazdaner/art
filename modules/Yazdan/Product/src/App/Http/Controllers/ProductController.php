@@ -150,13 +150,14 @@ class ProductController extends Controller
 
      public function productShow(Product $product, Request $request)
      {
-         $cookie = checkView($product, $request);
-         $comments = $product->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
-         if ($cookie == false) {
-             return view('Product::front.show', compact('product', 'comments'));
-         } else {
-             return response()->view('Product::front.show', compact('product', 'comments'))->withCookie($cookie);
-         }
+        $variations = $product->variations;
+        $cookie = checkView($product, $request);
+        $comments = $product->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
+        if ($cookie == false) {
+            return view('Product::front.show', compact('product', 'comments','variations'));
+        } else {
+            return response()->view('Product::front.show', compact('product', 'comments','variations'))->withCookie($cookie);
+        }
      }
 
 }

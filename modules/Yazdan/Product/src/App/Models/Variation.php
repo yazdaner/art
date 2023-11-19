@@ -6,11 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Variation extends Model
 {
-    protected $table = 'product_variations';
+    protected $table = 'variations';
     protected $guarded = [];
+    protected $appends = ['is_sale'];
 
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
+
+    public function getIsSaleAttribute()
+    {
+        return ($this->price2 != null) ? true : false;
+    }
+
 }
