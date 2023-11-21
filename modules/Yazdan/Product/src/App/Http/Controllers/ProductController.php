@@ -87,7 +87,7 @@ class ProductController extends Controller
         $this->authorize('manage', Product::class);
         try {
             DB::beginTransaction();
-                ProductRepository::delete($id);
+            ProductRepository::delete($id);
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
@@ -107,7 +107,7 @@ class ProductController extends Controller
         $this->authorize('manage', Product::class);
         try {
             DB::beginTransaction();
-                destroyImage($gallery);
+            destroyImage($gallery);
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
@@ -118,7 +118,7 @@ class ProductController extends Controller
         return back();
     }
 
-    public function addImagesGallery(Product $product,GalleryRequest $request)
+    public function addImagesGallery(Product $product, GalleryRequest $request)
     {
         $this->authorize('manage', Product::class);
 
@@ -126,7 +126,7 @@ class ProductController extends Controller
             DB::beginTransaction();
 
             $request = storeImages($request);
-            ProductRepository::addImagesGallery($product,$request);
+            ProductRepository::addImagesGallery($product, $request);
 
             DB::commit();
         } catch (\Exception $ex) {
@@ -140,24 +140,24 @@ class ProductController extends Controller
     }
 
 
-     //front
+    //front
 
-     public function products()
-     {
-         $products = Product::latest()->paginate(1);
-         return view('Product::front.index', compact('products'));
-     }
+    public function products()
+    {
+        $products = Product::latest()->paginate(1);
+        return view('Product::front.index', compact('products'));
+    }
 
-     public function productShow(Product $product, Request $request)
-     {
-        $variations = $product->variations;
+    public function productShow(Product $product, Request $request)
+    {
+        $latestProducts = Product::orderBy('updated_at', 'DESC')->take(5)->get();
+
         $cookie = checkView($product, $request);
         $comments = $product->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
         if ($cookie == false) {
-            return view('Product::front.show', compact('product', 'comments','variations'));
+            return view('Product::front.show', compact('product', 'comments', 'latestProducts'));
         } else {
-            return response()->view('Product::front.show', compact('product', 'comments','variations'))->withCookie($cookie);
+            return response()->view('Product::front.show', compact('product', 'comments', 'latestProducts'))->withCookie($cookie);
         }
-     }
-
+    }
 }
