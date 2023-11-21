@@ -18,6 +18,7 @@
         "mews/captcha": "^3.3",
         "yazdan/about": "dev-master",
         "yazdan/blog": "dev-master",
+        "yazdan/cart": "dev-master",
         "yazdan/category": "dev-master",
         "yazdan/comment": "dev-master",
         "yazdan/common": "dev-master",
@@ -123,6 +124,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Product"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Cart"
         }
     ],
     "scripts": {

@@ -72,7 +72,7 @@ span.old {
     text-decoration: line-through;
     color: #4a4a4a;
     font-weight: 400;
-  }
+}
 span.new {
     font-size: 20px;
     margin-left: 8px;
@@ -80,9 +80,19 @@ span.new {
     font-weight: 1000;
   }
 
-  span.mainPrice {
+span.mainPrice {
     font-size: 20px;
     margin-left: 8px;
     color: #2d2d2d;
     font-weight: 1000;
-  }
+}
+
+.not-in-stock {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    background: #7a7a7a;
+    color: white;
+    height: 40px;
+}

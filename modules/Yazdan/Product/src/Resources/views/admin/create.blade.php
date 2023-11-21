@@ -34,6 +34,9 @@
                 <x-file-upload name="images[]" placeholder="تصاویر محصول" multiple="true" />
 
                 <div class="col-12">
+                    <x-text-area name="description" placeholder="توضیحات" />
+                </div>
+                <div class="col-12">
                     <x-text-area name="body" placeholder="محتوا" />
                 </div>
 
@@ -44,5 +47,5 @@
     </div>
 </div>
 @endsection
-@include('Common::views.admin.ckeditor',['names' => ['body']])
+@include('Common::views.admin.ckeditor',['names' => ['body','description']])
 

@@ -21,6 +21,7 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('slug')->unique();
+            $table->text('description')->nullable();
             $table->text('body')->nullable();
             $table->enum('status',ProductRepository::$statuses);
             $table->unsignedInteger('delivery_amount')->default(0);

@@ -68,6 +68,7 @@ class ProductRepository
             'delivery_amount' => $data->delivery_amount ?? 0,
             'delivery_amount_per_product' => $data->delivery_amount_per_product ?? 0,
             'status' => $data->status,
+            'description' => $data->description,
             'body' => $data->body,
         ]);
 
@@ -90,6 +91,7 @@ class ProductRepository
             'delivery_amount' => $data->delivery_amount ?? 0,
             'delivery_amount_per_product' => $data->delivery_amount_per_product ?? 0,
             'status' => $data->status,
+            'description' => $data->description,
             'body' => $data->body,
         ]);
     }

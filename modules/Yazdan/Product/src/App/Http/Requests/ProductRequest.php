@@ -21,7 +21,7 @@ class ProductRequest extends FormRequest
             'title' => ['required','string','max:255','unique:blogs,title'],
             'body' => ['required'],
             'status' => ['required', Rule::in(ProductRepository::$statuses)],
-            'body' => ['required'],
+            'description' => ['required'],
             'delivery_amount' => ['nullable','integer'],
             'delivery_amount_per_product' => ['nullable','integer'],
         ];

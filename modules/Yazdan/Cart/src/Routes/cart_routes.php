@@ -12,7 +12,7 @@ Route::prefix('users')->name('users.')->middleware(['auth', 'verified'])->group(
     Route::get('/removeFromCart/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
     Route::put('/cart', [CartController::class, 'update'])->name('cart.update');
     Route::get('/clearCart', [CartController::class, 'clear'])->name('cart.clear');
-   
+
     Route::get('/buy', [CartController::class, 'buy'])->name('cart.buy');
 
 

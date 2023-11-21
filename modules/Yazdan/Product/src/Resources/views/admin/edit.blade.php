@@ -34,6 +34,9 @@
                 <x-file-upload name="media" placeholder="تصویر اصلی محصول" :value="$product->media" />
 
                 <div class="col-12">
+                    <x-text-area name="description" placeholder="توضیحات" value="{{$product->description}}" />
+                </div>
+                <div class="col-12">
                     <x-text-area name="body" placeholder="محتوا" value="{{$product->body}}" />
                 </div>
 
@@ -45,4 +48,4 @@
 </div>
 @endsection
 
-@include('Common::views.admin.ckeditor',['names' => ['body']])
+@include('Common::views.admin.ckeditor',['names' => ['body','description']])

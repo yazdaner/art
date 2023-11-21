@@ -46,9 +46,12 @@ class Product extends Model
     //         'price2' => number_format($this->price2),
     //     ];
     // }
-    public function getPrice()
+    public function getPrice() :string
     {
-       return number_format($this->variations->min('price'));
+        if($this->variations->isEmpty()){
+            return 'ناموجود';
+        }
+       return number_format($this->variations->min('price')) .' تومان';
     }
 
     public function getSaleCheckAttribute()
