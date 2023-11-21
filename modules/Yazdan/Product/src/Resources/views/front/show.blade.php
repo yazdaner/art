@@ -48,7 +48,27 @@
                 <div class="section-title ms-md-4">
                     <h4 class="title">{{$product->title}}</h4>
                     <div class="variation-price">
-                        <h5 class="text-muted">21000 تومان <del class="text-danger ms-2">25000 تومان</del> </h5>
+                        @if($product->quantity_check)
+                        @if($product->sale_check)
+                            <span class="new">
+                                {{ number_format($product->sale_check->price2) }}
+                                تومان
+                            </span>
+                            <span class="old">
+                                {{ number_format($product->sale_check->price) }}
+                                تومان
+                            </span>
+                        @else
+                            <span class="mainPrice">
+                                {{ number_format($product->price_check->price) }}
+                                تومان
+                            </span>
+                        @endif
+                    @else
+                        <div class="not-in-stock">
+                            <p class="">ناموجود</p>
+                        </div>
+                    @endif
                     </div>
 
                     <h5 class="mt-4 py-2">بررسی:</h5>
@@ -61,7 +81,9 @@
                                 <label class="form-label">نوع : </label>
                                 <select class="form-control variation-select">
                                     @foreach ($variations as $variation)
-                                    <option value="{{ json_encode($variation->only(['id' , 'quantity','is_sale' , 'price2' , 'price'])) }}">{{$variation->title}}</option>
+                                    <option
+                                        value="{{ json_encode($variation->only(['id' , 'quantity','is_sale' , 'price2' , 'price'])) }}">
+                                        {{$variation->title}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -76,8 +98,8 @@
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                         class="btn btn-icon btn-soft-primary minus">-</button>
 
-                                    <input min="0" name="quantity" value="0" type="number"
-                                        class="btn btn-icon btn-soft-primary qty-btn quantity">
+                                    <input min="1" max="1" name="quantity" value="1" type="number"
+                                        class="quantity-input btn btn-icon btn-soft-primary qty-btn quantity">
 
                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                         class="btn btn-icon btn-soft-primary plus">+</button>
@@ -250,19 +272,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tns-nav" aria-label="Carousel Pagination"><button type="button" data-nav="0"
-                            aria-controls="tns2" style="" aria-label="Carousel Page 1" class=""
-                            tabindex="-1"></button><button type="button" data-nav="1" aria-controls="tns2" style=""
-                            aria-label="Carousel Page 2" class="" tabindex="-1"></button><button type="button"
-                            data-nav="2" aria-controls="tns2" style="" aria-label="Carousel Page 3" class=""
-                            tabindex="-1"></button><button type="button" data-nav="3" aria-controls="tns2" style=""
-                            aria-label="Carousel Page 4" class="" tabindex="-1"></button><button type="button"
-                            data-nav="4" aria-controls="tns2" style="" aria-label="Carousel Page 5 (Current Slide)"
-                            class="tns-nav-active"></button><button type="button" data-nav="5" tabindex="-1"
-                            aria-controls="tns2" style="" aria-label="Carousel Page 6"></button><button type="button"
-                            data-nav="6" tabindex="-1" aria-controls="tns2" style=""
-                            aria-label="Carousel Page 7"></button><button type="button" data-nav="7" tabindex="-1"
-                            aria-controls="tns2" style="" aria-label="Carousel Page 8"></button></div>
                 </div>
             </div>
             <!--end col-->
@@ -273,37 +282,3 @@
 </section>
 @endsection
 
-@section('script')
-    <script>
-        $('.variation-select').on('change' , function(){
-            console.log(2);
-            let variation = JSON.parse(this.value);
-            let variationPriceDiv = $('.variation-price');
-            variationPriceDiv.empty();
-
-            if(variation.is_sale){
-                let spanSale = $('<span />' , {
-                    class : 'new',
-                    text : toPersianNum(number_format(variation.price2)) + ' تومان'
-                });
-                let spanPrice = $('<span />' , {
-                    class : 'old',
-                    text : toPersianNum(number_format(variation.price)) + ' تومان'
-                });
-
-                variationPriceDiv.append(spanSale);
-                variationPriceDiv.append(spanPrice);
-            }else{
-                let spanPrice = $('<span />' , {
-                    class : 'new',
-                    text : toPersianNum(number_format(variation.price)) + ' تومان'
-                });
-                variationPriceDiv.append(spanPrice);
-            }
-
-            $('.quantity-input').attr('data-max' , variation.quantity);
-            $('.quantity-input').val(1);
-
-        });
-    </script>
-@endsection

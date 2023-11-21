@@ -18,7 +18,7 @@ class VariationRepository
             'title' => $data->title,
             'quantity' => $data->quantity,
             'price' => $data->price,
-            'price2' => $data->price2,
+            'price2' => $data->price2 ?? null,
             'sku' => $data->sku,
         ]);
     }
@@ -29,7 +29,7 @@ class VariationRepository
             'title' => $data->title,
             'quantity' => $data->quantity,
             'price' => $data->price,
-            'price2' => $data->price2,
+            'price2' => $data->price2 ?? null,
             'sku' => $data->sku,
         ]);
     }

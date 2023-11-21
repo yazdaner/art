@@ -65,8 +65,8 @@ class ProductRepository
             'category_id' => $data->category_id,
             'title' => $data->title,
             'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
-            'delivery_amount' => $data->delivery_amount,
-            'delivery_amount_per_product' => $data->delivery_amount_per_product,
+            'delivery_amount' => $data->delivery_amount ?? 0,
+            'delivery_amount_per_product' => $data->delivery_amount_per_product ?? 0,
             'status' => $data->status,
             'body' => $data->body,
         ]);
@@ -87,8 +87,8 @@ class ProductRepository
             'category_id' => $data->category_id,
             'title' => $data->title,
             'slug' =>  $data->slug ? Str::slug($data->slug) : Str::slug($data->title),
-            'delivery_amount' => $data->delivery_amount,
-            'delivery_amount_per_product' => $data->delivery_amount_per_product,
+            'delivery_amount' => $data->delivery_amount ?? 0,
+            'delivery_amount_per_product' => $data->delivery_amount_per_product ?? 0,
             'status' => $data->status,
             'body' => $data->body,
         ]);

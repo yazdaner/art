@@ -3,6 +3,7 @@
         data-feather="arrow-up" class="icons"></i></a>
 <!-- Back to top -->
 
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/js/tobii.min.js')}}"></script>
 <script src="{{asset('assets/js/tiny-slider.js')}}"></script>
@@ -13,6 +14,7 @@
 <script src="{{asset('assets/js/switcher.js')}}"></script>
 <script src="{{asset('assets/js/plugins.init.js')}}"></script>
 <script src="{{asset('assets/js/app.js')}}"></script>
+<script src="{{asset('assets/js/custom.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
     var owl_slider = $('.owl-carousel-slider').owlCarousel({

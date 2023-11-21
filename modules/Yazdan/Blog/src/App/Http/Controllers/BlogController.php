@@ -77,9 +77,10 @@ class BlogController extends Controller
 
     public function blogShow(Blog $blog, Request $request)
     {
-        $cookie = checkView($blog, $request);
         $latestPosts = Blog::orderBy('updated_at', 'DESC')->take(5)->get();
         $relatedPosts = Blog::where('category_id', $blog->category->id)->orderBy('updated_at', 'DESC')->take(2)->get();
+
+        $cookie = checkView($blog, $request);
         $comments = $blog->comments()->where('comment_id', null)->where('status', CommentRepository::STATUS_APPROVED)->latest()->paginate(10);
         if ($cookie == false) {
             return view('Blog::front.show', compact('blog', 'latestPosts', 'relatedPosts', 'comments'));

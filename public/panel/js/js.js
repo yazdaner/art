@@ -383,6 +383,7 @@ function number_format (number, decimals, dec_point, thousands_sep) {
     }
     return s.join(dec);
 }
+
 String.prototype.toEnglishDigits = function() {
     return this.replace(/[۰-۹]/g, function(chr) {
         var persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];

@@ -14,6 +14,7 @@ class Product extends Model
 
     protected $table = 'products';
     protected $guarded = [];
+    protected $appends = ['quantity_check', 'sale_check', 'price_check'];
 
     public function galleries()
     {
@@ -48,5 +49,20 @@ class Product extends Model
     public function getPrice()
     {
        return number_format($this->variations->min('price'));
+    }
+
+    public function getSaleCheckAttribute()
+    {
+        return $this->variations()->where('quantity', '>', 0)->where('price2', '!=', null)->orderBy('price2')->first() ?? false;
+    }
+
+    public function getQuantityCheckAttribute()
+    {
+        return $this->variations()->where('quantity', '>', 0)->first() ?? 0;
+    }
+
+    public function getPriceCheckAttribute()
+    {
+        return $this->variations()->where('quantity', '>', 0)->orderBy('price')->first() ?? false;
     }
 }
