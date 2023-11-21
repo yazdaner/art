@@ -47,6 +47,10 @@
                 {{-- form cart --}}
                 <form action="{{ route('users.cart.add') }}" method="POST">
                     @csrf
+
+                    <input type="hidden" name="productable_type" value="{{ \Crypt::encrypt(get_class($product)) }}">
+                    <input type="hidden" name="productable_id" value="{{ $product->id }}">
+
                     <div class="section-title ms-md-4">
                         <h4 class="title">{{$product->title}}</h4>
 

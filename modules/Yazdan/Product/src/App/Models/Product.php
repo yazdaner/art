@@ -7,10 +7,11 @@ use Yazdan\Media\App\Models\Gallery;
 use Yazdan\Comment\Trait\HasComments;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Category\Traits\HasCategory;
+use Yazdan\Payment\Traits\PaymentTrait;
 
 class Product extends Model
 {
-    use HasComments,HasMedia,HasCategory;
+    use HasComments,HasMedia,HasCategory,PaymentTrait;
 
     protected $table = 'products';
     protected $guarded = [];
