@@ -6,10 +6,10 @@ use Carbon\Laravel\ServiceProvider;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
-use Yazdan\RolePermissions\Repositories\PermissionRepository;
 use Yazdan\Delivery\App\Models\Delivery;
 use Yazdan\Delivery\App\Policies\DeliveryPolicy;
 use Yazdan\Delivery\Database\Seeders\DeliverySeeder;
+use Yazdan\RolePermissions\Repositories\PermissionRepository;
 
 class DeliveryServiceProvider extends ServiceProvider
 {
@@ -28,8 +28,8 @@ class DeliveryServiceProvider extends ServiceProvider
         config()->set('sidebar.items.delivery', [
             'icon' => 'i-delivery',
             'url' => route('admin.delivery.edit'),
-            'title' => 'تنظیمات',
-            'permission' => PermissionRepository::PERMISSION_MANAGE_SETTING,
+            'title' => 'هزینه ارسال',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_DELIVERY,
         ]);
 
     }

@@ -1,3 +1,4 @@
 {
-    "coin": "سکه"
+    "delivery_amount": "هزینه ارسال",
+    "delivery_amount_per_product": "هزینه ارسال به ازای هر محصول"
 }

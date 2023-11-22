@@ -663,6 +663,9 @@ textarea {
 .sidebar__nav .i-dashboard a::before {
     content: "\E083";
 }
+.sidebar__nav .i-delivery a::before {
+    content: "\1F69A";
+}
 
 .sidebar__nav .i-courses a::before {
     content: "\270D";

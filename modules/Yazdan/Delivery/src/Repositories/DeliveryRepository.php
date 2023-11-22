@@ -12,18 +12,8 @@ class DeliveryRepository
     }
 
     static $defaultDelivery = [
-        'telephone' => 'telephone',
-        'email' => 'email',
-        'address' => 'address',
-        'description' => 'description',
-        'copyright' => 'copyright',
-        'instagram' => 'instagram',
-        'telegram' => 'telegram',
-        'facebook' => 'facebook',
-        'whatsapp' => 'whatsapp',
-        'youtube' => 'youtube',
-        'linkedin' => 'linkedin',
-        'twitter' => 'twitter',
+        'delivery_amount' => 0,
+        'delivery_amount_per_product' => 0,
     ];
 
     public static function update($id, $data)
