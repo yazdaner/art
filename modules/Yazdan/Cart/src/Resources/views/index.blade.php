@@ -1,129 +1,155 @@
-@extends('Front::layouts.master')
+@extends('Front::master')
 @section('content')
-<!-- Start Cart Area -->
-<section class="cart-area ptb-100 mt-5">
-    <div class="container">
-        @if(\Cart::isEmpty())
-        <div class="container cart-empty-content">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center">
-                    <i class="sli sli-basket"></i>
-                    <h2 class="font-weight-bold my-4">سبد خرید خالی است.</h2>
-                    <p class="mb-40">شما هیچ کالایی در سبد خرید خود ندارید.</p>
-                    <a class="btn mt-3 btn-lg btn-danger" href="{{route('coupons.index')}}"> ادامه خرید </a>
-                </div>
+
+        <!-- Hero Start -->
+        <section class="bg-half bg-light d-table w-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="page-next-level">
+                            <h4 class="title"> سبد خرید </h4>
+                            <div class="page-next">
+                                <nav aria-label="breadcrumb" class="d-inline-block">
+                                    <ul class="breadcrumb bg-white rounded shadow mb-0">
+                                        <li class="breadcrumb-item"><a href="index.html">لنـدریـک </a></li>
+                                        <li class="breadcrumb-item"><a href="index-shop.html">فروشگاه </a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">سبد خرید </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div> <!--end container-->
+        </section><!--end section-->
+        <div class="position-relative">
+            <div class="shape overflow-hidden text-white">
+                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+                </svg>
             </div>
         </div>
-        @else
-        <form action="{{ route('users.cart.update') }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="cart-table table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">محصول</th>
-                            <th scope="col">نام کالا</th>
-                            <th scope="col">قیمت واحد</th>
-                            <th scope="col">تعداد کالا</th>
-                            <th scope="col">مجموع قیمت</th>
-                        </tr>
-                    </thead>
+        <!-- Hero End -->
+<!-- Start -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive bg-white shadow">
+                    <table class="table table-center table-padding mb-0">
+                        <thead>
+                            <tr>
+                                <th class="border-bottom py-3" style="min-width:20px "></th>
+                                <th class="border-bottom py-3" style="min-width: 300px;">محصول </th>
+                                <th class="border-bottom text-center py-3" style="min-width: 160px;">قیمت </th>
+                                <th class="border-bottom text-center py-3" style="min-width: 160px;">تعداد </th>
+                                <th class="border-bottom text-center py-3" style="min-width: 160px;">مجموع </th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
+                        <tbody>
+                            <tr class="shop-list">
+                                <td class="h6"><a href="javascript:void(0)" class="text-danger">X</a></td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="images/shop/product/s1.jpg" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
+                                        <h6 class="mb-0 ms-3">تی شرت </h6>
+                                    </div>
+                                </td>
+                                <td class="text-center">250000 تومان</td>
+                                <td class="text-center qty-icons">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btn btn-icon btn-soft-primary minus">-</button>
+                                    <input min="0" name="quantity" value="7" type="number" class="btn btn-icon btn-soft-primary qty-btn quantity">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn btn-icon btn-soft-primary plus">+</button>
+                                </td>
+                                <td class="text-center fw-bold">51000 تومان</td>
+                            </tr>
 
-                        @foreach (\Cart::getContent() as $item)
-                        <tr id="coupon-{{$item->associatedModel->id}}">
-                            <td class="product-thumbnail">
-                                <a href="#">
-                                    <img src="{{ $item->associatedModel->getAvatar()}}" alt="item">
-                                </a>
-                            </td>
+                            <tr class="shop-list">
+                                <td class="h6"><a href="javascript:void(0)" class="text-danger">X</a></td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="images/shop/product/s3.jpg" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
+                                        <h6 class="mb-0 ms-3">ساعت مچی</h6>
+                                    </div>
+                                </td>
+                                <td class="text-center">52000 تومان</td>
+                                <td class="text-center qty-icons">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btn btn-icon btn-soft-primary minus">-</button>
+                                    <input min="0" name="quantity" value="1" type="number" class="btn btn-icon btn-soft-primary qty-btn quantity">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn btn-icon btn-soft-primary plus">+</button>
+                                </td>
+                                <td class="text-center fw-bold">22000 تومان</td>
+                            </tr>
 
-                            <td class="product-name">
-                                <a href="#">{{$item->name}}</a>
-                            </td>
+                            <tr class="shop-list">
+                                <td class="h6"><a href="javascript:void(0)" class="text-danger">X</a></td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="images/shop/product/s6.jpg" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
+                                        <h6 class="mb-0 ms-3">تی شرت </h6>
+                                    </div>
+                                </td>
+                                <td class="text-center">16000 تومان</td>
+                                <td class="text-center qty-icons">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btn btn-icon btn-soft-primary minus">-</button>
+                                    <input min="0" name="quantity" value="2" type="number" class="btn btn-icon btn-soft-primary qty-btn quantity">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn btn-icon btn-soft-primary plus">+</button>
+                                </td>
+                                <td class="text-center fw-bold">230 هزار تومان</td>
+                            </tr>
 
-                            <td class="product-price">
-                                <span class="unit-amount">{{number_format($item->associatedModel->price)}} تومان</span>
-                                @if($item->associatedModel->hasDiscount())
-                                <p class="text-error">
-                                    <span>{{ $item->associatedModel->getDiscountPercent() }}</span>
-                                    %
-                                    تخفیف
-                                </p>
-                                @endif
-                            </td>
-
-                            <td class="product-quantity">
-                                <div class="input-counter">
-                                    <span class="minus-btn"><i class='bx bx-minus'></i></span>
-                                    <input type="text" min="1" value="{{$item->quantity}}"
-                                        name="qtybutton[{{ $item->id }}]">
-                                    <span class="plus-btn"><i class='bx bx-plus'></i></span>
-                                </div>
-                            </td>
-
-                            <td class="product-subtotal">
-                                <span class="subtotal-amount">{{number_format($item->price * $item->quantity)}} تومان</span>
-                                <a href="{{ route('users.cart.remove' , ['rowId' => $item->id]) }}" class="remove"><i
-                                        class='bx bx-trash'></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="cart-buttons">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-sm-6 col-md-6">
-                        <div class="shopping-coupon-code">
-                            <input type="text" class="form-control" placeholder="کد تخفیف" name="coupon-code"
-                                id="coupon-code">
-                                @error('code')
-                                <div class="invalidFeedback">
-                                    {{$message}}
-                                </div>
-                                @enderror
-
-                            <button onclick="checkDiscountCode(event)">اعمال کد</button>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-sm-6 col-md-6 text-right d-flex align-items-center">
-                        <button type="submit" class="default-btn ml-4"> به روز رسانی سبد خرید </button>
-                        <a href="{{ route('users.cart.clear') }}" class="default-btn text-center">پاک کردن سبد خرید</a>
-                    </div>
+                            <tr class="shop-list">
+                                <td class="h6"><a href="javascript:void(0)" class="text-danger">X</a></td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="images/shop/product/s10.jpg" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
+                                        <h6 class="mb-0 ms-3">عینک آفتابی </h6>
+                                    </div>
+                                </td>
+                                <td class="text-center">26000 تومان</td>
+                                <td class="text-center qty-icons">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btn btn-icon btn-soft-primary minus">-</button>
+                                    <input min="0" name="quantity" value="2" type="number" class="btn btn-icon btn-soft-primary qty-btn quantity">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn btn-icon btn-soft-primary plus">+</button>
+                                </td>
+                                <td class="text-center fw-bold">22000 تومان</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div><!--end col-->
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-lg-8 col-md-6 mt-4 pt-2">
+                <a href="javascript:void(0)" class="btn btn-primary">خرید بیشتر </a>
+                <a href="javascript:void(0)" class="btn btn-soft-primary ms-2">بروز رسانی سبد</a>
             </div>
-
-            <div class="cart-totals">
-                <ul>
-                    <li>مجموع خرید <span>{{number_format(\Cart::getTotal())}} تومان</span></li>
-                    <li></li>
-                </ul>
-                <a href="{{route('users.cart.buy')}}" class="default-btn">ادامه خرید</a>
-            </div>
-        </form>
-        @endif
-    </div>
-</section>
-<form action="{{route('discounts.check')}}" id="form-check" method="post">
-    @csrf
-    <input type="hidden" name="code" id="codeInput">
-</form>
-<!-- End Cart Area -->
-
-@endsection
-@section('script')
-<script>
-        function checkDiscountCode(event)
-        {
-            event.preventDefault();
-            let code = $("#coupon-code").val();
-            $("#codeInput").val(code);
-            $("#form-check").submit();
-        }
-</script>
+            <div class="col-lg-4 col-md-6 ms-auto mt-4 pt-2">
+                <div class="table-responsive bg-white rounded shadow">
+                    <table class="table table-center table-padding mb-0">
+                        <tbody>
+                            <tr>
+                                <td class="h6">مجموع </td>
+                                <td class="text-center fw-bold">219000 تومان</td>
+                            </tr>
+                            <tr>
+                                <td class="h6">مالیات </td>
+                                <td class="text-center fw-bold">219000 تومان</td>
+                            </tr>
+                            <tr class="bg-light">
+                                <td class="h6">مجموع </td>
+                                <td class="text-center fw-bold">289000 تومان</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4 pt-2 text-end">
+                    <a href="shop-checkouts.html" class="btn btn-primary">ادامه به پرداخت </a>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+</section><!--end section-->
+<!-- End -->
 @endsection

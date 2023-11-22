@@ -21,7 +21,7 @@ class CartController extends Controller
 
     public function add(CartRequest $request)
     {
-        dd($request);
+        dd($request->all());
         $count = is_null($request->count) ? 1 : $request->count;
 
         $productModel =  \Crypt::decrypt($request->productable_type);

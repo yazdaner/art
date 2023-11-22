@@ -43,7 +43,7 @@ $('.variation-select').on('change', function () {
         variationPriceDiv.append(spanPrice);
     } else {
         let spanPrice = $('<span />', {
-            class: 'new',
+            class: 'mainPrice',
             text: (number_format(variation.price)) + ' تومان'
         });
         variationPriceDiv.append(spanPrice);

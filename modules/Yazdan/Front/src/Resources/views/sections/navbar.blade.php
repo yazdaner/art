@@ -7,6 +7,7 @@
         </div>
         <div class="buy-button">
             @auth
+            @include('Cart::navCart')
             <a href="{{route('users.profile')}}" class="btn btn-primary btn-p">حساب کاربری</a>
             <a href="{{route('logout')}}" class="btn btn-primary btn-p">خروج</a>
             @else

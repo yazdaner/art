@@ -37,24 +37,6 @@ class Product extends Model
         return $this->save();
     }
 
-    // public function getPrice()
-    // {
-    //     if($this->price2 == null){
-    //         return number_format($this->price);
-    //     }
-    //     return [
-    //         'price' => number_format($this->price),
-    //         'price2' => number_format($this->price2),
-    //     ];
-    // }
-    public function getPrice() :string
-    {
-        if($this->variations->isEmpty()){
-            return 'ناموجود';
-        }
-       return number_format($this->variations->min('price')) .' تومان';
-    }
-
     public function getSaleCheckAttribute()
     {
         return $this->variations()->where('quantity', '>', 0)->where('price2', '!=', null)->orderBy('price2')->first() ?? false;

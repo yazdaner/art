@@ -71,7 +71,7 @@
                                     <div>
                                         <label class="form-label">نوع : </label>
                                         <select name="variation" class="form-control variation-select">
-                                            @foreach ($product->variations->sortBy('price') as $variation)
+                                            @foreach ($product->variations as $variation)
                                             <option
                                                 value="{{ json_encode($variation->only(['id' , 'quantity','is_sale' , 'price2' , 'price'])) }}">
                                                 {{$variation->title}}</option>
