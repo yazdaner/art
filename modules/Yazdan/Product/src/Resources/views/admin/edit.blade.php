@@ -16,9 +16,6 @@
                 <x-input name="title" type="text" placeholder="عنوان" value="{{$product->title}}" />
                 <x-input name="slug" type="text" placeholder="عنوان انگلیسی" value="{{$product->slug}}" />
 
-                <x-input name="delivery_amount" type="number" placeholder="مبلغ ارسال" value="{{$product->delivery_amount}}" />
-                <x-input name="delivery_amount_per_product" type="number" placeholder="مبلغ ارسال به ازای هر محصول" value="{{$product->delivery_amount_per_product}}"/>
-
                 <x-select name="category_id" placeholder="دسته بندی محصول">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}" @if ($product->category->title == $category->title) selected @endif>{{$category->title}}</option>

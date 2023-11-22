@@ -15,9 +15,6 @@
                 <x-input name="title" type="text" placeholder="عنوان" />
                 <x-input name="slug" type="text" placeholder="عنوان انگلیسی" />
 
-                <x-input name="delivery_amount" type="number" placeholder="مبلغ ارسال" />
-                <x-input name="delivery_amount_per_product" type="number" placeholder="مبلغ ارسال به ازای هر محصول" />
-
                 <x-select name="category_id" placeholder="دسته بندی محصول">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}" @if (old('category') == $category->title) selected @endif>{{$category->title}}</option>
