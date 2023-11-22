@@ -24,8 +24,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('body')->nullable();
             $table->enum('status',ProductRepository::$statuses);
-            $table->unsignedInteger('delivery_amount')->default(0);
-            $table->unsignedInteger('delivery_amount_per_product')->default(0);
 
             $table->bigInteger('views')->unsigned()->default(0)->index();
 
