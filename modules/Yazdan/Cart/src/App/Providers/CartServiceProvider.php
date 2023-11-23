@@ -14,5 +14,9 @@ class CartServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views/', 'Cart');
     }
 
+    public function boot()
+    {
+        require_once __DIR__ . '/../../helpers.php';
+    }
 
 }

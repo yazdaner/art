@@ -51,4 +51,3 @@ function checkView($model, Request $request)
         return false;
     }
 }
-
