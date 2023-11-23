@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Yazdan\Coin\App\Models\Coin;
 use Yazdan\Common\Responses\AjaxResponses;
 use Yazdan\Coupon\App\Models\Coupon;
+use Yazdan\Course\App\Models\Course;
 use Yazdan\Discount\App\Http\Requests\CodeRequest;
 use Yazdan\Discount\App\Http\Requests\DiscountRequest;
 use Yazdan\Discount\App\Models\Discount;
 use Yazdan\Discount\Repositories\DiscountRepository;
 use Yazdan\Discount\Services\DiscountService;
+use Yazdan\Product\App\Models\Product;
 
 class DiscountController extends Controller
 {
@@ -18,9 +20,9 @@ class DiscountController extends Controller
     {
         $this->authorize('manage', Discount::class);
         $discounts = DiscountRepository::paginateAll();
-        $coupons = Coupon::all();
-        $coin = Coin::first();
-        return view('Discount::admin.index', compact('coupons', 'discounts','coin'));
+        $products = Product::all();
+        $courses = Course::all();
+        return view('Discount::admin.index', compact('discounts','products','courses'));
     }
 
     public function store(DiscountRequest $request)

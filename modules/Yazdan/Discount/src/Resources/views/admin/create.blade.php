@@ -15,7 +15,6 @@
         <p class="box__title margin-top-15">این تخفیف برای</p>
         <x-validation-error field="type" />
 
-
         <div class="notificationGroup">
             <input id="discounts-field-1" class="discounts-field-pn" name="type" value="all" type="radio" />
             <label for="discounts-field-1">همه آیتم ها</label>
@@ -27,25 +26,22 @@
         </div>
 
         <div class="selectCourseContainer d-none">
-            <span>کوپن</span>
-            <select name="coupons[]" class="mySelect2" multiple>
-                @foreach($coupons as $coupon)
-                <option value="{{ $coupon->id }}">{{ $coupon->title }}</option>
+            <span>محصولات</span>
+            <select name="products[]" class="mySelect2" multiple>
+                @foreach($products as $product)
+                <option value="{{ $product->id }}">{{ $product->title }}</option>
                 @endforeach
             </select>
         </div>
+
         <div class="selectCourseContainer d-none">
-            <span>سکه</span>
-            <select name="coins[]" class="mySelect2" multiple>
-                <option value="{{ $coin->id }}">{{ $coin->title }}</option>
+            <span>دوره ها</span>
+            <select name="courses[]" class="mySelect2" multiple>
+                @foreach($courses as $course)
+                <option value="{{ $course->id }}">{{ $course->title }}</option>
+                @endforeach
             </select>
         </div>
-
-
-        <x-input type="text" name="link" placeholder="لینک اطلاعات بیشتر" />
-        <x-input type="text" name="description" placeholder="توضیحات" class="margin-bottom-15" />
-
-
 
         <button class="btn btn-yazdan" type="submit">اضافه کردن</button>
     </form>

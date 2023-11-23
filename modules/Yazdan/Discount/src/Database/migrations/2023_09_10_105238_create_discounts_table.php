@@ -32,8 +32,6 @@ class CreateDiscountsTable extends Migration
             $table->unsignedBigInteger("quantity_limitation")->nullable(); // null means unlimited
 
             $table->timestamp("expire_at")->nullable();
-            $table->string("link", 300)->nullable();
-            $table->string("description")->nullable();
             $table->unsignedBigInteger("uses")->default(0);
             $table->timestamps();
         });

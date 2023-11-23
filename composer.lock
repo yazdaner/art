@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39f8cef1f4a722ed72eb1e26f90b6572",
+    "content-hash": "5dc307c767c5281b7625aa8b8c28d3d0",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -6635,6 +6635,31 @@
             }
         },
         {
+            "name": "yazdan/discount",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/Discount",
+                "reference": "2202ec19052070c9b0ac9a275486b68204f3dfa8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\Discount\\App\\Providers\\DiscountServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\Discount\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/front",
             "version": "dev-master",
             "dist": {
@@ -6690,7 +6715,7 @@
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Media",
-                "reference": "dfdbbbfea6e585421d510fd1c3e1cd20b8dce37f"
+                "reference": "5bf86546b0f6ac4dcd2e24cd30ef72f5c9062d96"
             },
             "type": "library",
             "extra": {
@@ -9319,6 +9344,7 @@
         "yazdan/course": 20,
         "yazdan/dashboard": 20,
         "yazdan/delivery": 20,
+        "yazdan/discount": 20,
         "yazdan/front": 20,
         "yazdan/home": 20,
         "yazdan/media": 20,

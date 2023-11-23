@@ -26,6 +26,7 @@
         "yazdan/course": "dev-master",
         "yazdan/dashboard": "dev-master",
         "yazdan/delivery": "dev-master",
+        "yazdan/discount": "dev-master",
         "yazdan/front": "dev-master",
         "yazdan/home": "dev-master",
         "yazdan/media": "dev-master",
@@ -133,6 +134,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Delivery"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Discount"
         }
     ],
     "scripts": {
