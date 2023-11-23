@@ -6,6 +6,8 @@ use Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yazdan\Payment\Gateways\Gateway;
+use Yazdan\Product\App\Models\Product;
+use Yazdan\Product\App\Models\Variation;
 use Yazdan\Payment\Services\PaymentService;
 use Yazdan\Cart\App\Http\Requests\CartRequest;
 use Yazdan\Payment\Repositories\PaymentRepository;
@@ -21,52 +23,49 @@ class CartController extends Controller
 
     public function add(CartRequest $request)
     {
-        dd($request->all());
-        $count = is_null($request->count) ? 1 : $request->count;
+        $product = Product::findOrFail($request->product_id);
+        $variation = Variation::findOrFail(json_decode($request->variation)->id);
 
-        $productModel =  \Crypt::decrypt($request->productable_type);
-        $productId = $request->productable_id;
+        if ($request->quantity > $variation->quantity) {
+            newFeedbacks('نا موفق','تعداد وارد شده از محصول درست نمی باشد','error');
+            return back();
+        }
 
-        $product = $productModel::find($productId);
-
-        $rowId = $productModel . '-' .  $productId;
+        $rowId = $product->id . '-' . $variation->id;
 
         if (\Cart::get($rowId) == null) {
             \Cart::add(array(
                 'id' => $rowId,
                 'name' => $product->title,
-                'price' => $product->finalPrice(),
-                'quantity' => $count,
-                'attributes' => $product->toArray(),
+                'price' => $variation->is_sale ? $variation->price2 : $variation->price,
+                'quantity' => $request->quantity,
+                'attributes' => $variation->toArray(),
                 'associatedModel' => $product
             ));
         } else {
             newFeedbacks('دقت کنید', 'محصول مورد نظر به سبد خرید شما اضافه شده است', 'error');
-            return redirect(route('users.cart.index'));
+            return redirect(route('cart.index'));
         }
 
         newFeedbacks();
-        return redirect(route('users.cart.index'));
+        return redirect(route('cart.index'));
     }
 
     public function update(Request $request)
     {
         $request->validate([
-            'qtybutton' => 'required'
+            'quantity' => 'required'
         ]);
 
-        foreach ($request->qtybutton as $rowId => $quantity) {
+        foreach ($request->quantity as $rowId => $quantity) {
 
             Cart::update($rowId, array(
                 'quantity' => array(
                     'relative' => false,
                     'value' => $quantity
                 ),
-                'price' => \Cart::getContent()[$rowId]->associatedModel->finalPrice()
             ));
         }
-        session()->forget('code');
-
         newFeedbacks('با موفقیت', 'سبد خرید شما ویرایش شد', 'success');
         return back();
     }

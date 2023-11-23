@@ -45,11 +45,10 @@
 
             <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 {{-- form cart --}}
-                <form action="{{ route('users.cart.add') }}" method="POST">
+                <form action="{{ route('cart.add') }}" method="POST">
                     @csrf
 
-                    <input type="hidden" name="productable_type" value="{{ \Crypt::encrypt(get_class($product)) }}">
-                    <input type="hidden" name="productable_id" value="{{ $product->id }}">
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                     <div class="section-title ms-md-4">
                         <h4 class="title">{{$product->title}}</h4>
@@ -59,7 +58,7 @@
                         {{-- end price --}}
 
                         <h5 class="mt-4 py-2">بررسی:</h5>
-                        <div class="description">
+                        <div class="description text-break">
                             {!! $product->description !!}
                         </div>
 

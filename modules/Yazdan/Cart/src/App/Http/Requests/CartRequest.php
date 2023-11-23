@@ -26,8 +26,10 @@ class CartRequest extends FormRequest
     public function rules()
     {
         return [
-            "productable_id" => "required",
-            "productable_type" => ["required", new ProductableRule()],
+            'product_id' => 'required',
+            'variation' => 'required',
+            'quantity' => 'required'
         ];
     }
 }
+

@@ -4,16 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Yazdan\Cart\App\Http\Controllers\CartController;
 
 
-Route::prefix('users')->name('users.')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('cart')->name('cart.')->middleware(['auth', 'verified'])->group(function () {
 
 
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/removeFromCart/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::put('/cart', [CartController::class, 'update'])->name('cart.update');
-    Route::get('/clearCart', [CartController::class, 'clear'])->name('cart.clear');
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::post('/add', [CartController::class, 'add'])->name('add');
+    Route::get('/remove/{rowId}', [CartController::class, 'remove'])->name('remove');
+    Route::put('/update', [CartController::class, 'update'])->name('update');
+    Route::get('/clear', [CartController::class, 'clear'])->name('clear');
 
-    Route::get('/buy', [CartController::class, 'buy'])->name('cart.buy');
-
+    Route::get('/buy', [CartController::class, 'buy'])->name('buy');
 
 });
