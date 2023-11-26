@@ -24,4 +24,10 @@ class Variation extends Model
     {
         return $this->is_sale ? round((($this->price - $this->price2) / $this->price) * 100) : null;
     }
+
+    public function getPrice()
+    {
+        return $this->price2 ?? $this->price;
+    }
 }
+

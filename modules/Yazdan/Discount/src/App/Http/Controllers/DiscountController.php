@@ -22,7 +22,7 @@ class DiscountController extends Controller
         $discounts = DiscountRepository::paginateAll();
         $products = Product::all();
         $courses = Course::all();
-        return view('Discount::admin.index', compact('discounts','products','courses'));
+        return view('Discount::admin.index', compact('discounts', 'products', 'courses'));
     }
 
     public function store(DiscountRequest $request)
@@ -39,9 +39,9 @@ class DiscountController extends Controller
     public function edit(Discount $discount)
     {
         $this->authorize('manage', Discount::class);
-        $coupons = Coupon::all();
-        $coin = Coin::first();
-        return view("Discount::admin.edit", compact("discount", "coupons","coin"));
+        $products = Product::all();
+        $courses = Course::all();
+        return view("Discount::admin.edit", compact("discount", "products", "courses"));
     }
 
     public function update(Discount $discount, DiscountRequest $request)
@@ -67,26 +67,30 @@ class DiscountController extends Controller
             $discount = DiscountRepository::getValidDiscountByCode($request->code, $item->associatedModel);
             if (!is_null($discount)) {
                 $ProductWithDiscount[] = [
-                    'product' => $item->associatedModel,
-                    'discount' => $discount,
+                    'variation' => $item->attributes,
                     'quantity' => $item->quantity,
+                    'discount' => $discount,
                 ];
             }
         }
-
+        dd($ProductWithDiscount);
         if ($ProductWithDiscount == []) {
             newFeedbacks('ناموفق', 'کد تخفیف وارد شده نامعتبر می باشد', 'error');
             return back();
         }
+
         if (session()->has('code')) {
             session()->forget('code');
         }
+
         session()->put('code', $request->code);
 
         foreach ($ProductWithDiscount as $item) {
-            $discountTotalAmount = DiscountService::calculateDiscountAmount($item['product'], $item['discount'],$item['quantity']);
-            \Cart::update(get_class($item['product']) . '-' .  $item['product']->id,
-                ['price' => $discountTotalAmount / $item['quantity']]);
+            $discountTotalAmount = DiscountService::calculateDiscountAmount($item['variation'], $item['quantity'], $item['discount']);
+            \Cart::update(
+                get_class($item['product']) . '-' .  $item['product']->id,
+                ['price' => $discountTotalAmount / $item['quantity']]
+            );
         }
 
         newFeedbacks();

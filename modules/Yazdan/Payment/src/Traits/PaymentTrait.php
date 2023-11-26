@@ -60,24 +60,28 @@ trait PaymentTrait
         return DiscountService::calculateDiscountAmount($this, $discount);
     }
 
-    // get final price with dicounts
-    public function finalPrice($quantity = 1, $code = null, $withDiscounts = false)
-    {
-        $discounts = [];
-        $amount = $this->price;
-        if ($code) {
-            $repo = new DiscountRepository();
-            $discountFromCode = $repo->getValidDiscountByCode($code, $this);
+    // // get final price with dicounts
+    // public function finalPrice($quantity = 1, $code = null, $withDiscounts = false)
+    // {
+    //     $discounts = [];
+    //     $amount = $this->price2 ?? $this->price;
 
-            if ($discountFromCode) {
-                $discounts[] = $discountFromCode;
+    //     if ($code) {
 
-                $amount = DiscountService::calculateDiscountAmount($this, $discountFromCode,$quantity);
-            }
-        }
-        if ($withDiscounts)
-            return [$amount, $discounts];
-        return $amount;
-    }
+    //         $discountFromCode = DiscountRepository::getValidDiscountByCode($code, $this);
 
-}
+    //         if ($discountFromCode) {
+    //             $discounts[] = $discountFromCode;
+
+    //             $amount = DiscountService::calculateDiscountAmount($this, $discountFromCode,$quantity);
+    //         }
+
+    //     }
+
+    //     if ($withDiscounts)
+    //         return [$amount, $discounts];
+
+    //     return $amount;
+    // }
+
+  }

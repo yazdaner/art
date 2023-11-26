@@ -4,30 +4,43 @@ namespace Yazdan\Discount\Services;
 
 class DiscountService
 {
-    public static function calculateDiscountAmount($product, $discount,$quantity = 1)
-    {
-        $finalPrice = $product->finalPrice();
-        $price = $product->price;
-        $paybleAmount = (($finalPrice * (100 - $discount->percent)) / 100);
-        $max_amount = $discount->max_amount;
-        $quantity_limitation = $discount->quantity_limitation;
-        $discountAmount = $finalPrice - $paybleAmount;
+    private $discount, $variationPrice, $paybleAmount;
 
-        if($max_amount){
-            return ($discountAmount > $max_amount ? $price - $max_amount :  $paybleAmount);
+    public function calculateDiscountAmount($variation, $quantity, $discount)
+    {
+        $this->discount = $discount;
+        $this->variationPrice = $variation->getPrice();
+        $this->paybleAmount = (($variation->getPrice() * (100 - $discount->percent)) / 100);
+
+        if ($discount->max_amount) return self::maxAmount();
+        if ($discount->quantity_limitation) return self::quantityLimitation($quantity);
+
+        return $this->paybleAmount;
+    }
+
+    public function maxAmount()
+    {
+        $max_amount = $this->discount->max_amount;
+        $VariationPrice = $this->variationPrice;
+        $paybleAmount = $this->paybleAmount;
+        $discountAmount = $VariationPrice - $paybleAmount;
+
+        return ($discountAmount > $max_amount ? $VariationPrice - $max_amount :  $paybleAmount);
+    }
+
+    public function quantityLimitation($quantity)
+    {
+        $VariationPrice = $this->variationPrice;
+        $quantity_limitation = $this->discount->quantity_limitation;
+
+        if ($quantity_limitation) {
+            if ($this->discount->percent == 100 && $quantity > 1) {
+                return round(((($quantity - $quantity_limitation) * $VariationPrice + ($quantity_limitation * $paybleAmount))));
+            } elseif ($quantity - $quantity_limitation < 0) {
+                return round(($quantity *  $this->paybleAmount));
+            } else {
+                return round((($quantity - $quantity_limitation) * $VariationPrice + ($quantity_limitation * $paybleAmount)));
+            }
         }
-        if($quantity_limitation){
-            if($discount->percent == 100 && $quantity > 1){
-                return round(((($quantity - $quantity_limitation) * $price + ($quantity_limitation * $paybleAmount))));
-            }
-            elseif($quantity - $quantity_limitation < 0){
-                return round(( $quantity *  $paybleAmount));
-            }
-            else{
-                return round((($quantity - $quantity_limitation) * $price + ($quantity_limitation * $paybleAmount)));
-            }
-        }
-        return $paybleAmount;
     }
 }
-

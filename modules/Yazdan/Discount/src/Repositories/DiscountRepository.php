@@ -42,15 +42,13 @@ class DiscountRepository
             "max_amount" => $data["max_amount"],
             "quantity_limitation" => $data["quantity_limitation"],
             "expire_at" => $data["expire_at"] ? Jalalian::fromFormat("Y/m/d H:i", $data["expire_at"])->toCarbon() : null,
-            "link" => $data["link"],
             "type" => $data["type"],
-            "description" => $data["description"],
             "uses" => 0
         ]);
 
         if ($discount->type == self::TYPE_SPECIAL) {
-            if(isset($data['coupons'])) $discount->coupons()->sync($data["coupons"]);
-            if(isset($data['coins'])) $discount->coins()->sync($data["coins"]);
+            if(isset($data['courses'])) $discount->courses()->sync($data["courses"]);
+            if(isset($data['products'])) $discount->products()->sync($data["products"]);
         }
     }
 
@@ -63,18 +61,16 @@ class DiscountRepository
             "max_amount" => $data["max_amount"],
             "quantity_limitation" => $data["quantity_limitation"],
             "expire_at" => $data["expire_at"] ? Jalalian::fromFormat("Y/m/d H:i", $data["expire_at"])->toCarbon() : null,
-            "link" => $data["link"],
             "type" => $data["type"],
-            "description" => $data["description"],
         ]);
 
         $discount = self::find($id);
         if ($discount->type == self::TYPE_SPECIAL) {
-            isset($data['coupons']) ? $discount->coupons()->sync($data["coupons"]) : $discount->coupons()->sync([]);;
-            isset($data['coins']) ? $discount->coins()->sync($data["coins"]) : $discount->coins()->sync([]);
+            isset($data['courses']) ? $discount->courses()->sync($data["courses"]) : $discount->courses()->sync([]);;
+            isset($data['products']) ? $discount->products()->sync($data["products"]) : $discount->products()->sync([]);
         } else {
-            $discount->coupons()->sync([]);
-            $discount->coins()->sync([]);
+            $discount->courses()->sync([]);
+            $discount->products()->sync([]);
         }
     }
 
@@ -91,7 +87,7 @@ class DiscountRepository
             $query->where(function ($query) use ($id,$table) {
                 return $query->whereHas($table, function ($query) use ($id) {
                     return $query->where("id", $id);
-                })->orWhereDoesntHave('coins')->whereDoesntHave('coupons');
+                })->orWhereDoesntHave('products')->whereDoesntHave('courses');
 
             })
             ->where(function ($query) {
@@ -100,6 +96,7 @@ class DiscountRepository
             });
             return $query->first();
     }
+
     public static function getValidCode($code)
     {
         $query = Discount::query()

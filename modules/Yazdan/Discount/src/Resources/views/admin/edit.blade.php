@@ -4,54 +4,63 @@
 <li><a href="#" title="ویرایش تخفیف">ویرایش تخفیف</a></li>
 @endsection
 @section("content")
-  <div class="main-content">
+<div class="main-content">
     <div class="col-12 bg-white">
         <p class="box__title">ویرایش کد تخفیف</p>
         <form action="{{ route("admin.discounts.update", $discount->id) }}" method="post" class="padding-30">
             @csrf
             @method("put")
-            <x-input type="text" placeholder="کد تخفیف" name="code" value="{{ $discount->code }}"/>
+            <x-input type="text" placeholder="کد تخفیف" name="code" value="{{ $discount->code }}" />
             <x-input type="number" placeholder="درصد تخفیف" name="percent" required value="{{ $discount->percent }}" />
-            <x-input type="number" placeholder="محدودیت افراد" name="usage_limitation" value="{{ $discount->usage_limitation }}" />
+            <x-input type="number" placeholder="محدودیت افراد" name="usage_limitation"
+                value="{{ $discount->usage_limitation }}" />
 
-            <x-input type="number" placeholder="سقف قیمت تخفیف" name="max_amount" value="{{ $discount->max_amount }}"/>
-            <x-input type="number" placeholder="محدودیت تعداد" name="quantity_limitation" value="{{ $discount->quantity_limitation }}" />
+            <x-input type="number" placeholder="سقف قیمت تخفیف" name="max_amount" value="{{ $discount->max_amount }}" />
+            <x-input type="number" placeholder="محدودیت تعداد" name="quantity_limitation"
+                value="{{ $discount->quantity_limitation }}" />
 
 
             <x-input type="text" class="expireAt" id="expire_at" placeholder="محدودیت زمانی" name="expire_at"
                 value="{{ $discount->expire_at ? fromCarbon($discount->expire_at) : '' }}" />
 
-           <p class="box__title">این تخفیف برای</p>
-           <x-validation-error field="type"/>
+            <p class="box__title">این تخفیف برای</p>
+            <x-validation-error field="type" />
             <div class="notificationGroup">
-                <input id="discounts-field-1" class="discounts-field-pn" name="type" value="all" type="radio" {{ $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_ALL ? "checked" : "" }}/>
+                <input id="discounts-field-1" class="discounts-field-pn" name="type" value="all" type="radio" {{
+                    $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_ALL ? "checked" : "" }}/>
                 <label for="discounts-field-1">همه دوره ها</label>
             </div>
 
             <div class="notificationGroup">
-                <input id="discounts-field-2" class="discounts-field-pn" name="type" value="special" type="radio" {{ $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_SPECIAL ? "checked" : "" }}/>
+                <input id="discounts-field-2" class="discounts-field-pn" name="type" value="special" type="radio" {{
+                    $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_SPECIAL ? "checked" : ""
+                }}/>
                 <label for="discounts-field-2">دوره خاص</label>
             </div>
-            <div class="selectCourseContainer {{ $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_ALL ? "d-none" : "" }}">
-            <span>کوپن</span>
-
-                <select name="coupons[]" class="mySelect2" multiple>
-                    @foreach($coupons as $coupon)
-                        <option value="{{ $coupon->id }}" {{ $discount->coupons->contains($coupon->id) ? "selected" : "" }}>{{ $coupon->title }}</option>
+            <div class="selectCourseContainer {{ $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_ALL ? "
+                d-none" : "" }}">
+                <span>محصولات</span>
+                <select name="products[]" class="mySelect2" multiple>
+                    @foreach($products as $product)
+                    <option value="{{ $product->id }}" {{ $discount->products->contains($product->id) ? "selected" : ""
+                        }}>{{ $product->title }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="selectCourseContainer {{ $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_ALL ? "d-none" : "" }}">
-            <span>سکه</span>
-                <select name="coins[]" class="mySelect2" multiple>
-                    <option value="{{ $coin->id }}" {{ $discount->coins->contains($coin->id) ? "selected" : "" }}>{{ $coin->title }}</option>
+            <div class="selectCourseContainer {{ $discount->type == \Yazdan\Discount\Repositories\DiscountRepository::TYPE_ALL ? "
+                d-none" : "" }}">
+                <span>دوره ها</span>
+                <select name="courses[]" class="mySelect2" multiple>
+                    @foreach($courses as $course)
+                    <option value="{{ $course->id }}" {{ $discount->courses->contains($course->id) ? "selected" : ""
+                        }}>{{ $course->title }}</option>
+                    @endforeach
                 </select>
             </div>
-
             <button type="submit" class="btn btn-yazdan">بروزرسانی</button>
         </form>
     </div>
-  </div>
+</div>
 @endsection
 
 @section('style')

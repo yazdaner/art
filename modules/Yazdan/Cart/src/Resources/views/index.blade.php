@@ -19,11 +19,8 @@
                     </div>
                 </div>
             </div>
-            <!--end col-->
         </div>
-        <!--end row-->
     </div>
-    <!--end container-->
 </section>
 <!--end section-->
 <div class="position-relative">
@@ -100,14 +97,21 @@
                     </div>
                 </form>
             </div>
-            <!--end col-->
         </div>
-        <!--end row-->
         <div class="row">
             <div class="col-lg-8 col-md-6 mt-4 pt-2">
                 <a href="" class="btn btn-primary">ادامه خرید</a>
                 <a href="{{ route('cart.clear') }}" class="btn btn-soft-primary ms-2">پاک کردن سبد خرید </a>
+
+
+                    <div class="input-group my-4 shopping-coupon-code w-75">
+                        <input type="text" class="form-control" placeholder="کد تخفیف" name="coupon-code" id="coupon-code">
+                        <button class="btn btn-primary" onclick="checkDiscountCode(event)">اعمال کد</button>
+                        <x-validation-error  field="code"/>
+                    </div>
+
             </div>
+
             <div class="col-lg-4 col-md-6 ms-auto mt-4 pt-2">
                 <div class="table-responsive bg-white rounded shadow">
                     <table class="table table-center table-padding mb-0">
@@ -146,12 +150,26 @@
                     <a href="shop-checkouts.html" class="btn btn-primary">ادامه به پرداخت </a>
                 </div>
             </div>
-            <!--end col-->
         </div>
-        <!--end row-->
     </div>
-    <!--end container-->
+
+    <form action="{{route('discounts.check')}}" id="form-check" method="post">
+        @csrf
+        <input type="hidden" name="code" id="codeInput">
+    </form>
+
 </section>
 <!--end section-->
 <!-- End -->
+@endsection
+@section('script')
+<script>
+        function checkDiscountCode(event)
+        {
+            event.preventDefault();
+            let code = $("#coupon-code").val();
+            $("#codeInput").val(code);
+            $("#form-check").submit();
+        }
+</script>
 @endsection

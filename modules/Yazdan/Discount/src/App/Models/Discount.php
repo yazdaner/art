@@ -2,9 +2,9 @@
 namespace Yazdan\Discount\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Yazdan\Coin\App\Models\Coin;
-use Yazdan\Coupon\App\Models\Coupon;
+use Yazdan\Course\App\Models\Course;
 use Yazdan\Payment\App\Models\Payment;
+use Yazdan\Product\App\Models\Product;
 
 class Discount extends Model
 {
@@ -14,14 +14,14 @@ class Discount extends Model
         "expire_at" => "datetime"
     ];
 
-    public function coupons()
+    public function products()
     {
-        return $this->morphedByMany(Coupon::class, "discountable");
+        return $this->morphedByMany(Product::class, "discountable");
     }
 
-    public function coins()
+    public function courses()
     {
-        return $this->morphedByMany(Coin::class, "discountable");
+        return $this->morphedByMany(Course::class, "discountable");
     }
 
     public function payments()
