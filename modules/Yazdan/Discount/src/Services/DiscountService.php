@@ -32,12 +32,13 @@ class DiscountService
     {
         $VariationPrice = $this->variationPrice;
         $quantity_limitation = $this->discount->quantity_limitation;
+        $paybleAmount = $this->paybleAmount;
 
         if ($quantity_limitation) {
             if ($this->discount->percent == 100 && $quantity > 1) {
                 return round(((($quantity - $quantity_limitation) * $VariationPrice + ($quantity_limitation * $paybleAmount))));
             } elseif ($quantity - $quantity_limitation < 0) {
-                return round(($quantity *  $this->paybleAmount));
+                return round(($quantity *  $paybleAmount));
             } else {
                 return round((($quantity - $quantity_limitation) * $VariationPrice + ($quantity_limitation * $paybleAmount)));
             }

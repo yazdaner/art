@@ -13,6 +13,7 @@ use Yazdan\Discount\App\Models\Discount;
 use Yazdan\Discount\Repositories\DiscountRepository;
 use Yazdan\Discount\Services\DiscountService;
 use Yazdan\Product\App\Models\Product;
+use Yazdan\Product\App\Models\Variation;
 
 class DiscountController extends Controller
 {
@@ -73,7 +74,6 @@ class DiscountController extends Controller
                 ];
             }
         }
-        dd($ProductWithDiscount);
         if ($ProductWithDiscount == []) {
             newFeedbacks('ناموفق', 'کد تخفیف وارد شده نامعتبر می باشد', 'error');
             return back();
@@ -86,9 +86,12 @@ class DiscountController extends Controller
         session()->put('code', $request->code);
 
         foreach ($ProductWithDiscount as $item) {
-            $discountTotalAmount = DiscountService::calculateDiscountAmount($item['variation'], $item['quantity'], $item['discount']);
+            $variation = Variation::find($item['variation']->id);
+            $DiscountService = new DiscountService();
+            $discountTotalAmount = $DiscountService->calculateDiscountAmount($variation, $item['quantity'], $item['discount']);
+
             \Cart::update(
-                get_class($item['product']) . '-' .  $item['product']->id,
+                $item['variation']->id,
                 ['price' => $discountTotalAmount / $item['quantity']]
             );
         }

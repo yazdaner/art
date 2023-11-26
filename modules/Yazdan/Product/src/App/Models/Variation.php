@@ -3,6 +3,7 @@
 namespace Yazdan\Product\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Yazdan\Discount\Repositories\DiscountRepository;
 
 class Variation extends Model
 {

@@ -9,6 +9,7 @@ use Yazdan\Payment\Gateways\Gateway;
 use Yazdan\Product\App\Models\Product;
 use Yazdan\Product\App\Models\Variation;
 use Yazdan\Payment\Services\PaymentService;
+use Yazdan\Discount\Services\DiscountService;
 use Yazdan\Cart\App\Http\Requests\CartRequest;
 use Yazdan\Payment\Repositories\PaymentRepository;
 use Yazdan\Payment\App\Events\PaymentWasSuccessful;
@@ -27,11 +28,11 @@ class CartController extends Controller
         $variation = Variation::findOrFail(json_decode($request->variation)->id);
 
         if ($request->quantity > $variation->quantity) {
-            newFeedbacks('نا موفق','تعداد وارد شده از محصول درست نمی باشد','error');
+            newFeedbacks('نا موفق', 'تعداد وارد شده از محصول درست نمی باشد', 'error');
             return back();
         }
 
-        $rowId = $product->id . '-' . $variation->id;
+        $rowId = $variation->id;
 
         if (\Cart::get($rowId) == null) {
             \Cart::add(array(
@@ -39,7 +40,7 @@ class CartController extends Controller
                 'name' => $product->title,
                 'price' => $variation->is_sale ? $variation->price2 : $variation->price,
                 'quantity' => $request->quantity,
-                'attributes' => $variation->toArray(),
+                'attributes' => $variation,
                 'associatedModel' => $product
             ));
         } else {
@@ -59,12 +60,23 @@ class CartController extends Controller
 
         foreach ($request->quantity as $rowId => $quantity) {
 
-            Cart::update($rowId, array(
-                'quantity' => array(
-                    'relative' => false,
-                    'value' => $quantity
-                ),
-            ));
+            $code = session()->get('code');
+            $variation = Variation::find($rowId);
+            $discount = DiscountRepository::getValidDiscountByCode($code, $variation->product);
+            $DiscountService = new DiscountService();
+            $discountTotalAmount = $DiscountService->calculateDiscountAmount($variation, $quantity, $discount);
+
+            \Cart::update(
+                $rowId,
+                [
+                    'quantity' => [
+                        'relative' => false,
+                        'value' => $quantity,
+                    ],
+                    'price' => $discountTotalAmount / $quantity,
+                    'attributes' => $variation,
+                ]
+            );
         }
         newFeedbacks('با موفقیت', 'سبد خرید شما ویرایش شد', 'success');
         return back();
@@ -110,7 +122,7 @@ class CartController extends Controller
         if ($code) {
             $repo = new DiscountRepository();
             $discountFromCode = $repo->getValidCode($code);
-            if($discountFromCode == null){
+            if ($discountFromCode == null) {
                 session()->forget('code');
                 newFeedbacks('نا موفق', 'کد تخفیف نامعتبر میباشد', 'error');
                 return back();
