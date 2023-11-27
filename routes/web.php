@@ -25,3 +25,10 @@ Route::get('test',function(){
         ]);
     dd($response->json());
 });
+
+
+Route::get('a',function(){
+
+    session()->forget('code');
+});
+

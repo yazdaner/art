@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use Yazdan\Course\App\Models\Course;
 use Yazdan\Payment\App\Models\Payment;
 use Yazdan\Product\App\Models\Product;
+use Yazdan\Product\App\Models\Variation;
 
 class Discount extends Model
 {
@@ -17,6 +18,11 @@ class Discount extends Model
     public function products()
     {
         return $this->morphedByMany(Product::class, "discountable");
+    }
+
+    public function variations()
+    {
+        return $this->morphedByMany(Variation::class, "discountable");
     }
 
     public function courses()

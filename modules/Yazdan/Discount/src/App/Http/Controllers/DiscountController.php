@@ -65,7 +65,7 @@ class DiscountController extends Controller
     {
         $ProductWithDiscount = [];
         foreach (\Cart::getContent() as $item) {
-            $discount = DiscountRepository::getValidDiscountByCode($request->code, $item->associatedModel);
+            $discount = DiscountRepository::getValidDiscountByCode($request->code, $item->associatedModel->product);
             if (!is_null($discount)) {
                 $ProductWithDiscount[] = [
                     'variation' => $item->attributes,
@@ -87,8 +87,7 @@ class DiscountController extends Controller
 
         foreach ($ProductWithDiscount as $item) {
             $variation = Variation::find($item['variation']->id);
-            $DiscountService = new DiscountService();
-            $discountTotalAmount = $DiscountService->calculateDiscountAmount($variation, $item['quantity'], $item['discount']);
+            $discountTotalAmount = $variation->getDiscountAmount($item['discount'],$item['quantity']);
 
             \Cart::update(
                 $item['variation']->id,

@@ -41,7 +41,7 @@ class CartController extends Controller
                 'price' => $variation->is_sale ? $variation->price2 : $variation->price,
                 'quantity' => $request->quantity,
                 'attributes' => $variation,
-                'associatedModel' => $product
+                'associatedModel' => $variation
             ));
         } else {
             newFeedbacks('دقت کنید', 'محصول مورد نظر به سبد خرید شما اضافه شده است', 'error');
@@ -60,12 +60,16 @@ class CartController extends Controller
 
         foreach ($request->quantity as $rowId => $quantity) {
 
-            $code = session()->get('code');
             $variation = Variation::find($rowId);
-            $discount = DiscountRepository::getValidDiscountByCode($code, $variation->product);
-            $DiscountService = new DiscountService();
-            $discountTotalAmount = $DiscountService->calculateDiscountAmount($variation, $quantity, $discount);
-
+            $price = $variation->getPrice();
+            $code = session()->get('code');
+            if($code){
+                $discount = DiscountRepository::getValidDiscountByCode($code, $variation->product);
+                if($discount){
+                    $discountTotalAmount = $variation->getDiscountAmount($discount,$quantity);
+                    $price = $discountTotalAmount / $quantity;
+                }
+            }
             \Cart::update(
                 $rowId,
                 [
@@ -73,7 +77,7 @@ class CartController extends Controller
                         'relative' => false,
                         'value' => $quantity,
                     ],
-                    'price' => $discountTotalAmount / $quantity,
+                    'price' => $price,
                     'attributes' => $variation,
                 ]
             );

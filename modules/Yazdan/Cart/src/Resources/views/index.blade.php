@@ -59,7 +59,7 @@
                                             class="text-danger">X</a></td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{$item->associatedModel->getImage(300)}}"
+                                            <img src="{{$item->associatedModel->product->getImage(300)}}"
                                                 class="img-fluid avatar avatar-small rounded shadow"
                                                 style="height:auto;" alt="">
                                             <h6 class="mb-0 ms-3">{{ $item->name }} ({{ $item->attributes->title }})</h6>
@@ -70,12 +70,10 @@
                                             {{ number_format($item->price) }}
                                             تومان
                                         </span>
-                                        @if($item->attributes->is_sale)
                                         <p style="font-size: 14px ; color:red">
-                                            {{ $item->attributes->percent_sale }}%
+                                            {{ $item->associatedModel->getTotalDiscountAmount() }}%
                                             تخفیف
                                         </p>
-                                        @endif
                                     </td>
                                     <td class="text-center qty-icons">
                                         <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
@@ -118,7 +116,7 @@
                         <tbody>
                             <tr>
                                 <td class="h6">مجموع </td>
-                                <td class="text-center fw-bold">{{ number_format( \Cart::getTotal() + cartTotalSaleAmount() ) }} تومان</td>
+                                <td class="text-center fw-bold">{{ number_format( cartTotal() ) }} تومان</td>
                             </tr>
                             <tr>
                                 <td class="h6">مبلغ تخفیف کالا ها</td>
@@ -129,11 +127,15 @@
                                     </span>
                                 </td>
                             </tr>
-                            @if(session()->has('coupon'))
-                                <tr>
-                                    <td class="h6">مالیات </td>
-                                    <td class="text-center fw-bold">219000 تومان</td>
-                                </tr>
+
+                            @if(session()->has('code'))
+                            <td class="h6">مبلغ کد تخفیف کالا ها</td>
+                            <td class="text-center fw-bold">
+                                <span style="color: red">
+                                {{ number_format( cartCodeDiscountTotal() ) }}
+                                تومان
+                                </span>
+                            </td>
                             @endif
                             <tr class="bg-light">
                                 <td class="h6">هزینه ارسال</td>
@@ -141,7 +143,7 @@
                             </tr>
                             <tr class="bg-light">
                                 <td class="h6">مبلغ قابل پرداخت</td>
-                                <td class="text-center fw-bold">289000 تومان</td>
+                                <td class="text-center fw-bold">{{number_format( \Cart::getTotal() + cartTotalDeliveryAmount() )}} تومان</td>
                             </tr>
                         </tbody>
                     </table>
