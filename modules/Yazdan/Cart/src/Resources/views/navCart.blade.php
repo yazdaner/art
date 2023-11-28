@@ -10,15 +10,15 @@
                         <img src="images/shop/product/s-1.jpg" class="shadow rounded" style="max-height: 64px;" alt="">
                         <div class="flex-1 text-start ms-3">
                             <h6 class="text-dark mb-0">{{ $item->name }} ({{ $item->attributes->title }})</h6>
-                            <p class="text-muted mb-0">{{number_format($item->price)}}</p>
+                            <p class="text-muted mb-0">{{$item->quantity}} * {{number_format($item->associatedModel->price)}} تومان</p>
+                            <p class="text-danger mb-0">{{round(100 - (100 * $item->price) / $item->associatedModel->price) }}% تخفیف</p>
                         </div>
-                        <h6 class="text-dark mb-0">{{number_format($item->price)}} تومان</h6>
                     </a>
                 @endforeach
             </div>
             <div class="d-flex align-items-center justify-content-between pt-4 border-top">
                 <h6 class="text-dark mb-0">مجموع (تومان):</h6>
-                <h6 class="text-dark mb-0">1,150,000 تومان</h6>
+                <h6 class="text-dark mb-0">{{number_format(\Cart::getTotal())}} تومان</h6>
             </div>
             <div class="mt-3 text-center">
                 <a href="{{route('cart.index')}}" class="btn btn-primary">نمایش سبد خرید </a>

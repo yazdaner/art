@@ -67,11 +67,11 @@
                                     </td>
                                     <td class="text-center">
                                         <span class="amount">
-                                            {{ number_format($item->price) }}
+                                            {{ number_format($item->associatedModel->price) }}
                                             تومان
                                         </span>
                                         <p style="font-size: 14px ; color:red">
-                                            {{ $item->associatedModel->getTotalDiscountAmount() }}%
+                                            {{round(100 - (100 * $item->price) / $item->associatedModel->price) }}%
                                             تخفیف
                                         </p>
                                     </td>
@@ -122,21 +122,12 @@
                                 <td class="h6">مبلغ تخفیف کالا ها</td>
                                 <td class="text-center fw-bold">
                                     <span style="color: red">
-                                    {{ number_format( cartTotalSaleAmount() ) }}
+                                    {{ number_format( cartTotal() - \Cart::getTotal() ) }}
                                     تومان
                                     </span>
                                 </td>
                             </tr>
 
-                            @if(session()->has('code'))
-                            <td class="h6">مبلغ کد تخفیف کالا ها</td>
-                            <td class="text-center fw-bold">
-                                <span style="color: red">
-                                {{ number_format( cartCodeDiscountTotal() ) }}
-                                تومان
-                                </span>
-                            </td>
-                            @endif
                             <tr class="bg-light">
                                 <td class="h6">هزینه ارسال</td>
                                 <td class="text-center fw-bold">{{number_format(cartTotalDeliveryAmount())}} تومان</td>

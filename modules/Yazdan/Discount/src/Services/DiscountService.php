@@ -12,20 +12,9 @@ class DiscountService
         $this->variationPrice = $variation->getPrice();
         $this->paybleAmount = (($variation->getPrice() * (100 - $discount->percent)) / 100);
 
-        if ($discount->max_amount) return self::maxAmount();
-        if ($discount->quantity_limitation) return self::quantityLimitation($quantity);
+        if ($discount->quantity_limitation) return $this->quantityLimitation($quantity);
 
-        return $this->paybleAmount;
-    }
-
-    public function maxAmount()
-    {
-        $max_amount = $this->discount->max_amount;
-        $VariationPrice = $this->variationPrice;
-        $paybleAmount = $this->paybleAmount;
-        $discountAmount = $VariationPrice - $paybleAmount;
-
-        return ($discountAmount > $max_amount ? $VariationPrice - $max_amount :  $paybleAmount);
+        return $this->paybleAmount * $quantity;
     }
 
     public function quantityLimitation($quantity)
