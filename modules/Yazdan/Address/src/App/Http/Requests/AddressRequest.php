@@ -24,15 +24,17 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            "media" => "required|file|image",
-            "priority" => "nullable|numeric|min:0",
-            "status" => "required|boolean",
-            "link" => "nullable|string|max:200"
+            'name' => 'required',
+            'phone' => 'required|iran_mobile',
+            'province_id' => 'required',
+            'city_id' => 'required',
+            'address' => 'required',
+            'postal_code' => 'required|iran_postal_code'
         ];
 
-        if (request()->method === 'PATCH') {
-            $rules['media'] = "nullable|image";
-        }
+        // if (request()->method === 'PATCH') {
+        //     $rules['media'] = "nullable|image";
+        // }
         return $rules;
     }
 }

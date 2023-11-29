@@ -24,7 +24,7 @@ class AddressServiceProvider extends ServiceProvider
         config()->set('sidebarHome.items.address', [
             'icon' => 'uil-address',
             'url' => route('address'),
-            'title' => 'آدرس ها'
+            'title' => 'آدرس'
         ]);
     }
 }

@@ -7,37 +7,19 @@ use Yazdan\Address\App\Models\Address;
 class AddressRepository
 {
 
-
     public static function store($data)
     {
-        return Address::create([
-            'priority' => $data->priority,
-            'media_id' => $data->media_id,
-            'link' => $data->link,
-            'title' => $data->title,
-            'description' => $data->description,
-            'status' => $data->status,
-            'type' => $data->type,
+        return Address::updateOrCreate(['user_id' => auth()->id()],[
+            'user_id' => auth()->id(),
+            'name' => $data->name,
+            'phone' => $data->phone,
+            'province_id' => $data->province_id,
+            'city_id' => $data->city_id,
+            'address' => $data->address,
+            'postal_code' => $data->postal_code
         ]);
     }
 
-    public static function update($id, $data)
-    {
-        Address::where('id', $id)->update([
-            'priority' => $data->priority,
-            'media_id' => $data->media_id,
-            'link' => $data->link,
-            'title' => $data->title,
-            'description' => $data->description,
-            'status' => $data->status,
-            'type' => $data->type,
-        ]);
-    }
-
-    public function delete($id)
-    {
-        Address::where('id', $id)->delete();
-    }
 }
 
 

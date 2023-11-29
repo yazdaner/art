@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Yazdan\Address\App\Models\Address;
 use Yazdan\User\App\Notifications\VerifyMailNotification;
 use Yazdan\User\App\Notifications\ResetPasswordEmailCodeNotification;
 
@@ -58,6 +59,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function profilePath()
     {
         return $this->username ? route('users.showProfile', $this->username) : route('users.showProfile', 'username');
+    }
+
+    public function address()
+    {
+        return $this->hasOne(Address::class,'user_id');
     }
 
 }
