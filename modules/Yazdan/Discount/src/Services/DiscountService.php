@@ -6,7 +6,7 @@ class DiscountService
 {
     private $discount, $variationPrice, $paybleAmount;
 
-    public function calculateDiscountAmount($variation, $quantity, $discount)
+    public function calculateDiscountAmount($variation,$discount,$quantity)
     {
         $this->discount = $discount;
         $this->variationPrice = $variation->getPrice();

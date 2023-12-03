@@ -9,6 +9,8 @@ use Yazdan\Discount\Repositories\DiscountRepository;
 
 class Variation extends Model
 {
+    use PaymentTrait;
+
     protected $table = 'variations';
     protected $guarded = [];
     protected $appends = ['is_sale'];

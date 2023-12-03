@@ -1,0 +1,15 @@
+{
+    "name" : "yazdan/digitalOrder",
+    "autoload" : {
+        "psr-4" : {
+            "Yazdan\\DigitalOrder\\": "src"
+        }
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Yazdan\\DigitalOrder\\App\\Providers\\DigitalOrderServiceProvider"
+            ]
+        }
+    }
+}

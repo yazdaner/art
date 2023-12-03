@@ -16,7 +16,7 @@ class AddressController extends Controller
     {
         $address = Address::where('user_id', auth()->id())->first();
         $provinces = Province::all();
-        return view("Address::front.index",compact('address','provinces'));
+        return view("Address::home.index",compact('address','provinces'));
     }
 
     public function store(AddressRequest $request)

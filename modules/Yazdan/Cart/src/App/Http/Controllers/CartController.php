@@ -132,12 +132,13 @@ class CartController extends Controller
                 return back();
             }
         }
+
         foreach ($items as $item) {
             [$amount, $discounts] = $item['model']->finalPrice($item['quantity'], $code, true);
-            $amounts[] = $amount;
+            $amounts[] = $amount * $item['quantity'];
             $item['discounts'] = $discounts;
-            $item['amount'] = round($amount / $item['quantity']);
-            $item['totalAmount'] = $amount;
+            $item['amount'] = round($amount);
+            $item['totalAmount'] = $amount * $item['quantity'];
             $products[] = $item;
         }
         $totalAmount = array_sum($amounts);
