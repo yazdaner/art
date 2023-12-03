@@ -1,7 +1,7 @@
 <div class="mb-3">
-    <label>{{$placeholder}}</label>
+    <label>{{$label}}</label>
     <select name="{{$name}}">
-        <option value="">{{$placeholder}}</option>
+        <option value="">{{$label}}</option>
         {{ $slot }}
     </select>
     <x-validation-error field="{{$name}}" />

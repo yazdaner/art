@@ -16,7 +16,7 @@
                 <x-input name="title" type="text" placeholder="عنوان" value="{{ $blog->title }}"/>
 
                <div class="margin-top-15">
-                <x-select name="category_id" placeholder="دسته بندی">
+                <x-select name="category_id" label="دسته بندی">
                     @foreach ($categories as $category)
                         <option @if ($blog->category->id == $category->id) selected @endif value="{{$category->id}}">{{$category->title}}</option>
                     @endforeach

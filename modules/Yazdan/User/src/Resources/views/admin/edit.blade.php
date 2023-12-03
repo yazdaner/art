@@ -25,7 +25,7 @@
 
                 <x-file-upload name="avatar" placeholder="آپلود عکس کاربر" :value="$user->avatar" />
 
-                <x-select name="status" placeholder="وضعیت کاربر">
+                <x-select name="status" label="وضعیت کاربر">
                     @foreach ($statuses as $status)
                     <option value="{{$status}}" @if ($user->status == $status) selected @endif>@lang($status)</option>
                     @endforeach

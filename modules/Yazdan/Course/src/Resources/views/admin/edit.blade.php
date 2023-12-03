@@ -23,7 +23,7 @@
                 <x-input name="time" type="number" placeholder="مدت کل دوره (دقیقه)" value="{{ $course->time }}" />
                 <x-input name="priority" type="text" placeholder="الویت نمایش دوره" value="{{ $course->priority }}" />
 
-                <x-select name="status" placeholder="وضعیت دوره">
+                <x-select name="status" label="وضعیت دوره">
                     @foreach ($statuses as $status)
                     <option value="{{$status}}" @if ($course->status == $status) selected @endif>@lang($status)</option>
                     @endforeach

@@ -16,13 +16,13 @@
                 <x-input name="title" type="text" placeholder="عنوان" value="{{$product->title}}" />
                 <x-input name="slug" type="text" placeholder="عنوان انگلیسی" value="{{$product->slug}}" />
 
-                <x-select name="category_id" placeholder="دسته بندی محصول">
+                <x-select name="category_id" label="دسته بندی محصول">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}" @if ($product->category->title == $category->title) selected @endif>{{$category->title}}</option>
                     @endforeach
                 </x-select>
 
-                <x-select name="status" placeholder="وضعیت محصول">
+                <x-select name="status" label="وضعیت محصول">
                     @foreach ($statuses as $status)
                         <option value="{{$status}}" @if ($product->status == $status) selected @endif>@lang($status)</option>
                     @endforeach

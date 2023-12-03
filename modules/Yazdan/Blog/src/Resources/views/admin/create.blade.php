@@ -15,7 +15,7 @@
                 <x-input name="title" type="text" placeholder="عنوان" />
 
                <div class="margin-top-15">
-                <x-select name="category_id" placeholder="دسته بندی">
+                <x-select name="category_id" label="دسته بندی">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->title}}</option>
                     @endforeach
