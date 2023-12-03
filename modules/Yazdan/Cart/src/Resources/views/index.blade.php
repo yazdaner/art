@@ -71,8 +71,11 @@
                                             تومان
                                         </span>
                                         <p style="font-size: 14px ; color:red">
-                                            {{round(100 - (100 * $item->price) / $item->associatedModel->price) }}%
-                                            تخفیف
+                                            @php
+                                                $discount = round(100 - (100 * $item->price) / $item->associatedModel->price);
+                                            @endphp
+                                            {{ $discount == 0 ? '' : $discount . ' % تخفیف'}}
+
                                         </p>
                                     </td>
                                     <td class="text-center qty-icons">
@@ -118,16 +121,21 @@
                                 <td class="h6">مجموع </td>
                                 <td class="text-center fw-bold">{{ number_format( cartTotal() ) }} تومان</td>
                             </tr>
-                            <tr>
-                                <td class="h6">مبلغ تخفیف کالا ها</td>
-                                <td class="text-center fw-bold">
-                                    <span style="color: red">
-                                    {{ number_format( cartTotal() - \Cart::getTotal() ) }}
-                                    تومان
-                                    </span>
-                                </td>
-                            </tr>
 
+                            @php
+                                $discountPrice = cartTotal() - \Cart::getTotal();
+                            @endphp
+                            @if ($discountPrice != 0)
+                                <tr>
+                                    <td class="h6">مبلغ تخفیف کالا ها</td>
+                                    <td class="text-center fw-bold">
+                                        <span style="color: red">
+                                        {{ number_format( $discountPrice ) }}
+                                        تومان
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endif
                             <tr class="bg-light">
                                 <td class="h6">هزینه ارسال</td>
                                 <td class="text-center fw-bold">{{number_format(cartTotalDeliveryAmount())}} تومان</td>
@@ -140,7 +148,7 @@
                     </table>
                 </div>
                 <div class="mt-4 pt-2 text-end">
-                    <a href="shop-checkouts.html" class="btn btn-primary">ادامه به پرداخت </a>
+                    <a href="{{route('checkout')}}" class="btn btn-primary">ادامه به پرداخت </a>
                 </div>
             </div>
         </div>

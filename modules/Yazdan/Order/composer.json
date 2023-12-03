@@ -1,0 +1,15 @@
+{
+    "name" : "yazdan/order",
+    "autoload" : {
+        "psr-4" : {
+            "Yazdan\\Order\\": "src"
+        }
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Yazdan\\Order\\App\\Providers\\OrderServiceProvider"
+            ]
+        }
+    }
+}

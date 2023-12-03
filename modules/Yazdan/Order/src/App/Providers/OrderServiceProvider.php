@@ -1,0 +1,22 @@
+<?php
+
+namespace Yazdan\Order\App\Providers;
+
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+use Yazdan\RolePermissions\Repositories\PermissionRepository;
+use Yazdan\Order\App\Models\Order;
+use Yazdan\Order\App\Policies\OrderPolicy;
+
+class OrderServiceProvider extends ServiceProvider
+{
+
+    public function register()
+    {
+        Route::middleware('web')
+            ->group(__DIR__ . '/../../Routes/order_routes.php');
+        $this->loadViewsFrom(__DIR__ . '/../../Resources/views/', 'Order');
+    }
+
+}
