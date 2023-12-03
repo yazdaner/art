@@ -20,6 +20,13 @@ class OrderServiceProvider extends ServiceProvider
     }
     public function boot()
     {
+        config()->set('sidebar.items.orders', [
+            'icon' => 'i-orders',
+            'url' => route('admin.orders.index'),
+            'title' => 'محصولات خریداری شده',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_ORDER,
+        ]);
+
         config()->set('sidebarHome.items.orders', [
             'icon' => 'uil-orders',
             'url' => route('users.orders'),

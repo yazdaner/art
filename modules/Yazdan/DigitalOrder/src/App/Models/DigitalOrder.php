@@ -9,6 +9,5 @@ class Order extends Model
 {
     use HasMedia;
 
-    protected $table = 'orders';
     protected $guarded = [];
 }

@@ -22,6 +22,7 @@ class PermissionRepository
     const PERMISSION_MANAGE_PRODUCT = 'manage product';
     const PERMISSION_MANAGE_COURSE = 'manage course';
     const PERMISSION_MANAGE_DELIVERY = 'manage delivery';
+    const PERMISSION_MANAGE_ORDER = 'manage order';
 
     static $permissions = [
         self::PERMISSION_SUPER_ADMIN,
@@ -40,6 +41,7 @@ class PermissionRepository
         self::PERMISSION_MANAGE_PRODUCT,
         self::PERMISSION_MANAGE_COURSE,
         self::PERMISSION_MANAGE_DELIVERY,
+        self::PERMISSION_MANAGE_ORDER,
     ];
 
     const PERMISSION_SUPER_ADMIN = 'super admin';

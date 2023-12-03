@@ -63,10 +63,10 @@ class CartController extends Controller
             $variation = Variation::find($rowId);
             $price = $variation->getPrice();
             $code = session()->get('code');
-            if($code){
+            if ($code) {
                 $discount = DiscountRepository::getValidDiscountByCode($code, $variation->product);
-                if($discount){
-                    $discountTotalAmount = $variation->getDiscountAmount($discount,$quantity);
+                if ($discount) {
+                    $discountTotalAmount = $variation->getDiscountAmount($discount, $quantity);
                     $price = $discountTotalAmount / $quantity;
                 }
             }
@@ -138,40 +138,47 @@ class CartController extends Controller
             $amounts[] = $amount * $item['quantity'];
             $item['discounts'] = $discounts;
             $item['amount'] = round($amount);
-            $item['totalAmount'] = $amount * $item['quantity'];
+            $item['totalAmount'] = ($amount * $item['quantity']) + cartTotalDeliveryAmount();
             $products[] = $item;
         }
         $totalAmount = array_sum($amounts);
 
         //free
         if ($totalAmount <= 0) {
-            $invoice_id = uniqid();
-            foreach ($products as $item) {
-                resolve(PaymentRepository::class)->store([
-                    'user_id' => $user->id,
-                    'paymentable_id' => $item['model']->id,
-                    'paymentable_type' => get_class($item['model']),
-                    'amount' => $item['amount'],
-                    'quantity' => $item['quantity'],
-                    'totalAmount' => $item['totalAmount'],
-                    'invoice_id' => $invoice_id,
-                    'gateway' => 'free',
-                    'status' => PaymentRepository::CONFIRMATION_STATUS_SUCCESS,
-                ], $item['discounts']);
-            }
-
-            $repository = resolve(PaymentRepository::class);
-            $payments = $repository->findByInvoiceId($invoice_id);
-
-            foreach ($payments as $payment) {
-                event(new PaymentWasSuccessful($payment));
-                session()->forget('code');
-                \Cart::clear();
-            }
-            newFeedbacks('عملیات موفق', 'پرداخت با موفقیت انجام شد', 'success');
-            return redirect('/');
+            $this->free($products);
         }
+
+        dd($totalAmount);
         PaymentService::generate($products, $user, $totalAmount);
         resolve(Gateway::class)->redirect();
+    }
+
+    private function free($products)
+    {
+        $invoice_id = uniqid();
+        foreach ($products as $item) {
+            resolve(PaymentRepository::class)->store([
+                'user_id' => auth()->user(),
+                'paymentable_id' => $item['model']->id,
+                'paymentable_type' => get_class($item['model']),
+                'amount' => $item['amount'],
+                'quantity' => $item['quantity'],
+                'totalAmount' => $item['totalAmount'],
+                'invoice_id' => $invoice_id,
+                'gateway' => 'free',
+                'status' => PaymentRepository::CONFIRMATION_STATUS_SUCCESS,
+            ], $item['discounts']);
+        }
+
+        $repository = resolve(PaymentRepository::class);
+        $payments = $repository->findByInvoiceId($invoice_id);
+
+        foreach ($payments as $payment) {
+            event(new PaymentWasSuccessful($payment));
+            session()->forget('code');
+            \Cart::clear();
+        }
+        newFeedbacks('عملیات موفق', 'پرداخت با موفقیت انجام شد', 'success');
+        return redirect('/');
     }
 }
