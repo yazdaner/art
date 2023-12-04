@@ -104,6 +104,10 @@ class CartController extends Controller
 
     public function buy()
     {
+        if(auth()->user()->address == null){
+            newFeedbacks('نا موفق', 'لطفا آدرس خود را وارد کنید', 'error');
+            return back();
+        }
         if (\Cart::isEmpty()) {
             newFeedbacks('نا موفق', 'سبد خرید شمل خالی است', 'error');
             return back();
@@ -148,7 +152,7 @@ class CartController extends Controller
             $this->free($products);
         }
 
-        dd($totalAmount);
+        $totalAmount += cartTotalDeliveryAmount();
         PaymentService::generate($products, $user, $totalAmount);
         resolve(Gateway::class)->redirect();
     }

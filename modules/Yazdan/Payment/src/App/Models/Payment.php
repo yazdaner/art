@@ -2,10 +2,11 @@
 
 namespace Yazdan\Payment\App\Models;
 
+use Yazdan\User\App\Models\User;
+use Yazdan\Order\App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 use Yazdan\Discount\App\Models\Discount;
 use Yazdan\Payment\Repositories\PaymentRepository;
-use Yazdan\User\App\Models\User;
 
 class Payment extends Model
 {
@@ -40,6 +41,11 @@ class Payment extends Model
                 return '';
                 break;
         }
+    }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class,'payment_id');
     }
 
 }

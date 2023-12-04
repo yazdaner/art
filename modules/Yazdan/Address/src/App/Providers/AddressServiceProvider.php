@@ -21,6 +21,8 @@ class AddressServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        require_once __DIR__ . '/../../helpers.php';
+
         config()->set('sidebarHome.items.address', [
             'icon' => 'uil-address',
             'url' => route('address'),

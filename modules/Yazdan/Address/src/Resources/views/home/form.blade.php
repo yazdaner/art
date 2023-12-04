@@ -2,17 +2,17 @@
     @csrf
     <div class="row">
         <div class="col-md-6">
-            <x-input-home name="name" label="نام و نام خانوادگی" value="{{$address->name ?? ''}}">
+            <x-input-home name="name" label="نام و نام خانوادگی" value="{{$address->name ?? old('name')}}">
                 <i data-feather="user" class="fea icon-sm icons"></i>
             </x-input-home>
         </div>
         <div class="col-md-6">
-            <x-input-home type="tel" name="phone" label="شماره تماس" value="{{$address->phone ?? ''}}">
+            <x-input-home type="tel" name="phone" label="شماره تماس" value="{{$address->phone ?? old('phone')}}">
                 <i data-feather="user" class="fea icon-sm icons"></i>
             </x-input-home>
         </div>
         <div class="col-md-12">
-            <x-textarea-home name="address" label="آدرس" value="{{$address->address ?? ''}}">
+            <x-textarea-home name="address" label="آدرس" value="{{$address->address ?? old('address')}}">
                 <i data-feather="user" class="fea icon-sm icons"></i>
             </x-textarea-home>
         </div>
@@ -33,7 +33,7 @@
             </x-select-home>
         </div>
         <div class="col-md-6">
-            <x-input-home type="number" name="postal_code" label="کد پستی" value="{{$address->postal_code ?? ''}}">
+            <x-input-home type="number" name="postal_code" label="کد پستی" value="{{$address->postal_code ?? old('postal_code')}}">
                 <i data-feather="user" class="fea icon-sm icons"></i>
             </x-input-home>
         </div>

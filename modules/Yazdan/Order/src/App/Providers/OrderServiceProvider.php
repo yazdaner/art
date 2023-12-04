@@ -16,7 +16,10 @@ class OrderServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->group(__DIR__ . '/../../Routes/order_routes.php');
+        $this->loadMigrationsFrom(__DIR__ . '/../../Database/migrations/');
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views/', 'Order');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../../Resources/Lang');
+
     }
     public function boot()
     {

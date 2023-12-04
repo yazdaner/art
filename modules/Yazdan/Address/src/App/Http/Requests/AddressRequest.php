@@ -23,7 +23,7 @@ class AddressRequest extends FormRequest
      */
     public function rules()
     {
-        $rules =  [
+        return [
             'name' => 'required',
             'phone' => 'required|iran_mobile',
             'province_id' => 'required',
@@ -31,10 +31,17 @@ class AddressRequest extends FormRequest
             'address' => 'required',
             'postal_code' => 'required|iran_postal_code'
         ];
+    }
 
-        // if (request()->method === 'PATCH') {
-        //     $rules['media'] = "nullable|image";
-        // }
-        return $rules;
+    public function attributes()
+    {
+        return [
+            "name" => "نام و نام خانوادگی",
+            "phone" => "شماره تماس",
+            "address" => "آدرس",
+            "postal_code" => "کد پستی",
+            "city_id" => "شهر",
+            "province_id" => "استان",
+        ];
     }
 }

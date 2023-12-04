@@ -2,16 +2,16 @@
 
 namespace Yazdan\Payment\App\Providers;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Yazdan\Coin\App\Listeners\GiveCoinToUser;
+use Yazdan\Order\App\Listeners\CreateOrder;
 use Yazdan\Payment\App\Events\PaymentWasSuccessful;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {
 
     protected $listen = [
         PaymentWasSuccessful::class => [
-            GiveCoinToUser::class,
+            CreateOrder::class,
         ]
     ];
 
