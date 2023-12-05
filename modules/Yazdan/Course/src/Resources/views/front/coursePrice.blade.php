@@ -1,8 +1,17 @@
-<p>قیمت دوره :
-    @if (is_array($course->getPrice()))
-        <span class="text-muted"><del>{{$course->getPrice()['price']}}</del></span>
-        <span class="text-danger"><strong>{{$course->getPrice()['price2']}}</strong></span>
+<div class="variation-price">
+    @if($course->sale_check)
+    <span class="new">
+        {{ number_format($course->price2) }}
+        تومان
+    </span>
+    <span class="old">
+        {{ number_format($course->price) }}
+        تومان
+    </span>
     @else
-        <span>{{$course->getPrice()}}</span>
+    <span class="mainPrice">
+        {{ number_format($course->price) }}
+        تومان
+    </span>
     @endif
-</p>
+</div>

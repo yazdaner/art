@@ -1,12 +1,12 @@
 <?php
 
-namespace Yazdan\Order\App\Policies;
+namespace Yazdan\DigitalOrder\App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Yazdan\RolePermissions\Repositories\PermissionRepository;
 use Yazdan\User\App\Models\User;
 
-class OrderPolicy
+class DigitalOrderPolicy
 {
     use HandlesAuthorization;
 

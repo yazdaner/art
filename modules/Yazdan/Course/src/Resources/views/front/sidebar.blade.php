@@ -10,6 +10,7 @@
                         @include('Course::front.coursePrice')
                         <p>نام مدرس دوره : {{__($course->user->name ?? $course->user->username)}}</p>
                     </div>
+                    <a href="{{route('digital.checkout',$course->slug)}}" class="btn btn-primary">خرید</a>
                 </div>
             </div>
         </div>

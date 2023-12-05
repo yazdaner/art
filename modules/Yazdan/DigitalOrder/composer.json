@@ -1,5 +1,5 @@
 {
-    "name" : "yazdan/digitalOrder",
+    "name" : "yazdan/digital_order",
     "autoload" : {
         "psr-4" : {
             "Yazdan\\DigitalOrder\\": "src"

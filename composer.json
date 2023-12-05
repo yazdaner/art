@@ -28,6 +28,7 @@
         "yazdan/course": "dev-master",
         "yazdan/dashboard": "dev-master",
         "yazdan/delivery": "dev-master",
+        "yazdan/digital_order": "dev-master",
         "yazdan/discount": "dev-master",
         "yazdan/front": "dev-master",
         "yazdan/home": "dev-master",
@@ -149,6 +150,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/Order"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/DigitalOrder"
         }
     ],
     "scripts": {

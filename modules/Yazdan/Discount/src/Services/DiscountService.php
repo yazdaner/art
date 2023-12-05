@@ -4,13 +4,13 @@ namespace Yazdan\Discount\Services;
 
 class DiscountService
 {
-    private $discount, $variationPrice, $paybleAmount;
+    private $discount, $productPrice, $paybleAmount;
 
-    public function calculateDiscountAmount($variation,$discount,$quantity)
+    public function calculateDiscountAmount($product,$discount,$quantity = 1)
     {
         $this->discount = $discount;
-        $this->variationPrice = $variation->getPrice();
-        $this->paybleAmount = (($variation->getPrice() * (100 - $discount->percent)) / 100);
+        $this->productPrice = $product->getPrice();
+        $this->paybleAmount = (($product->getPrice() * (100 - $discount->percent)) / 100);
 
         if ($discount->quantity_limitation) return $this->quantityLimitation($quantity);
 
@@ -19,7 +19,7 @@ class DiscountService
 
     public function quantityLimitation($quantity)
     {
-        $VariationPrice = $this->variationPrice;
+        $VariationPrice = $this->productPrice;
         $quantity_limitation = $this->discount->quantity_limitation;
         $paybleAmount = $this->paybleAmount;
 

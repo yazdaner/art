@@ -28,4 +28,6 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
     'verified'
 ])->group(function () {
     providerGetRoute('/orders',OrderController::class,'index','orders.index');
+    Route::get('orders/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::patch('orders/{order}/update', [OrderController::class, 'update'])->name('orders.update');
 });

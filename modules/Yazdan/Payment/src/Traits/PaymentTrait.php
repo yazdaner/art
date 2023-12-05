@@ -58,7 +58,7 @@ trait PaymentTrait
     public function getDiscountAmount($discount, $quantity = 1)
     {
         $discountService = new DiscountService();
-        return $discountService->calculateDiscountAmount($this, $quantity, $discount);
+        return $discountService->calculateDiscountAmount($this, $discount, $quantity);
     }
 
     public function finalPrice($quantity = 1, $code = null, $withDiscounts = false)
@@ -67,7 +67,7 @@ trait PaymentTrait
         $amount = $this->getPrice();
         if ($code) {
             $repo = new DiscountRepository();
-            $discountFromCode = $repo->getValidDiscountByCode($code, $this);
+            $discountFromCode = $repo->getValidDiscountCodeForProduct($code, $this);
 
             if ($discountFromCode) {
                 $discounts[] = $discountFromCode;

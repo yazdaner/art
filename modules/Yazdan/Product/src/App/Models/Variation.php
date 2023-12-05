@@ -33,7 +33,7 @@ class Variation extends Model
     public function getDiscountAmount($discount, $quantity = 1)
     {
         $discountService = new DiscountService();
-        return $discountService->calculateDiscountAmount($this, $quantity, $discount);
+        return $discountService->calculateDiscountAmount($this, $discount, $quantity);
     }
 
 }

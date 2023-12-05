@@ -74,12 +74,12 @@ class DiscountRepository
         }
     }
 
-    public static function getValidDiscountByCode($code, $product)
+    public static function getValidDiscountCodeForProduct($code, $product)
     {
         $id = $product->id;
         $table = $product->getTable();
-        $query = Discount::query()
-            ->where("code", $code);
+        $query = Discount::query()->where("code", $code);
+
             $query->where(function ($query) {
                 $query->where("expire_at", ">", now())
                     ->orWhereNull("expire_at");
@@ -99,8 +99,8 @@ class DiscountRepository
 
     public static function getValidCode($code)
     {
-        $query = Discount::query()
-            ->where("code", $code);
+        $query = Discount::query()->where("code", $code);
+
             $query->where(function ($query) {
                 $query->where("expire_at", ">", now())
                     ->orWhereNull("expire_at");

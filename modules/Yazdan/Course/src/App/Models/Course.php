@@ -8,12 +8,14 @@ use Yazdan\Media\Traits\HasVideo;
 use Yazdan\Media\App\Models\Media;
 use Yazdan\Comment\Trait\HasComments;
 use Illuminate\Database\Eloquent\Model;
+use Yazdan\Payment\Traits\BuyDigitalProductTrait;
 
 class Course extends Model
 {
-    use HasComments,HasMedia,HasVideo;
+    use HasComments,HasMedia,HasVideo,BuyDigitalProductTrait;
 
     protected $guarded = [];
+    protected $appends = ['sale_check'];
 
     public function incrementReadCount() {
         $this->views++;
@@ -32,12 +34,11 @@ class Course extends Model
 
     public function getPrice()
     {
-        if($this->price2 == null){
-            return number_format($this->price);
-        }
-        return [
-            'price' => number_format($this->price),
-            'price2' => number_format($this->price2),
-        ];
+        return $this->price2 ?? $this->price;
+    }
+
+    public function getSaleCheckAttribute() : bool
+    {
+        return $this->price2 != null ? true : false;
     }
 }

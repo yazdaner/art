@@ -28,6 +28,7 @@ Route::group([
 ], function () {
 
     Route::post("/discounts/check", [DiscountController::class,'check'])->name("discounts.check");
+    Route::post("/discounts/{course:slug}/digitalCodeCheck", [DiscountController::class,'digitalCodeCheck'])->name("discounts.digitalCodeCheck");
 
 });
 

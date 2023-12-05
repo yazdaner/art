@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49c666d622bc32784062dcb7ad0f1817",
+    "content-hash": "b8ee9d173bb6f416fc173bc2b60d1c2f",
     "packages": [
         {
             "name": "anetwork/validation",
@@ -6710,6 +6710,31 @@
             }
         },
         {
+            "name": "yazdan/digital_order",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/DigitalOrder",
+                "reference": "284d2c7918314d3625553f76d47c7bcd1e405373"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\DigitalOrder\\App\\Providers\\DigitalOrderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\DigitalOrder\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/discount",
             "version": "dev-master",
             "dist": {
@@ -6840,7 +6865,7 @@
             "dist": {
                 "type": "path",
                 "url": "./modules/Yazdan/Payment",
-                "reference": "951d115ad0f07630e2ddc4522ffcc48a8c96a798"
+                "reference": "a6262397d69ca23422f661ef57a8b3d5918db8d4"
             },
             "type": "library",
             "extra": {
@@ -9445,6 +9470,7 @@
         "yazdan/course": 20,
         "yazdan/dashboard": 20,
         "yazdan/delivery": 20,
+        "yazdan/digital_order": 20,
         "yazdan/discount": 20,
         "yazdan/front": 20,
         "yazdan/home": 20,

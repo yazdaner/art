@@ -10,13 +10,7 @@
             @csrf
             @method('put')
 
-            <input value="{{$role->name}}" name="name" type="text" placeholder="نام" class="text">
-
-            @error('name')
-            <div class="invalid-feedback">
-                {{$message}}
-            </div>
-            @enderror
+            <x-input type="text" value="{{$role->name}}" name="name" placeholder="نام" />
 
             <p class="box__title margin-bottom-15">انتخاب مجوزها</p>
             @foreach ($permissions as $permission)

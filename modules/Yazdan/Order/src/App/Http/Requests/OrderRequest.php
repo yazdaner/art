@@ -2,7 +2,9 @@
 
 namespace Yazdan\Order\App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Yazdan\Order\Repositories\OrderRepository;
 
 class OrderRequest extends FormRequest
 {
@@ -23,6 +25,8 @@ class OrderRequest extends FormRequest
      */
     public function rules()
     {
-
+        return [
+            "status" => ["required", Rule::in(OrderRepository::$statuses)],
+        ];
     }
 }

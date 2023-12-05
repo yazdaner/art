@@ -16,7 +16,7 @@ class CreateOrder
     public function handle($event)
     {
         if ($event->payment->paymentable_type == Variation::class) {
-            OrderRepository::create($event->payment->id, OrderRepository::STATUS_PREPARING);
+            OrderRepository::create($event->payment->id, OrderRepository::STATUS_PROCESSING);
         }
     }
 }

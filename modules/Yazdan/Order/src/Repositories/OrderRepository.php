@@ -19,4 +19,12 @@ class OrderRepository
             'status' => $status,
         ]);
     }
+
+    public static function update($order,$data)
+    {
+        return $order->update([
+            'status' => $data->status,
+            'tracking_code' => $data->tracking_code,
+        ]);
+    }
 }

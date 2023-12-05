@@ -79,21 +79,40 @@ class DiscountController extends Controller
             return back();
         }
 
-        if (session()->has('code')) {
-            session()->forget('code');
-        }
-
+        session()->forget('code');
         session()->put('code', $request->code);
 
         foreach ($ProductWithDiscount as $item) {
-            $discountTotalAmount = $item['variation']->getDiscountAmount($item['discount'],$item['quantity']);
+            $discountTotalAmount = $item['variation']->getDiscountAmount($item['discount'], $item['quantity']);
             \Cart::update(
                 $item['variation']->id,
                 ['price' => $discountTotalAmount]
             );
         }
-
         newFeedbacks();
         return back();
+    }
+
+    public function digitalCodeCheck(Course $course, CodeRequest $request)
+    {
+        $discount = DiscountRepository::getValidDiscountCodeForProduct($request->code, $course);
+
+        if (is_null($discount)) {
+            newFeedbacks('ناموفق', 'کد تخفیف وارد شده نامعتبر می باشد', 'error');
+            return back();
+        }
+
+        session()->forget('code');
+        session()->put('code', $request->code);
+
+        $ProductWithDiscount = [
+            'product' => $course,
+            'discount' => $discount,
+        ];
+
+        $discountTotalAmount = $course->getDiscountAmount($discount);
+
+        newFeedbacks();
+        return back()->with('discountAmount', $discountTotalAmount);
     }
 }

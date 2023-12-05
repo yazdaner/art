@@ -64,7 +64,7 @@ class CartController extends Controller
             $price = $variation->getPrice();
             $code = session()->get('code');
             if ($code) {
-                $discount = DiscountRepository::getValidDiscountByCode($code, $variation->product);
+                $discount = DiscountRepository::getValidDiscountCodeForProduct($code, $variation->product);
                 if ($discount) {
                     $discountTotalAmount = $variation->getDiscountAmount($discount, $quantity);
                     $price = $discountTotalAmount / $quantity;
@@ -128,8 +128,7 @@ class CartController extends Controller
 
         // check code
         if ($code) {
-            $repo = new DiscountRepository();
-            $discountFromCode = $repo->getValidCode($code);
+            $discountFromCode = DiscountRepository::getValidCode($code);
             if ($discountFromCode == null) {
                 session()->forget('code');
                 newFeedbacks('نا موفق', 'کد تخفیف نامعتبر میباشد', 'error');
@@ -153,7 +152,7 @@ class CartController extends Controller
         }
 
         $totalAmount += cartTotalDeliveryAmount();
-        PaymentService::generate($products, $user, $totalAmount);
+        PaymentService::generate($products,$totalAmount);
         resolve(Gateway::class)->redirect();
     }
 
