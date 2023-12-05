@@ -11,6 +11,7 @@ use Yazdan\Address\App\Models\Province;
 use Yazdan\Order\App\Http\Requests\OrderRequest;
 use Yazdan\Order\Repositories\OrderRepository;
 use Yazdan\Payment\Repositories\PaymentRepository;
+use Yazdan\Product\App\Models\Variation;
 
 class OrderController extends Controller
 {
@@ -25,7 +26,7 @@ class OrderController extends Controller
     // Home
     public function orders()
     {
-        $payments = Payment::where('user_id', auth()->id())->get();
+        $payments = Payment::where('paymentable_type',Variation::class)->where('user_id', auth()->id())->get();
         return view("Order::home.index",compact('payments'));
     }
 
