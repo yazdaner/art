@@ -25,13 +25,11 @@ class SliderServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->app->booted(function () {
-            config()->set('sidebar.items.sliders', [
-                'icon' => 'i-sliders',
-                'url' => route('admin.sliders.index'),
-                'title' => 'اسلایدر',
-                'permission' => PermissionRepository::PERMISSION_MANAGE_SLIDER,
-            ]);
-        });
+        config()->set('sidebar.items.sliders', [
+            'icon' => 'i-sliders',
+            'url' => route('admin.sliders.index'),
+            'title' => 'اسلایدر',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_SLIDER,
+        ]);
     }
 }

@@ -15,7 +15,7 @@ class CustomerOrderServiceProvider extends ServiceProvider
     public function register()
     {
         Route::middleware('web')
-            ->group(__DIR__ . '/../../Routes/slider_routes.php');
+            ->group(__DIR__ . '/../../Routes/customer_order_routes.php');
         $this->loadViewsFrom(__DIR__ . '/../../Resources/views/', 'CustomerOrder');
         $this->loadMigrationsFrom(__DIR__ . '/../../Database/migrations/');
         $this->loadJsonTranslationsFrom(__DIR__ . '/../../Resources/Lang/');
@@ -25,13 +25,17 @@ class CustomerOrderServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->app->booted(function () {
-            config()->set('sidebar.items.sliders', [
-                'icon' => 'i-sliders',
-                'url' => route('admin.sliders.index'),
-                'title' => 'اسلایدر',
-                'permission' => PermissionRepository::PERMISSION_MANAGE_SLIDER,
-            ]);
-        });
+        // config()->set('sidebar.items.sliders', [
+        //     'icon' => 'i-sliders',
+        //     'url' => route('admin.sliders.index'),
+        //     'title' => 'سفارش مشتری',
+        //     'permission' => PermissionRepository::PERMISSION_MANAGE_SLIDER,
+        // ]);
+
+        config()->set('sidebarHome.items.customerOrders', [
+            'icon' => 'uil-orders',
+            'url' => route('users.customer.orders'),
+            'title' => 'سفارش نقاشی'
+        ]);
     }
 }

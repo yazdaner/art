@@ -9,6 +9,6 @@ class CustomerOrder extends Model
 {
     use HasMedia;
 
-    protected $table = 'sliders';
+    protected $table = 'customer_orders';
     protected $guarded = [];
 }

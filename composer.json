@@ -26,6 +26,7 @@
         "yazdan/common": "dev-master",
         "yazdan/contact": "dev-master",
         "yazdan/course": "dev-master",
+        "yazdan/customer-order": "dev-master",
         "yazdan/dashboard": "dev-master",
         "yazdan/delivery": "dev-master",
         "yazdan/digital_order": "dev-master",
@@ -154,6 +155,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/DigitalOrder"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/CustomerOrder"
         }
     ],
     "scripts": {

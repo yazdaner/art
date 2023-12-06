@@ -2,57 +2,47 @@
 
 namespace Yazdan\CustomerOrder\Repositories;
 
-use Yazdan\CustomerOrder\App\Models\CustomerOrder;
-
 class CustomerOrderRepository
 {
-    const TYPE_MAIN = 'main';
+    const SIZE_ONE = '20*30';
+    const SIZE_TWO = '20*40';
+    const SIZE_THREE = '40*60';
+    const SIZE_FOUR = '50*60';
+    const SIZE_FIVE = '60*70';
 
-    static $types = [self::TYPE_MAIN];
+    static $sizes = [
+        self::SIZE_ONE,
+        self::SIZE_TWO,
+        self::SIZE_THREE,
+        self::SIZE_FOUR,
+        self::SIZE_FIVE,
+    ];
 
+    const CANVAS_WHITE_NORMAL  = 'white normal';
+    const CANVAS_DEEP = 'deep';
 
-    public static function all()
-    {
-        return CustomerOrder::query()->orderBy("priority")->get();
-    }
+    static $canvas_types = [
+        self::CANVAS_WHITE_NORMAL,
+        self::CANVAS_DEEP,
+    ];
 
+    const SHAPE_VETICAL  = 'vertical';
+    const SHAPE_HORIZONTAL = 'horizontal';
+    const SHAPE_SQUARE = 'square';
 
-    public static function findById($id)
-    {
-        return CustomerOrder::findOrFail($id);
-    }
+    static $shapes = [
+        self::SHAPE_VETICAL,
+        self::SHAPE_HORIZONTAL,
+        self::SHAPE_SQUARE,
+    ];
 
-    public static function store($data)
-    {
-        return CustomerOrder::create([
-            'priority' => $data->priority,
-            'media_id' => $data->media_id,
-            'link' => $data->link,
-            'title' => $data->title,
-            'description' => $data->description,
-            'status' => $data->status,
-            'type' => $data->type,
-        ]);
-    }
-
-    public static function update($id, $data)
-    {
-        CustomerOrder::where('id', $id)->update([
-            'priority' => $data->priority,
-            'media_id' => $data->media_id,
-            'link' => $data->link,
-            'title' => $data->title,
-            'description' => $data->description,
-            'status' => $data->status,
-            'type' => $data->type,
-        ]);
-    }
-
-    public function delete($id)
-    {
-        CustomerOrder::where('id', $id)->delete();
-    }
+    const SMS  = 'sms';
+    const WHATSAPP = 'whatsapp';
+    const TELEGRAM = 'telegram';
+    
+    static $invoicing = [
+        self::SMS,
+        self::WHATSAPP,
+        self::TELEGRAM,
+    ];
 }
-
-
-

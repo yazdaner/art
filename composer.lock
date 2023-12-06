@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8ee9d173bb6f416fc173bc2b60d1c2f",
+    "content-hash": "22bf0092ff138986440d0c7089cb1262",
     "packages": [
         {
             "name": "anetwork/validation",
@@ -6660,6 +6660,31 @@
             }
         },
         {
+            "name": "yazdan/customer-order",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./modules/Yazdan/CustomerOrder",
+                "reference": "24955245d8ca798e174d27f74a8647e29a982a1a"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yazdan\\CustomerOrder\\App\\Providers\\CustomerOrderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yazdan\\CustomerOrder\\": "src"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "yazdan/dashboard",
             "version": "dev-master",
             "dist": {
@@ -9468,6 +9493,7 @@
         "yazdan/common": 20,
         "yazdan/contact": 20,
         "yazdan/course": 20,
+        "yazdan/customer-order": 20,
         "yazdan/dashboard": 20,
         "yazdan/delivery": 20,
         "yazdan/digital_order": 20,

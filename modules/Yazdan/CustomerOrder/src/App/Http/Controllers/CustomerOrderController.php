@@ -3,55 +3,33 @@
 namespace Yazdan\CustomerOrder\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Yazdan\Common\Responses\AjaxResponses;
-use Yazdan\Media\Services\MediaFileService;
 use Yazdan\CustomerOrder\App\Http\Requests\CustomerOrderRequest;
 use Yazdan\CustomerOrder\App\Models\CustomerOrder;
 use Yazdan\CustomerOrder\Repositories\CustomerOrderRepository;
 
 class CustomerOrderController extends Controller
 {
-    public function index()
+
+    // home
+
+    public function indexOrder()
     {
-        $this->authorize('manage', CustomerOrder::class);
-        $sliders = CustomerOrderRepository::all();
-        $types = CustomerOrderRepository::$types;
-        return view("CustomerOrder::index", compact('sliders', 'types'));
+        $orders = CustomerOrder::where('user_id',auth()->id())->get();
+        return view("CustomerOrder::home.index", compact('orders'));
     }
 
-    public function store(CustomerOrderRequest $request)
+    public function createOrder()
     {
-        $this->authorize('manage', CustomerOrder::class);
+        $sizes = CustomerOrderRepository::$sizes;
+        $canvas_types = CustomerOrderRepository::$canvas_types;
+        $shapes = CustomerOrderRepository::$shapes;
+        $invoicing = CustomerOrderRepository::$invoicing;
 
-       $request = storeImage($request);
-        CustomerOrderRepository::store($request);
-        newFeedbacks();
-        return redirect()->route('admin.sliders.index');
+        return view("CustomerOrder::home.create", compact('sizes', 'canvas_types', 'shapes', 'invoicing'));
     }
 
-    public function edit(CustomerOrder $slider)
+    public function storeOrder(CustomerOrderRequest $request)
     {
-        $this->authorize('manage', CustomerOrder::class);
-        $types = CustomerOrderRepository::$types;
-        return view("CustomerOrder::edit", compact('slider', 'types'));
-    }
-
-    public function update(CustomerOrder $slider, CustomerOrderRequest $request)
-    {
-        $this->authorize('manage', CustomerOrder::class);
-
-        $request = updateImage($request,$slider);
-
-        CustomerOrderRepository::update($slider->id, $request);
-        newFeedbacks();
-        return redirect()->route('admin.sliders.index');
-    }
-
-    public function destroy(CustomerOrder $slider)
-    {
-        $this->authorize('manage', CustomerOrder::class);
-        destroyImage($slider);
-        $slider->delete();
-        return AjaxResponses::SuccessResponses();
+        dd($request->all());
     }
 }

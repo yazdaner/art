@@ -14,19 +14,23 @@ class CreateCustomerOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_order', function (Blueprint $table) {
+        Schema::create('customer_orders', function (Blueprint $table) {
             $table->id();
 
-            $table->float("priority")->nullable();
-            $table->string("title")->nullable();
-            $table->text("description")->nullable();
-            $table->string("link")->nullable();
-            $table->boolean("status")->default(true);
+            $table->foreignId('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->foreignId('media_id')->nullable();
             $table->foreign('media_id')->references('id')->on('media')->onDelete('set null');
 
-            $table->enum("type", CustomerOrderRepository::$types);
+            $table->string("name");
+            $table->string("phone",14);
+            $table->text("description");
+
+            $table->enum("size", CustomerOrderRepository::$sizes);
+            $table->enum("canvas", CustomerOrderRepository::$canvas_types);
+            $table->enum("shape", CustomerOrderRepository::$shapes);
+            $table->enum("invoicing", CustomerOrderRepository::$invoicing);
 
             $table->timestamps();
         });
@@ -39,6 +43,6 @@ class CreateCustomerOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_order');
+        Schema::dropIfExists('customer_orders');
     }
 }

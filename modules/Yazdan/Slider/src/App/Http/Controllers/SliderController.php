@@ -16,7 +16,7 @@ class SliderController extends Controller
         $this->authorize('manage', Slider::class);
         $sliders = SliderRepository::all();
         $types = SliderRepository::$types;
-        return view("Slider::index", compact('sliders', 'types'));
+        return view("Slider::admin.index", compact('sliders', 'types'));
     }
 
     public function store(SliderRequest $request)
@@ -33,7 +33,7 @@ class SliderController extends Controller
     {
         $this->authorize('manage', Slider::class);
         $types = SliderRepository::$types;
-        return view("Slider::edit", compact('slider', 'types'));
+        return view("Slider::admin.edit", compact('slider', 'types'));
     }
 
     public function update(Slider $slider, SliderRequest $request)

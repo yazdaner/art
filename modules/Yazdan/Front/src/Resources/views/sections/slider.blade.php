@@ -1,3 +1,4 @@
+@if ($sliders->isNotEmpty())
 <section class="home-slider position-relative">
     <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -33,3 +34,4 @@
 
     </div>
 </section>
+@endif

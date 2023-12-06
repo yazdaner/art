@@ -4,7 +4,7 @@
     <div class="card border-0 rounded shadow">
         <div class="card-body">
             <div class="myaccount-content address-content">
-                <h3> پرداخت ها </h3>
+                <h3>دوره های شما</h3>
                 <div class="mt-4">
                 <div class="table-responsive">
                     <table class="table table-center">

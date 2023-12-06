@@ -30,9 +30,10 @@ class CustomerOrderRequest extends FormRequest
             "link" => "nullable|string|max:200"
         ];
 
-        if (request()->method === 'PATCH') {
-            $rules['media'] = "nullable|image";
-        }
+        // if (request()->method === 'PATCH') {
+        //     $rules['media'] = "nullable|image";
+        // }
+        // return $rules;
         return $rules;
     }
 }

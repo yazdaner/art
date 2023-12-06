@@ -1,3 +1,10 @@
 {
-    "main" : "اصلی"
+    "white normal" : "بوم نرمال سفید",
+    "deep" : "بوم دیپ ضخامت 4 سانتی متر",
+    "vertical" : "عمودی",
+    "horizontal" : "افقی",
+    "square" : "مربعی",
+    "sms" : "پیامک",
+    "whatsapp" : "واتساپ",
+    "telegram" : "تلگرام"
 }
