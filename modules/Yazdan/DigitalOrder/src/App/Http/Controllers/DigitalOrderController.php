@@ -27,16 +27,21 @@ class DigitalOrderController extends Controller
     }
 
 
-   
+
 
 
     // Home
     public function orders()
     {
-        $payments = Payment::where('user_id', auth()->id())->get();
+        $payments = Payment::where('user_id', auth()->id())->where('paymentable_type',Course::class)->get();
         return view("DigitalOrder::home.index",compact('payments'));
     }
 
+    public function digitalOrders()
+    {
+        $digitalOrders = DigitalOrder::where('user_id',auth()->id())->get();
+        return view("DigitalOrder::home.index",compact('digitalOrders'));
+    }
      // Admin
      public function index()
      {

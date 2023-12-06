@@ -2,13 +2,17 @@
 
 namespace Yazdan\DigitalOrder\App\Models;
 
-use Yazdan\Media\Traits\HasMedia;
+use Yazdan\Payment\App\Models\Payment;
 use Illuminate\Database\Eloquent\Model;
 
 class DigitalOrder extends Model
 {
-    use HasMedia;
-
-    protected $table = 'orders';
+    protected $table = 'digital_orders';
     protected $guarded = [];
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class, 'payment_id');
+    }
+
 }

@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Yazdan\DigitalOrder\Repositories\DigitalOrderRepository;
 
 class CreateDigitalOrdersTable extends Migration
 {
@@ -14,12 +13,17 @@ class CreateDigitalOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('digital_orders', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('payment_id');
             $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
-            $table->enum('status', DigitalOrderRepository::$statuses);
-            $table->string('tracking_code')->nullable();
+
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->string('key');
+
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ class CreateDigitalOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('digital_orders');
     }
 }

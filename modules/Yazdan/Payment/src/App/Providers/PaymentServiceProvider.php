@@ -42,5 +42,11 @@ class PaymentServiceProvider extends ServiceProvider
             'title' => 'تراکنش ها',
             'permission' => PermissionRepository::PERMISSION_MANAGE_PAYMENTS,
         ]);
+
+        config()->set('sidebarHome.items.payments', [
+            'icon' => 'uil-payments',
+            'url' => route('users.payments'),
+            'title' => 'پرداخت ها'
+        ]);
     }
 }

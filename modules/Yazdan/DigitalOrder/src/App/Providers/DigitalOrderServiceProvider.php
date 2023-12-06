@@ -30,10 +30,10 @@ class DigitalOrderServiceProvider extends ServiceProvider
             'permission' => PermissionRepository::PERMISSION_MANAGE_ORDER,
         ]);
 
-        config()->set('sidebarHome.items.orders', [
-            'icon' => 'uil-orders',
-            'url' => route('users.orders'),
-            'title' => 'پرداخت ها'
+        config()->set('sidebarHome.items.digitalrders', [
+            'icon' => 'uil-digital-orders',
+            'url' => route('users.digital.orders'),
+            'title' => 'دروه ها'
         ]);
     }
 }

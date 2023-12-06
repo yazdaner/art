@@ -33,7 +33,7 @@ class OrderServiceProvider extends ServiceProvider
         config()->set('sidebarHome.items.orders', [
             'icon' => 'uil-orders',
             'url' => route('users.orders'),
-            'title' => 'پرداخت ها'
+            'title' => 'محصولات شما'
         ]);
     }
 }

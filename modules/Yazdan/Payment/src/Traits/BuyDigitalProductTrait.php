@@ -69,9 +69,4 @@ trait BuyDigitalProductTrait
         $discountService = new DiscountService();
         return $discountService->calculateDiscountAmount($this,$discount,$quantity);
     }
-
-
-
-
-
 }

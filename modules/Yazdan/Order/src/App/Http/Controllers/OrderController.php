@@ -26,7 +26,7 @@ class OrderController extends Controller
     // Home
     public function orders()
     {
-        $payments = Payment::where('paymentable_type',Variation::class)->where('user_id', auth()->id())->get();
+        $payments = Payment::where('user_id', auth()->id())->where('paymentable_type',Variation::class)->get();
         return view("Order::home.index",compact('payments'));
     }
 

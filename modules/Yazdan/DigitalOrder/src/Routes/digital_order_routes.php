@@ -19,7 +19,7 @@ Route::group([
     ]
 ], function () {
     // Profile
-    providerGetRoute('/users/orders',DigitalOrderController::class,'orders','users.orders');
+    providerGetRoute('/users/courses',DigitalOrderController::class,'digitalOrders','users.digital.orders');
 });
 
 

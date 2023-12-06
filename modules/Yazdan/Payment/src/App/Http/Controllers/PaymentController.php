@@ -40,14 +40,13 @@ class PaymentController extends Controller
             // Success
             foreach($payments as $payment){
                 event(new PaymentWasSuccessful($payment));
-                session()->forget('code');
-                \Cart::clear();
                 $repository->changeStatus($payment->id, $repository::CONFIRMATION_STATUS_SUCCESS);
             }
+            session()->forget('code');
+            \Cart::clear();
             newFeedbacks('عملیات موفق', 'پرداخت با موفقیت انجام شد', 'success');
         }
-
-        return redirect('/');
+        return redirect(route('users.payments'));
     }
 
     public function index(PaymentRepository $paymentRepository, PaymentRequest $request)
@@ -75,5 +74,12 @@ class PaymentController extends Controller
         $failSummery =  $paymentRepository->getFailDailySummery($dates);
 
         return view('Payment::admin.index',compact('payments','last30DaysTotal','totalSell','todaySell','thisWeekSell','last30Days','paymentRepository','dates','successSummery','failSummery'));
+    }
+
+    // home
+    public function userPayments()
+    {
+        $payments = Payment::where('user_id', auth()->id())->get();
+        return view("Payment::home.index",compact('payments'));
     }
 }

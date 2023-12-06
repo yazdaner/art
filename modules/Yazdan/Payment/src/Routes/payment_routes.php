@@ -17,3 +17,12 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
 
 
 
+// Home
+Route::group([
+    'middleware' => [
+        'auth',
+        'verified'
+    ]
+], function () {
+    providerGetRoute('/users/payments',PaymentController::class,'userPayments','users.payments');
+});

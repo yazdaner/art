@@ -4,6 +4,7 @@ namespace Yazdan\DigitalOrder\App\Listeners;
 
 use Illuminate\Support\Facades\Http;
 use Yazdan\Course\App\Models\Course;
+use Yazdan\DigitalOrder\App\Models\DigitalOrder;
 
 class CreateLicense
 {
@@ -19,11 +20,16 @@ class CreateLicense
             // create license
             $response = Http::withHeader('$API','ZUNDIpNCPQrQJP6vtcyaqAeriwA=')->post('https://panel.spotplayer.ir/license/edit/',[
                 "test" => true,
-                "course" => ["654344fc93423d0ad025033f"],
-                "name" => "customer",
-                "watermark" =>  ['texts' => [['text'=>'09121112266']]]
+                "course" => [$event->payment->paymentable->spot_course_token],
+                "name" => auth()->user()->username,
+                "watermark" =>  ['texts' => [['text'=>auth()->user()->email]]]
                 ]);
-            dd($response->json());
+            $key = json_decode($response->getBody(), true)['key'];
+            DigitalOrder::create([
+                'payment_id' => $event->payment->id,
+                'user_id' => auth()->id(),
+                'key' => $key
+            ]);
         }
     }
 }
