@@ -21,8 +21,8 @@ Route::group([
     ]
 ], function () {
     // Profile
-    providerGetRoute('/customer',CustomerOrderController::class,'indexOrder','users.customer.orders');
-    Route::get('/customer-order/create',[CustomerOrderController::class,'createOrder'])->name('customer.orders.create');
-    Route::post('/customer-order/store',[CustomerOrderController::class,'storeOrder'])->name('customer.orders.store');
+    providerGetRoute('/customer',CustomerOrderController::class,'indexOrder','customer.orders.index');
+    Route::get('/customer/create',[CustomerOrderController::class,'createOrder'])->name('customer.orders.create');
+    Route::post('/customer/store',[CustomerOrderController::class,'storeOrder'])->name('customer.orders.store');
 });
 

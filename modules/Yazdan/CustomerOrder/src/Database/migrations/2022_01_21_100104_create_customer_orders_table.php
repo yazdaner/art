@@ -16,6 +16,7 @@ class CreateCustomerOrdersTable extends Migration
     {
         Schema::create('customer_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->nullable();
 
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -30,7 +31,10 @@ class CreateCustomerOrdersTable extends Migration
             $table->enum("size", CustomerOrderRepository::$sizes);
             $table->enum("canvas", CustomerOrderRepository::$canvas_types);
             $table->enum("shape", CustomerOrderRepository::$shapes);
-            $table->enum("invoicing", CustomerOrderRepository::$invoicing);
+            $table->json("invoicing", CustomerOrderRepository::$invoicing);
+
+
+            $table->text("response")->nullable();
 
             $table->timestamps();
         });

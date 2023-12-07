@@ -2,7 +2,9 @@
 
 namespace Yazdan\CustomerOrder\App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Yazdan\CustomerOrder\Repositories\CustomerOrderRepository;
 
 class CustomerOrderRequest extends FormRequest
 {
@@ -24,10 +26,15 @@ class CustomerOrderRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            "media" => "required|file|image",
-            "priority" => "nullable|numeric|min:0",
-            "status" => "required|boolean",
-            "link" => "nullable|string|max:200"
+            "name" => "required",
+            "description" => "required",
+            "phone" => "required|iran_mobile",
+            "media" => "required|image",
+            "size" => ["required", Rule::in(CustomerOrderRepository::$sizes)],
+            "canvas" => ["required", Rule::in(CustomerOrderRepository::$canvas_types)],
+            "shape" => ["required", Rule::in(CustomerOrderRepository::$shapes)],
+            "invoicing" => ["required","array"],
+            "invoicing.*" => ["required", Rule::in(CustomerOrderRepository::$invoicing)],
         ];
 
         // if (request()->method === 'PATCH') {
@@ -35,5 +42,17 @@ class CustomerOrderRequest extends FormRequest
         // }
         // return $rules;
         return $rules;
+    }
+
+
+    public function attributes()
+    {
+        return [
+            "canvas" => "نوع بوم",
+            "shape" => "شکل",
+            "preview" => "متن پیش نمایش",
+            "content" => "محتوا",
+            "invoicing" => "صدور فاکتور از طریقه",
+        ];
     }
 }

@@ -3,9 +3,10 @@
 namespace Yazdan\CustomerOrder\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Yazdan\CustomerOrder\App\Http\Requests\CustomerOrderRequest;
+use Yazdan\Blog\Repositories\BlogRepository;
 use Yazdan\CustomerOrder\App\Models\CustomerOrder;
 use Yazdan\CustomerOrder\Repositories\CustomerOrderRepository;
+use Yazdan\CustomerOrder\App\Http\Requests\CustomerOrderRequest;
 
 class CustomerOrderController extends Controller
 {
@@ -30,6 +31,9 @@ class CustomerOrderController extends Controller
 
     public function storeOrder(CustomerOrderRequest $request)
     {
-        dd($request->all());
+        $request = storeImage($request);
+        CustomerOrderRepository::create($request);
+        newFeedbacks();
+        return redirect(route('customer.orders.index'));
     }
 }

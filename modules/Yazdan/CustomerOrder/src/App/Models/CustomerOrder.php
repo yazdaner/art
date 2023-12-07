@@ -11,4 +11,7 @@ class CustomerOrder extends Model
 
     protected $table = 'customer_orders';
     protected $guarded = [];
+    protected $casts = [
+        'invoicing' => 'json'
+    ];
 }

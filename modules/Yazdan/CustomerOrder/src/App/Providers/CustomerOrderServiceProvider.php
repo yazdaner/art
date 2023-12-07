@@ -34,7 +34,7 @@ class CustomerOrderServiceProvider extends ServiceProvider
 
         config()->set('sidebarHome.items.customerOrders', [
             'icon' => 'uil-orders',
-            'url' => route('users.customer.orders'),
+            'url' => route('customer.orders.index'),
             'title' => 'سفارش نقاشی'
         ]);
     }

@@ -2,6 +2,8 @@
 
 namespace Yazdan\CustomerOrder\Repositories;
 
+use Yazdan\CustomerOrder\App\Models\CustomerOrder;
+
 class CustomerOrderRepository
 {
     const SIZE_ONE = '20*30';
@@ -39,10 +41,29 @@ class CustomerOrderRepository
     const SMS  = 'sms';
     const WHATSAPP = 'whatsapp';
     const TELEGRAM = 'telegram';
-    
+
     static $invoicing = [
         self::SMS,
         self::WHATSAPP,
         self::TELEGRAM,
     ];
+
+    public static function create($data)
+    {
+        $customerOrder =  CustomerOrder::create([
+            'user_id' => auth()->id(),
+            'name' => $data->name,
+            'phone' => $data->phone,
+            'size' => $data->size,
+            'canvas' => $data->canvas,
+            'shape' => $data->shape,
+            'media_id' => $data->media_id,
+            'description' => $data->description,
+            'invoicing' => $data->invoicing,
+        ]);
+        $customerOrder->key = 1000 + $customerOrder->id;
+        $customerOrder->save();
+        return $customerOrder;
+    }
+
 }
