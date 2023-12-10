@@ -9,6 +9,7 @@ Route::prefix('admin-panel')->name('admin.')->middleware([
 ])->group(function () {
 
     providerGetRoute('/customer-order',CustomerOrderController::class,'index','customerOrders.index');
+    Route::post('/customer-order/{customerOrder}/store',[CustomerOrderController::class,'sendResponse'])->name('customerOrders.sendResponse');
 
 });
 

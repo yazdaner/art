@@ -47,7 +47,7 @@
                     <tbody>
                         @foreach ($users as $key => $user)
                             <tr role="row" class="">
-                                <td>{{$user->key}}</td>
+                                <td><a href="">{{$blogs->firstItem() + $key}}</a></td>
                                 <td>
                                     <a href="{{$user->getImage()}}" target="_blank"><img src="{{$user->getImage(60)}}" class="profile_sm"></a>
                                 </td>

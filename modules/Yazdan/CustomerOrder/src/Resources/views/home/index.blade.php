@@ -27,7 +27,7 @@
                                     <td>{{verta($order->created_at)->format('Y/m/d H:i')}}</td>
                                     <td>{{$order->response == null ? 'در انتظار پاسخ' : 'پاسخ داده شده'}}</td>
                                     <td>
-                                        <button onclick="showOrder(event,'{{json_encode($order)}}','{{$order->getImage(300)}}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button onclick="showOrder(event,'{{json_encode($order)}}','{{$order->getImage(300)}}','{{__($order->canvas)}}','{{__($order->shape)}}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             مشاهده
                                         </button>
                                     </td>
@@ -44,14 +44,15 @@
 @endsection
 @section('script')
 <script>
-    function showOrder(e,order,img){
+    function showOrder(e,order,img,canvas,shape){
         e.preventDefault();
         let data = JSON.parse(order);
+        $("#ShowOrder .key").text(data.key);
         $("#ShowOrder .name").text(data.name);
         $("#ShowOrder .phone").text(data.phone);
         $("#ShowOrder .size").text(data.size);
-        $("#ShowOrder .canvas").text(data.canvas);
-        $("#ShowOrder .shape").text(data.shape);
+        $("#ShowOrder .canvas").text(canvas);
+        $("#ShowOrder #shape").text(shape);
         $("#ShowOrder .media").attr('src',img);
         $("#ShowOrder .description").text(data.description);
         $("#ShowOrder .invoicing").text(data.invoicing);

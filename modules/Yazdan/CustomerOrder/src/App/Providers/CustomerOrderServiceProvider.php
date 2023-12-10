@@ -25,12 +25,12 @@ class CustomerOrderServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        // config()->set('sidebar.items.sliders', [
-        //     'icon' => 'i-sliders',
-        //     'url' => route('admin.sliders.index'),
-        //     'title' => 'سفارش مشتری',
-        //     'permission' => PermissionRepository::PERMISSION_MANAGE_SLIDER,
-        // ]);
+        config()->set('sidebar.items.customerOrders', [
+            'icon' => 'i-orders',
+            'url' => route('admin.customerOrders.index'),
+            'title' => 'سفارشات مشتری',
+            'permission' => PermissionRepository::PERMISSION_MANAGE_CUSTOMER_ORDER,
+        ]);
 
         config()->set('sidebarHome.items.customerOrders', [
             'icon' => 'uil-orders',

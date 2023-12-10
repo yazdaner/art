@@ -3,6 +3,7 @@
 namespace Yazdan\CustomerOrder\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Yazdan\Blog\Repositories\BlogRepository;
 use Yazdan\CustomerOrder\App\Models\CustomerOrder;
 use Yazdan\CustomerOrder\Repositories\CustomerOrderRepository;
@@ -10,6 +11,24 @@ use Yazdan\CustomerOrder\App\Http\Requests\CustomerOrderRequest;
 
 class CustomerOrderController extends Controller
 {
+
+    // admin
+
+    public function index()
+    {
+        $orders = CustomerOrder::latest()->paginate(env('PAGINATION_COUNT'));
+        return view("CustomerOrder::admin.index", compact('orders'));
+    }
+
+    public function sendResponse($order,Request $request)
+    {
+        $CustomerOrder = CustomerOrder::find($order);
+        $CustomerOrder->update([
+            'response' => $request->response,
+        ]);
+        newFeedbacks();
+        return redirect(route('admin.customerOrders.index'));
+    }
 
     // home
 
