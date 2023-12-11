@@ -4,9 +4,10 @@
         <div class="card-body">
             <!-- SEARCH -->
             <div class="widget">
-                <form role="search" method="get">
+
+                <form role="search" action="{{route('search')}}">
                     <div class="input-group mb-3 border rounded">
-                        <input type="text" id="s" name="s" class="form-control border-0" placeholder="جستجوی ...">
+                        <input type="text" name="search" class="form-control border-0" placeholder="جستجوی ...">
                         <button type="submit" class="input-group-text bg-transparent border-0" id="searchsubmit"><i
                                 class="uil uil-search"></i></button>
                     </div>

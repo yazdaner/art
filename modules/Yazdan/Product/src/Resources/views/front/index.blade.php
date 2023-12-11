@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <div class="page-next-level">
-                    <h4 class="title">دوره های آموزشی</h4>
+                    <h4 class="title">گالری محصولات</h4>
                     <div class="page-next">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb bg-white rounded shadow mb-0">
@@ -42,7 +42,7 @@
         <div class="row align-items-center">
             <div class="col-md-8">
                 <div class="section-title text-center text-md-start">
-                    <h4>همه دوره های آموزشی</h4>
+                    <h4>گالری محصولات</h4>
                 </div>
             </div>
         </div>

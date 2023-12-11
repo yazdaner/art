@@ -2,11 +2,10 @@
 @section('content')
     @include('Front::sections.slider')
     @include('Front::sections.courses')
-    @include('Front::sections.products')
     @include('Front::sections.galleryCategories')
-    @include('Front::sections.galleryPaintings')
+    @include('Front::sections.products')
     @include('Front::sections.about')
     @include('Front::sections.blogs')
     @include('Front::sections.latestPaintings')
-    @include('Front::sections.registrationCourses')
+    @include('Front::sections.CustomerOrder')
 @endsection

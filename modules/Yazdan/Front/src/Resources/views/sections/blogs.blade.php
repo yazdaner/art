@@ -1,8 +1,8 @@
-<div class="container mt-100 mt-60">
+<div class="container bg-light mt-100 mt-60 py-5">
     <div class="row align-items-center mb-4 pb-2">
         <div class="col-md-12">
             <div class="section-title text-center text-md-start">
-                <h4 class="mb-4 text-center">همه اخبار یا پست وبلاگ</h4>
+                <h4 class="mb-4 text-center">همه پست ها</h4>
             </div>
         </div>
     </div>

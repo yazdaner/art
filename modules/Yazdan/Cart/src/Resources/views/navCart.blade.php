@@ -1,6 +1,6 @@
 <li class="list-inline-item mb-0 pe-1">
     <div class="dropdown">
-        <button type="button" class="btn btn-icon btn-soft-primary dropdown-toggle" data-bs-toggle="dropdown"
+        <button type="button" class="btn btn-icon btn-primary dropdown-toggle" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false"><i class="uil uil-shopping-cart align-middle icons"></i></button>
         <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 p-4"
             style="width: 300px;">

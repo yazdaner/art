@@ -38,6 +38,7 @@
         "yazdan/payment": "dev-master",
         "yazdan/product": "dev-master",
         "yazdan/role": "dev-master",
+        "yazdan/search": "dev-master",
         "yazdan/setting": "dev-master",
         "yazdan/slider": "dev-master",
         "yazdan/user": "dev-master"
@@ -159,6 +160,10 @@
         {
             "type": "path",
             "url": "./modules/Yazdan/CustomerOrder"
+        },
+        {
+            "type": "path",
+            "url": "./modules/Yazdan/Search"
         }
     ],
     "scripts": {

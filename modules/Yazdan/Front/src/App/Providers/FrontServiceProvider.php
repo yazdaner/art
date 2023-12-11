@@ -8,6 +8,7 @@ use Yazdan\Slider\App\Models\Slider;
 use Illuminate\Support\Facades\Route;
 use Yazdan\Setting\App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
+use Yazdan\Category\App\Models\Category;
 use Yazdan\Slider\Repositories\SliderRepository;
 use Yazdan\Category\Repositories\CategoryRepository;
 use Yazdan\Course\App\Models\Course;
@@ -56,6 +57,22 @@ class FrontServiceProvider extends ServiceProvider
         view()->composer(['Front::sections.products'], function ($view) {
             $products = Product::all();
             $view->with(compact('products'));
+        });
+
+
+        view()->composer(['Front::sections.latestPaintings'], function ($view) {
+            $products = Product::latest()->get();
+            $view->with(compact('products'));
+        });
+
+        view()->composer(['Front::sections.galleryCategories'], function ($view) {
+            $categories = Category::where('type',Product::class)->where('parent_id',null)->latest()->take(2)->get();
+            $view->with(compact('categories'));
+        });
+
+        view()->composer(['Front::sections.footer'], function ($view) {
+            $blogs = Blog::latest()->take(4)->get();
+            $view->with(compact('blogs'));
         });
     }
 }

@@ -27,8 +27,8 @@
                     <div class="row justify-content-center">
                         <div class="col-md-10">
                             <div class="text-center subcribe-form">
-                                <form style="max-width: 800px;">
-                                    <input type="text" id="course" name="name" class="rounded-pill shadow-md bg-white" placeholder="جستجوی کلمه کلیدی...">
+                                <form action="{{route('search')}}">
+                                    <input type="text" name="search" class="rounded-pill shadow-md bg-white" placeholder="جستجوی کلمه کلیدی...">
                                         <button type="submit" class="btn btn-pills btn-primary">جستجو </button>
                                 </form>
                             </div>
@@ -42,7 +42,7 @@
         <div class="row align-items-center mb-4 pb-2">
             <div class="col-md-8">
                 <div class="section-title text-center text-md-start">
-                    <h4 class="mb-4">همه اخبار یا پست وبلاگ</h4>
+                    <h4 class="mb-4">همه پست ها</h4>
                 </div>
             </div>
         </div>

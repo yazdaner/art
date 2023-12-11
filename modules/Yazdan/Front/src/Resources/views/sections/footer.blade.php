@@ -15,18 +15,18 @@
                 </ul>
             </div>
             <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                <h5 class="text-light footer-head">دسترسی سریع</h5>
+                <h5 class="text-light footer-head">صفحات مهم</h5>
                 <ul class="list-unstyled footer-list mt-4">
                     <li>
-                        <a href="#" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> شیوه ثبت سفارش
+                        <a href="{{route('courses')}}" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> دوره های آموزشی
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> پرسش های متداول
+                        <a href="{{route('products')}}" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> گالری محصولات
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> پرطرفدارترین دوره
+                        <a href="{{route('customer.orders.create')}}" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> سفارش نقاشی
                         </a>
                     </li>
                     <li>
@@ -39,24 +39,13 @@
                 </ul>
             </div>
             <div class="col-lg-4 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                <h5 class="text-light footer-head">جدیدترین دوره ها</h5>
+                <h5 class="text-light footer-head">جدیدترین مقالات</h5>
                 <ul class="list-unstyled footer-list mt-4">
-                    <li>
-                        <a href="./course.html" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> دوره رنگ
-                            روغن </a>
+                   @foreach ($blogs as $blog)
+                   <li>
+                    <a href="{{$blog->path()}}" class="text-foot"><i class="uil uil-angle-left-b me-1"></i>{{$blog->title}}</a>
                     </li>
-                    <li>
-                        <a href="./course.html" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> دوره
-                            طراحی مقدماتی </a>
-                    </li>
-                    <li>
-                        <a href="./course.html" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> دوره
-                            طراحی پیشرفته </a>
-                    </li>
-                    <li>
-                        <a href="./course.html" class="text-foot"><i class="uil uil-angle-left-b me-1"></i> دوره
-                            دیجیتال آرت </a>
-                    </li>
+                   @endforeach
                 </ul>
             </div>
         </div>

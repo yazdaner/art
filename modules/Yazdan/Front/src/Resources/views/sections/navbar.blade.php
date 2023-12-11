@@ -1,5 +1,5 @@
 <header id="topnav" class="defaultscroll sticky">
-    <div class="container">
+    <div class="container-fluid">
         <div>
             <a class="logo" href="/">
                 <img src="/assets/images/logo-dark.png" height="24" alt="" />
@@ -8,7 +8,9 @@
         <div class="buy-button">
             @auth
             @include('Cart::navCart')
-            <a href="{{route('users.profile')}}" class="btn btn-primary btn-p">حساب کاربری</a>
+            <a href="{{route('users.profile')}}" class="btn btn-primary btn-p">
+                <i class="uil uil-user align-middle icons"></i>
+            </a>
             <a href="{{route('logout')}}" class="btn btn-primary btn-p">خروج</a>
             @else
             <div class="option-item d-flex">
@@ -38,17 +40,23 @@
         <div id="navigation">
             <ul class="navigation-menu">
                 <li><a href="/" class="sub-menu-item">صفحه اصلی </a></li>
-                <li class="has-submenu parent-menu-item">
-                    <a class="d-none d-sm-none d-md-block d-lg-block" href="https://atabakart.com/gallery">گالری </a>
-                    <a class="d-block d-sm-block d-md-none d-lg-none" href="javascript:void(0)">گالری </a>
-                    <span class="menu-arrow"></span>
+                <li class="has-submenu parent-parent-menu-item">
+                    <a href="javascript:void(0)">گالری </a><span class="menu-arrow"></span>
                     <ul class="submenu">
-                        <li>
-                            <a href="./category.html" class="sub-menu-item">رنگ روغن </a>
+                        @foreach ($productCategories as $category)
+                        <li class="@if(count($category->subCategory)) has-submenu @endif parent-menu-item"><a
+                                href="{{$category->path()}}"> {{$category->title}}
+                            </a>@if(count($category->subCategory))<span class="submenu-arrow"></span> @endif
+                            @if (count($category->subCategory))
+                            <ul class="submenu">
+                                @foreach ($category->subCategory as $subCategory)
+                                <li><a href="{{$subCategory->path()}}" class="sub-menu-item">
+                                        {{$subCategory->title}}</a></li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </li>
-                        <li>
-                            <a href="./category.html" class="sub-menu-item">دیجیتال آرت </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="has-submenu parent-menu-item">
@@ -63,6 +71,9 @@
                         @endforeach
                     </ul>
                 </li>
+
+                <li><a href="{{route('customer.orders.create')}}" class="sub-menu-item">سفارش نقاشی</a></li>
+
                 <li class="has-submenu parent-parent-menu-item">
                     <a href="javascript:void(0)">مجله اتابک </a><span class="menu-arrow"></span>
                     <ul class="submenu">
@@ -82,25 +93,7 @@
                         @endforeach
                     </ul>
                 </li>
-                {{-- <li class="has-submenu parent-parent-menu-item">
-                    <a href="javascript:void(0)">محصولات اتابک </a><span class="menu-arrow"></span>
-                    <ul class="submenu">
-                        @foreach ($productCategories as $category)
-                        <li class="@if(count($category->subCategory)) has-submenu @endif parent-menu-item"><a
-                                href="{{$category->path()}}"> {{$category->title}}
-                            </a>@if(count($category->subCategory))<span class="submenu-arrow"></span> @endif
-                            @if (count($category->subCategory))
-                            <ul class="submenu">
-                                @foreach ($category->subCategory as $subCategory)
-                                <li><a href="{{$subCategory->path()}}" class="sub-menu-item">
-                                        {{$subCategory->title}}</a></li>
-                                @endforeach
-                            </ul>
-                            @endif
-                        </li>
-                        @endforeach
-                    </ul>
-                </li> --}}
+
                 <li><a href="{{route('about')}}" class="sub-menu-item">درباره ما </a></li>
                 <li><a href="{{route('contact')}}" class="sub-menu-item">تماس با ما </a></li>
             </ul>
