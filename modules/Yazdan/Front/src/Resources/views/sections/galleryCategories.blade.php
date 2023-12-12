@@ -1,3 +1,4 @@
+@if($categories->isNotEmpty())
 <section class="bg-half-50 pb-10 d-table w-100 my-5">
     <div class="container">
         <div class="row justify-content-center">
@@ -49,3 +50,4 @@
     </div>
     <!--end container-->
 </section>
+@endif
